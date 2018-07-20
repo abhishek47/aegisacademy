@@ -43,7 +43,18 @@ class WikisController extends Controller
     {
     	$wiki = Wiki::where('slug', $slug)->first();
 
-    	return view('wikis.show', compact('wiki'));
+    	return view('wikis.show2', compact('wiki'));
+    }
+
+     /**
+     * Get body of wiki by id
+     *
+     * @return wiki show page
+     */
+   
+    public function getBody(Wiki $wiki)
+    {
+    	return response(['body' => $wiki->body], 200);
     }
 
     /**

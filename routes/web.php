@@ -25,3 +25,5 @@ Route::get('/wiki', 'WikisController@index')->name('wikis');
 Route::get('/wiki/{slug}', 'WikisController@show')->name('wikis.show');
 
 Route::post('/wiki/update/{wiki}', 'WikisController@update')->name('wikis.update');
+
+Route::get('/wiki/{wiki}/body', 'WikisController@getBody')->name('wikis.getBody');

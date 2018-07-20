@@ -5,7 +5,9 @@
 @section('content')
 
 	<div class="container">
+
 		<div class="row mb-4">
+			<!-- List of all articles -->
 			@foreach($articles as $article)
 				
 				<div class="col-md-6 mb-3">
@@ -21,9 +23,12 @@
 				</div>	
 
 			@endforeach
+			<!-- List of all articles -->
 		</div>
 
+		<!-- Pagination Links -->
 		{!! $articles->links() !!}
+
 	</div>
 
 @endsection
