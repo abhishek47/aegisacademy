@@ -12,6 +12,9 @@ window.Vue = require('vue');
 
 import VueCoreImageUpload from 'vue-core-image-upload';
 import PortalVue from 'portal-vue'
+import Toastr from 'vue-toastr';
+
+require('vue-toastr/src/vue-toastr.scss');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -24,6 +27,7 @@ Vue.component('latex-editor', require('./components/LatexEditor.vue'));
 Vue.component('platex', require('./components/LatexParagraph.vue'));
 
 Vue.use(PortalVue)
+Vue.use(Toastr);
 
 
 const app = new Vue({

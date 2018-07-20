@@ -58,6 +58,21 @@ class WikisController extends Controller
     }
 
     /**
+     * update body of wiki by id
+     *
+     * @return wiki show page
+     */
+   
+    public function updateBody(Request $request, Wiki $wiki)
+    {
+    	$wiki->body = $request->get('body');
+
+    	$wiki->save();
+
+    	return response([$request->get('body')], 200);
+    }
+
+    /**
      * Update the wiki page
      *
      * @return wiki show page

@@ -30,6 +30,8 @@
 				  <button type="button" @click="handleToolbarItem('[center]')" class="btn btn-secondary">Center</button>
 				  <button type="button" @click="update();" class="btn btn-secondary"><i class="fa fa-eye"></i></button>
 
+				  <button type="button" @click="saveContent();" class="btn btn-secondary"><i class="fa fa-save"></i></button>
+
 
 
 				</div>
@@ -37,13 +39,13 @@
 
       		</div>
       		<div>
-				<textarea ref="source">{{ this.source }}</textarea>
+				<textarea v-model="source" ref="source"></textarea>
 			</div>
 		</div>
 
 		<!-- Article HTML Body after conversion -->
 		<portal to="edit-link">
-			<button class="btn btn-link text-grey float-right" @click="toggleEditing()"><i class="fa fa-edit"></i> Edit</button>
+			<button class="btn btn-link text-secondary mt-1 float-right" @click="toggleEditing()"><i class="fa fa-edit"></i> Edit</button>
 		</portal>
 
 		<div v-show="this.inEdit == false">
@@ -108,6 +110,16 @@
 
         	toggleEditing() {
         		this.inEdit = !this.inEdit;
+        	},
+
+        	saveContent(){
+        		this.source = this.textarea.value;
+
+        		var self = this;
+        		axios.post(this.sourceUrl, {body: this.source}).then(function(){
+        			self.$toastr.s("The wiki page was updated!");    
+        			self.update();
+        		});
         	},
 
         	// Initialise all elements to variables
@@ -176,6 +188,7 @@
 		        text = text.replace(/^&gt;/mg, '>');
 		        text = md.render(text) ;
 		        this.buffer.innerHTML = this.aegismarked(text);
+
 		        this.swapBuffers();
 
 		    },
