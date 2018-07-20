@@ -17451,6 +17451,8 @@ module.exports = __webpack_require__(155);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_core_image_upload__ = __webpack_require__(132);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_core_image_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_core_image_upload__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_portal_vue__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_portal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_portal_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -17462,6 +17464,9 @@ __webpack_require__(35);
 
 window.Vue = __webpack_require__(126);
 
+
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -17470,8 +17475,9 @@ window.Vue = __webpack_require__(126);
 
 Vue.component('example-component', __webpack_require__(129));
 Vue.component('latex-editor', __webpack_require__(159));
+Vue.component('platex', __webpack_require__(162));
 
-
+Vue.use(__WEBPACK_IMPORTED_MODULE_1_portal_vue___default.a);
 
 var app = new Vue({
 
@@ -62047,6 +62053,704 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	props: ['sourceUrl'],
+
+	data: function data() {
+		var _ref;
+
+		return _ref = {
+
+			source: '',
+			delay: 0, // delay after keystroke before updating
+			preview: null, // filled in by Init below
+			buffer: null, // filled in by Init below
+			timeout: null, // store setTimout id
+			mjRunning: false, // true when MathJax is processing
+			oldText: null, // used to check if an update is needed,
+			textarea: null
+		}, _defineProperty(_ref, 'buffer', null), _defineProperty(_ref, 'preview', null), _defineProperty(_ref, 'inEdit', false), _ref;
+	},
+	mounted: function mounted() {
+		var self = this;
+
+		// fetch source data
+		axios.get(this.sourceUrl).then(function (response) {
+			self.source = response.data.body;
+
+			// Initialise all elements to variables
+
+			self.callback = MathJax.Callback(["createPreview", self]);
+
+			self.callback.autoReset = true;
+
+			self.init();
+
+			self.update();
+		});
+	},
+
+
+	methods: {
+		toggleEditing: function toggleEditing() {
+			this.inEdit = !this.inEdit;
+		},
+
+
+		// Initialise all elements to variables
+		init: function init() {
+			this.preview = this.$refs.preview;
+			this.buffer = this.$refs.buffer;
+			this.textarea = this.$refs.source;
+		},
+
+
+		// Switch the buffer and preview, and display the right one.
+		swapBuffers: function swapBuffers() {
+			var buffer = this.preview;
+			var preview = this.buffer;
+			this.buffer = buffer;
+			this.preview = preview;
+			buffer.style.display = "none";
+			buffer.style.position = "absolute";
+			preview.style.position = "";
+			preview.style.display = "";
+		},
+
+
+		// This gets called when a key is pressed in the textarea.
+		update: function update() {
+			if (this.timeout) {
+				clearTimeout(this.timeout);
+			}
+			this.timeout = setTimeout(this.callback, this.delay);
+		},
+
+
+		// Creates the preview and runs MathJax on it.
+		createPreview: function createPreview() {
+
+			this.inEdit = false;
+
+			this.timeout = null;
+
+			if (this.mjRunning) return;
+
+			var text = this.textarea.value;
+
+			if (text === this.oldtext) return;
+
+			text = this.escape(text); //Escape tags before doing stuff
+			this.buffer.innerHTML = this.oldtext = text;
+			this.mjRunning = true;
+
+			MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.buffer], ["previewDone", this]);
+		},
+
+
+		// Handler when the preview is ready to ouput
+		previewDone: function previewDone() {
+
+			this.mjRunning = false;
+
+			var text = this.buffer.innerHTML;
+
+			// replace occurrences of &gt; at the beginning of a new line
+			// with > again, so Markdown blockquotes are handled correctly
+			text = text.replace(/^&gt;/mg, '>');
+			text = md.render(text);
+			this.buffer.innerHTML = this.aegismarked(text);
+			this.swapBuffers();
+		},
+
+
+		// Escape the unnessary chars
+		escape: function escape(html, encode) {
+			return html.replace(!encode ? /&(?!#?\w+;)/g : /&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+		},
+
+
+		// If you want to enable such buggy fast updates, you should 
+		// add something like  onkeypress="Preview.UpdateKeyPress(event)" to textarea's attributes.
+		updateKeyPress: function updateKeyPress(event) {
+
+			if (event.keyCode < 16 || event.keyCode > 47) {
+				this.preview.innerHTML = '<p>' + md.render(this.textarea.value) + '</p>';
+				this.buffer.innerHTML = '<p>' + md.render(this.textarea.value) + '</p>';
+			}
+			this.update();
+		},
+
+
+		// AEGIS SPECIAL MARKDOWN
+		aegismarked: function aegismarked(text) {
+
+			//Example	
+			text = text.replace(/&lt;startexample&gt;/g, '<div class="panel panel-default example"> \r\n \
+						    <div class="panel-body" style="padding:0px;padding-top:15px;"><small style="padding-left:15px;" class="text-muted">EXAMPLE</small>\r\n<div style="padding-left:15px;">').replace(/&lt;endexample&gt;/g, '</div></div>\r\n</div>');
+
+			//Solution	
+			text = text.replace(/&lt;startsolution&gt;/g, '</div><div class="panel panel-default solution" style="margin-bottom: 0px;"> \r\n \
+						    <div class="panel-body"><small class="text-muted">SOLUTION</small>\r\n<div>').replace(/&lt;endsolution&gt;/g, '</div></div>\r\n</div>');
+
+			// Defintion
+			text = text.replace(/&lt;startdefinition&gt;/g, '<div class="panel panel-default definition"> \r\n \
+						    <div class="panel-body"><small class="text-muted">DEFINITION</small>\r\n<div>').replace(/&lt;enddefinition&gt;/g, '</div></div>\r\n</div>');
+
+			// Proof
+			text = text.replace(/&lt;startproof&gt;/g, '</div><div class="panel panel-default proof" style="margin-bottom: 0px;"> \r\n \
+						    <div class="panel-body"><small class="text-muted">PROOF</small>\r\n<div>').replace(/&lt;endproof&gt;/g, '</div></div>\r\n</div>');
+
+			// Question
+			text = text.replace(/&lt;startquestion-(\d+)&gt;/g, '<div class="slickQuiz" id="slickQuiz-$1" data-id="$1">\r\n \
+								    <h1 class="quizName"></h1>\r\n \
+								    <div class="quizArea">\r\n \
+								        <div class="quizHeader"> \
+								            <a class="startQuiz" href="">Get Started!</a> \
+								        </div> \
+								    </div> \
+								    <div class="quizResults"> \
+								        <h3 class="quizScore">You Scored: <span></span></h3> \
+								        <h3 class="quizLevel"><strong>Ranking:</strong> <span></span></h3> \
+								        <div class="quizResultsCopy"></div> \
+								    </div>').replace(/&lt;\/endquestion&gt;/g, '</div>');
+
+			// Theory
+			text = text.replace(/&lt;starttheorem&gt;/g, '<div class="panel panel-default theorem"> \r\n \
+						    <div class="panel-body" style="padding:0px;padding-top:15px;"><small class="text-muted" style="padding-left:15px;">THEOREM</small>\r\n<div style="padding-left:15px;">').replace(/&lt;endtheorem&gt;/g, '</div></div>\r\n</div>');
+
+			// Theory
+			text = text.replace(/&lt;startbox&gt;/g, '<div class="panel panel-default box"> \r\n \
+						    <div class="panel-body">\r\n<div>').replace(/&lt;endbox&gt;/g, '</div></div>\r\n</div>');
+
+			text = text.replace(/&lt;startcenter&gt;/g, '<p class="text-center">').replace(/&lt;endcenter&gt;/g, '</p>');
+
+			text = text.replace(/&lt;hr-(\d+)&gt;/g, "<hr style=\"height:$1px;\"");
+
+			text = text.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+
+			return text;
+		},
+		handleToolbarItem: function handleToolbarItem(item) {
+			if (item == 'h2') {
+				this.insertAtCaret('## Heading Comes Here');
+			} else if (item == 'b') {
+				this.insertAtCaret('**boldtext**');
+			} else if (item == '[a]') {
+				this.insertAtCaret('[Name your link](https://www.link.com)');
+			} else if (item == '[img]') {
+				$("#fileInput").click();
+
+				var self = this;
+
+				$("#fileInput").change(function () {
+
+					console.log("FORM IS SUBMITTING");
+
+					var formData = new FormData();
+
+					formData.append('files', $('input[type=file]#fileInput')[0].files[0]);
+
+					console.log(formData);
+
+					axios.post('/image/upload', formData).then(function (response) {
+						self.insertAtCaret('![alt text](' + response.data.src + ' "Image Title")');
+					});
+				});
+			} else if (item == '[a]') {
+				this.insertAtCaret('[Name your link](https://www.link.com)');
+			} else if (item == '[ul]') {
+				this.insertAtCaret('* Item 1\r\n* Item 2');
+			} else if (item == '[eg]') {
+				this.insertAtCaret("<startexample>\r\n\r\n<endexample>");
+			} else if (item == '[sn]') {
+				this.insertAtCaret("<startsolution>\r\n\r\n<endsolution>");
+			} else if (item == '[th]') {
+				this.insertAtCaret("<starttheorem>\r\n\r\n<endtheorem>");
+			} else if (item == '[pr]') {
+				this.insertAtCaret("<startproof>\r\n\r\n<endproof>");
+			} else if (item == '[box]') {
+				this.insertAtCaret("<startbox>\r\n\r\n<endbox>");
+			} else if (item == '[def]') {
+				this.insertAtCaret("<startdefinition>\r\n\r\n<enddefinition>");
+			} else if (item == '[center]') {
+				this.insertAtCaret("<startcenter>\r\n\r\n<endcenter>");
+			}
+		},
+		insertAtCaret: function insertAtCaret(text) {
+
+			var txtarea = this.$refs.source;
+			if (!txtarea) {
+				return;
+			}
+
+			var scrollPos = txtarea.scrollTop;
+			var strPos = 0;
+			var br = txtarea.selectionStart || txtarea.selectionStart == '0' ? "ff" : document.selection ? "ie" : false;
+			if (br == "ie") {
+				txtarea.focus();
+				var range = document.selection.createRange();
+				range.moveStart('character', -txtarea.value.length);
+				strPos = range.text.length;
+			} else if (br == "ff") {
+				strPos = txtarea.selectionStart;
+			}
+
+			var front = txtarea.value.substring(0, strPos);
+			var back = txtarea.value.substring(strPos, txtarea.value.length);
+			txtarea.value = front + text + back;
+			strPos = strPos + text.length;
+			if (br == "ie") {
+				txtarea.focus();
+				var ieRange = document.selection.createRange();
+				ieRange.moveStart('character', -txtarea.value.length);
+				ieRange.moveStart('character', strPos);
+				ieRange.moveEnd('character', 0);
+				ieRange.select();
+			} else if (br == "ff") {
+				txtarea.selectionStart = strPos;
+				txtarea.selectionEnd = strPos;
+				txtarea.focus();
+			}
+
+			txtarea.scrollTop = scrollPos;
+		}
+	}
+
+});
+
+/***/ }),
+/* 161 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: this.inEdit,
+              expression: "this.inEdit"
+            }
+          ],
+          staticClass: "latex-editor"
+        },
+        [
+          _c("div", { staticClass: "toolbar" }, [
+            _c(
+              "div",
+              {
+                staticClass: "btn-group flex",
+                attrs: { role: "group", "aria-label": "Basic example" }
+              },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.handleToolbarItem("h2")
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-heading" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.handleToolbarItem("b")
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-bold" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.handleToolbarItem("[a]")
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-link" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.handleToolbarItem("[ul]")
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-list-ul" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.handleToolbarItem("[table]")
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-table" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.handleToolbarItem("[img]")
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-image" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.handleToolbarItem("[eg]")
+                      }
+                    }
+                  },
+                  [_vm._v("E.g.")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.handleToolbarItem("[sn]")
+                      }
+                    }
+                  },
+                  [_vm._v("Sn.")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.handleToolbarItem("[th]")
+                      }
+                    }
+                  },
+                  [_vm._v("Th.")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.handleToolbarItem("[pr]")
+                      }
+                    }
+                  },
+                  [_vm._v("Pr.")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.handleToolbarItem("[def]")
+                      }
+                    }
+                  },
+                  [_vm._v("Def.")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.handleToolbarItem("[box]")
+                      }
+                    }
+                  },
+                  [_vm._v("Box")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.handleToolbarItem("[center]")
+                      }
+                    }
+                  },
+                  [_vm._v("Center")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.update()
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-eye" })]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("textarea", { ref: "source" }, [_vm._v(_vm._s(this.source))])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("portal", { attrs: { to: "edit-link" } }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-link text-grey float-right",
+            on: {
+              click: function($event) {
+                _vm.toggleEditing()
+              }
+            }
+          },
+          [_c("i", { staticClass: "fa fa-edit" }), _vm._v(" Edit")]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: this.inEdit == false,
+              expression: "this.inEdit == false"
+            }
+          ]
+        },
+        [
+          _c("div", {
+            ref: "buffer",
+            staticClass: "markdown-body",
+            staticStyle: { display: "none" }
+          }),
+          _vm._v(" "),
+          _c("div", { ref: "preview", staticClass: "markdown-body" })
+        ]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticStyle: { height: "0px", overflow: "hidden" } }, [
+      _c(
+        "form",
+        {
+          attrs: {
+            id: "file-upload",
+            method: "POST",
+            action: "/image/upload",
+            enctype: "multipart/form-data"
+          }
+        },
+        [
+          _c("input", {
+            attrs: { type: "file", id: "fileInput", name: "files" }
+          })
+        ]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0bd426b8", module.exports)
+  }
+}
+
+/***/ }),
+/* 162 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(163)
+/* template */
+var __vue_template__ = __webpack_require__(164)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/LatexParagraph.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b5d05a1a", Component.options)
+  } else {
+    hotAPI.reload("data-v-b5d05a1a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 163 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -62063,9 +62767,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 									buffer: null, // filled in by Init below
 									timeout: null, // store setTimout id
 									mjRunning: false, // true when MathJax is processing
-									oldText: null, // used to check if an update is needed,
-									textarea: null
-						}, _defineProperty(_ref, 'buffer', null), _defineProperty(_ref, 'preview', null), _ref;
+									oldText: null }, _defineProperty(_ref, 'buffer', null), _defineProperty(_ref, 'preview', null), _ref;
 			},
 			mounted: function mounted() {
 						var self = this;
@@ -62091,9 +62793,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 						// Initialise all elements to variables
 						init: function init() {
-									this.preview = document.getElementById("preview");
-									this.buffer = document.getElementById("buffer");
-									this.textarea = document.getElementById("source");
+									this.preview = this.$refs.preview;
+									this.buffer = this.$refs.buffer;
 						},
 
 
@@ -62126,7 +62827,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 									if (this.mjRunning) return;
 
-									var text = this.textarea.value;
+									var text = this.source;
 
 									if (text === this.oldtext) return;
 
@@ -62157,18 +62858,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 						// Escape the unnessary chars
 						escape: function escape(html, encode) {
 									return html.replace(!encode ? /&(?!#?\w+;)/g : /&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-						},
-
-
-						// If you want to enable such buggy fast updates, you should 
-						// add something like  onkeypress="Preview.UpdateKeyPress(event)" to textarea's attributes.
-						updateKeyPress: function updateKeyPress(event) {
-
-									if (event.keyCode < 16 || event.keyCode > 47) {
-												this.preview.innerHTML = '<p>' + md.render(this.textarea.value) + '</p>';
-												this.buffer.innerHTML = '<p>' + md.render(this.textarea.value) + '</p>';
-									}
-									this.update();
 						},
 
 
@@ -62226,7 +62915,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 });
 
 /***/ }),
-/* 161 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -62234,22 +62923,18 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("textarea", { staticClass: "hidden", attrs: { id: "source" } }, [
-      _vm._v(_vm._s(this.source))
-    ]),
-    _vm._v(" "),
     _c("div", {
+      ref: "buffer",
       staticClass: "markdown-body",
       staticStyle: {
         display: "none",
         position: "absolute",
         top: "0",
         left: "0"
-      },
-      attrs: { id: "buffer" }
+      }
     }),
     _vm._v(" "),
-    _c("div", { attrs: { id: "preview" } })
+    _c("div", { ref: "preview" })
   ])
 }
 var staticRenderFns = []
@@ -62258,9 +62943,619 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0bd426b8", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-b5d05a1a", module.exports)
   }
 }
+
+/***/ }),
+/* 165 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+    portal-vue
+    Version: 1.3.0
+    Licence: MIT
+    (c) Thorsten Lünborg
+  */
+  
+(function (global, factory) {
+	 true ? module.exports = factory(__webpack_require__(126)) :
+	typeof define === 'function' && define.amd ? define(['vue'], factory) :
+	(global.PortalVue = factory(global.Vue));
+}(this, (function (Vue) { 'use strict';
+
+Vue = Vue && 'default' in Vue ? Vue['default'] : Vue;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var toConsumableArray = function (arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  } else {
+    return Array.from(arr);
+  }
+};
+
+function extractAttributes(el) {
+  var map = el.hasAttributes() ? el.attributes : [];
+  var attrs = {};
+  for (var i = 0; i < map.length; i++) {
+    var attr = map[i];
+    if (attr.value) {
+      attrs[attr.name] = attr.value === '' ? true : attr.value;
+    }
+  }
+  var klass = void 0,
+      style = void 0;
+  if (attrs.class) {
+    klass = attrs.class;
+    delete attrs.class;
+  }
+  if (attrs.style) {
+    style = attrs.style;
+    delete attrs.style;
+  }
+  var data = {
+    attrs: attrs,
+    class: klass,
+    style: style
+  };
+  return data;
+}
+
+function freeze(item) {
+  if (Array.isArray(item) || (typeof item === 'undefined' ? 'undefined' : _typeof(item)) === 'object') {
+    return Object.freeze(item);
+  }
+  return item;
+}
+
+function combinePassengers(transports) {
+  var slotProps = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  return transports.reduce(function (passengers, transport) {
+    var newPassengers = transport.passengers[0];
+    newPassengers = typeof newPassengers === 'function' ? newPassengers(slotProps) : transport.passengers;
+    return passengers.concat(newPassengers);
+  }, []);
+}
+
+var transports = {};
+
+var Wormhole = Vue.extend({
+  data: function data() {
+    return { transports: transports };
+  },
+  methods: {
+    open: function open(transport) {
+      var to = transport.to,
+          from = transport.from,
+          passengers = transport.passengers;
+
+      if (!to || !from || !passengers) return;
+
+      transport.passengers = freeze(passengers);
+      var keys = Object.keys(this.transports);
+      if (keys.indexOf(to) === -1) {
+        Vue.set(this.transports, to, []);
+      }
+
+      var currentIndex = this.getTransportIndex(transport);
+      // Copying the array here so that the PortalTarget change event will actually contain two distinct arrays
+      var newTransports = this.transports[to].slice(0);
+      if (currentIndex === -1) {
+        newTransports.push(transport);
+      } else {
+        newTransports[currentIndex] = transport;
+      }
+      newTransports.sort(function (a, b) {
+        return a.order - b.order;
+      });
+
+      this.transports[to] = newTransports;
+    },
+    close: function close(transport) {
+      var force = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var to = transport.to,
+          from = transport.from;
+
+      if (!to || !from) return;
+      if (!this.transports[to]) {
+        return;
+      }
+
+      if (force) {
+        this.transports[to] = [];
+      } else {
+        var index = this.getTransportIndex(transport);
+        if (index >= 0) {
+          // Copying the array here so that the PortalTarget change event will actually contain two distinct arrays
+          var newTransports = this.transports[to].slice(0);
+          newTransports.splice(index, 1);
+          this.transports[to] = newTransports;
+        }
+      }
+    },
+    hasTarget: function hasTarget(to) {
+      return this.transports.hasOwnProperty(to);
+    },
+    hasContentFor: function hasContentFor(to) {
+      if (!this.transports[to]) {
+        return false;
+      }
+      return this.getContentFor(to).length > 0;
+    },
+    getSourceFor: function getSourceFor(to) {
+      return this.transports[to] && this.transports[to][0].from;
+    },
+    getContentFor: function getContentFor(to) {
+      var transports = this.transports[to];
+      if (!transports) {
+        return undefined;
+      }
+      return combinePassengers(transports);
+    },
+    getTransportIndex: function getTransportIndex(_ref) {
+      var to = _ref.to,
+          from = _ref.from;
+
+      for (var i in this.transports[to]) {
+        if (this.transports[to][i].from === from) {
+          return i;
+        }
+      }
+      return -1;
+    }
+  }
+});
+
+var wormhole = new Wormhole(transports);
+
+var nestRE = /^(attrs|props|on|nativeOn|class|style|hook)$/;
+
+var babelHelperVueJsxMergeProps = function mergeJSXProps (objs) {
+  return objs.reduce(function (a, b) {
+    var aa, bb, key, nestedKey, temp;
+    for (key in b) {
+      aa = a[key];
+      bb = b[key];
+      if (aa && nestRE.test(key)) {
+        // normalize class
+        if (key === 'class') {
+          if (typeof aa === 'string') {
+            temp = aa;
+            a[key] = aa = {};
+            aa[temp] = true;
+          }
+          if (typeof bb === 'string') {
+            temp = bb;
+            b[key] = bb = {};
+            bb[temp] = true;
+          }
+        }
+        if (key === 'on' || key === 'nativeOn' || key === 'hook') {
+          // merge functions
+          for (nestedKey in bb) {
+            aa[nestedKey] = mergeFn(aa[nestedKey], bb[nestedKey]);
+          }
+        } else if (Array.isArray(aa)) {
+          a[key] = aa.concat(bb);
+        } else if (Array.isArray(bb)) {
+          a[key] = [aa].concat(bb);
+        } else {
+          for (nestedKey in bb) {
+            aa[nestedKey] = bb[nestedKey];
+          }
+        }
+      } else {
+        a[key] = b[key];
+      }
+    }
+    return a
+  }, {})
+};
+
+function mergeFn (a, b) {
+  return function () {
+    a && a.apply(this, arguments);
+    b && b.apply(this, arguments);
+  }
+}
+
+// import { transports } from './wormhole'
+var Target = {
+  abstract: false,
+  name: 'portalTarget',
+  props: {
+    attributes: { type: Object, default: function _default() {
+        return {};
+      } },
+    multiple: { type: Boolean, default: false },
+    name: { type: String, required: true },
+    slim: { type: Boolean, default: false },
+    slotProps: { type: Object, default: function _default() {
+        return {};
+      } },
+    tag: { type: String, default: 'div' },
+    transition: { type: [Boolean, String, Object], default: false },
+    transitionEvents: { type: Object, default: function _default() {
+        return {};
+      } }
+  },
+  data: function data() {
+    return {
+      transports: wormhole.transports,
+      firstRender: true
+    };
+  },
+  created: function created() {
+    if (!this.transports[this.name]) {
+      this.$set(this.transports, this.name, []);
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.unwatch = this.$watch('ownTransports', this.emitChange);
+    this.$nextTick(function () {
+      if (_this.transition) {
+        // only when we have a transition, because it causes a re-render
+        _this.firstRender = false;
+      }
+    });
+    if (this.$options.abstract) {
+      this.$options.abstract = false;
+    }
+  },
+  updated: function updated() {
+    if (this.$options.abstract) {
+      this.$options.abstract = false;
+    }
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unwatch();
+    this.$el.innerHTML = '';
+  },
+
+
+  methods: {
+    emitChange: function emitChange(newTransports, oldTransports) {
+      if (this.multiple) {
+        this.$emit('change', [].concat(toConsumableArray(newTransports)), [].concat(toConsumableArray(oldTransports)));
+      } else {
+        var newTransport = newTransports.length === 0 ? undefined : newTransports[0];
+        var oldTransport = oldTransports.length === 0 ? undefined : oldTransports[0];
+        this.$emit('change', _extends({}, newTransport), _extends({}, oldTransport));
+      }
+    }
+  },
+  computed: {
+    ownTransports: function ownTransports() {
+      var transports$$1 = this.transports[this.name] || [];
+      if (this.multiple) {
+        return transports$$1;
+      }
+      return transports$$1.length === 0 ? [] : [transports$$1[transports$$1.length - 1]];
+    },
+    passengers: function passengers() {
+      return combinePassengers(this.ownTransports, this.slotProps);
+    },
+    children: function children() {
+      return this.passengers.length !== 0 ? this.passengers : this.$slots.default || [];
+    },
+    hasAttributes: function hasAttributes() {
+      return Object.keys(this.attributes).length > 0;
+    },
+    noWrapper: function noWrapper() {
+      var noWrapper = !this.hasAttributes && this.slim;
+      if (noWrapper && this.children.length > 1) {
+        console.warn('[portal-vue]: PortalTarget with `slim` option received more than one child element.');
+      }
+      return noWrapper;
+    },
+    withTransition: function withTransition() {
+      return !!this.transition;
+    },
+    transitionData: function transitionData() {
+      var t = this.transition;
+      var data = {};
+
+      // During first render, we render a dumb transition without any classes, events and a fake name
+      // We have to do this to emulate the normal behaviour of transitions without `appear`
+      // because in Portals, transitions can behave as if appear was defined under certain conditions.
+      if (this.firstRender && _typeof(this.transition) === 'object' && !this.transition.appear) {
+        data.props = { name: '__notranstition__portal-vue__' };
+        return data;
+      }
+
+      if (typeof t === 'string') {
+        data.props = { name: t };
+      } else if ((typeof t === 'undefined' ? 'undefined' : _typeof(t)) === 'object') {
+        data.props = t;
+      }
+      if (this.renderSlim) {
+        data.props.tag = this.tag;
+      }
+      data.on = this.transitionEvents;
+
+      return data;
+    }
+  },
+
+  render: function render(h) {
+    this.$options.abstract = true;
+    var TransitionType = this.noWrapper ? 'transition' : 'transition-group';
+    var Tag = this.tag;
+
+    if (this.withTransition) {
+      return h(
+        TransitionType,
+        babelHelperVueJsxMergeProps([this.transitionData, { 'class': 'vue-portal-target' }]),
+        [this.children]
+      );
+    }
+
+    // Solves a bug where Vue would sometimes duplicate elements upon changing multiple or disabled
+    var wrapperKey = this.ownTransports.length;
+
+    return this.noWrapper ? this.children[0] : h(
+      Tag,
+      babelHelperVueJsxMergeProps([{ 'class': 'vue-portal-target' }, this.attributes, { key: wrapperKey }]),
+      [this.children]
+    );
+  }
+};
+
+var inBrowser = typeof window !== 'undefined';
+
+var pid = 1;
+
+var Portal = {
+  abstract: false,
+  name: 'portal',
+  props: {
+    /* global HTMLElement */
+    disabled: { type: Boolean, default: false },
+    name: { type: String, default: function _default() {
+        return String(pid++);
+      } },
+    order: { type: Number, default: 0 },
+    slim: { type: Boolean, default: false },
+    slotProps: { type: Object, default: function _default() {
+        return {};
+      } },
+    tag: { type: [String], default: 'DIV' },
+    targetEl: { type: inBrowser ? [String, HTMLElement] : String },
+    to: {
+      type: String,
+      default: function _default() {
+        return String(Math.round(Math.random() * 10000000));
+      }
+    }
+  },
+
+  mounted: function mounted() {
+    if (this.targetEl) {
+      this.mountToTarget();
+    }
+    if (!this.disabled) {
+      this.sendUpdate();
+    }
+    // Reset hack to make child components skip the portal when defining their $parent
+    // was set to true during render when we render something locally.
+    if (this.$options.abstract) {
+      this.$options.abstract = false;
+    }
+  },
+  updated: function updated() {
+    if (this.disabled) {
+      this.clear();
+    } else {
+      this.sendUpdate();
+    }
+    // Reset hack to make child components skip the portal when defining their $parent
+    // was set to true during render when we render something locally.
+    if (this.$options.abstract) {
+      this.$options.abstract = false;
+    }
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.clear();
+    if (this.mountedComp) {
+      this.mountedComp.$destroy();
+    }
+  },
+
+  watch: {
+    to: function to(newValue, oldValue) {
+      oldValue && this.clear(oldValue);
+      this.sendUpdate();
+    },
+    targetEl: function targetEl(newValue, oldValue) {
+      if (newValue) {
+        this.mountToTarget();
+      }
+    }
+  },
+
+  methods: {
+    normalizedSlots: function normalizedSlots() {
+      return this.$scopedSlots.default ? [this.$scopedSlots.default] : this.$slots.default;
+    },
+    sendUpdate: function sendUpdate() {
+      var slotContent = this.normalizedSlots();
+      if (slotContent) {
+        wormhole.open({
+          from: this.name,
+          to: this.to,
+          passengers: [].concat(toConsumableArray(slotContent)),
+          order: this.order
+        });
+      } else {
+        this.clear();
+      }
+    },
+    clear: function clear(target) {
+      wormhole.close({
+        from: this.name,
+        to: target || this.to
+      });
+    },
+    mountToTarget: function mountToTarget() {
+      var el = void 0;
+      var target = this.targetEl;
+
+      if (typeof target === 'string') {
+        el = document.querySelector(target);
+      } else if (target instanceof HTMLElement) {
+        el = target;
+      } else {
+        console.warn('[vue-portal]: value of targetEl must be of type String or HTMLElement');
+        return;
+      }
+
+      if (el) {
+        var newTarget = new Vue(_extends({}, Target, {
+          parent: this,
+          propsData: {
+            name: this.to,
+            tag: el.tagName,
+            attributes: extractAttributes(el)
+          }
+        }));
+        newTarget.$mount(el);
+        this.mountedComp = newTarget;
+      } else {
+        console.warn('[vue-portal]: The specified targetEl ' + target + ' was not found');
+      }
+    },
+    normalizeChildren: function normalizeChildren(children) {
+      return typeof children === 'function' ? children(this.slotProps) : children;
+    }
+  },
+
+  render: function render(h) {
+    var children = this.$slots.default || this.$scopedSlots.default || [];
+    var Tag = this.tag;
+    if (children.length && this.disabled) {
+      // hack to make child components skip the portal when defining their $parent
+      this.$options.abstract = true;
+      return children.length <= 1 && this.slim ? children[0] : h(
+        Tag,
+        null,
+        [this.normalizeChildren(children)]
+      );
+    } else {
+      return h(
+        Tag,
+        {
+          'class': 'v-portal',
+          style: 'display: none',
+          key: 'v-portal-placeholder'
+        },
+        []
+      );
+      // h(this.tag, { class: { 'v-portal': true }, style: { display: 'none' }, key: 'v-portal-placeholder' })
+    }
+  }
+};
+
+function install(Vue$$1) {
+  var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  Vue$$1.component(opts.portalName || 'portal', Portal);
+  Vue$$1.component(opts.portalTargetName || 'portalTarget', Target);
+}
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use({ install: install });
+}
+
+var index = {
+  install: install,
+  Portal: Portal,
+  PortalTarget: Target,
+  Wormhole: wormhole
+};
+
+return index;
+
+})));
+//# sourceMappingURL=portal-vue.js.map
+
 
 /***/ })
 /******/ ]);

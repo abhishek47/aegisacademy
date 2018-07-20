@@ -6,8 +6,10 @@
 	<div class="container">
 		
 		<!-- Article Title -->
-		<h2 class="font-weight-bold">{{ $wiki->title }}</h2>
-
+		<div class="d-flex justify-content-between">
+			<h2 class="font-weight-bold">{{ $wiki->title }}</h2>
+			<portal-target name="edit-link"></portal-target>
+		</div>
 		<hr>
 
 		<latex-editor source-url="/wiki/{{ $wiki->id }}/body"></latex-editor>

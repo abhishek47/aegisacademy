@@ -2,13 +2,55 @@
 	
 	<div>
 
+		<!-- File Upload Input -->
+		<div style="height:0px;overflow:hidden">
+		     <form id="file-upload" method="POST" action="/image/upload" enctype="multipart/form-data">
+		       <input type="file" id="fileInput" name="files" />
+		     </form>
+		 </div>
+
 		<!-- Article Source Container -->
-		<textarea id="source" class="hidden">{{ this.source }}</textarea>
+		<div  class="latex-editor" v-show="this.inEdit">
+			<div class="toolbar"> 
+            	
+            	<div class="btn-group flex" role="group" aria-label="Basic example">
+				  
+				  <button type="button" @click="handleToolbarItem('h2')" class="btn btn-secondary"><i class="fa fa-heading"></i></button>
+				  <button type="button" @click="handleToolbarItem('b')" class="btn btn-secondary"><i class="fa fa-bold"></i></button>
+				  <button type="button" @click="handleToolbarItem('[a]')" class="btn btn-secondary"><i class="fa fa-link"></i></button>
+				  <button type="button" @click="handleToolbarItem('[ul]')" class="btn btn-secondary"><i class="fa fa-list-ul"></i></button>
+				  <button type="button" @click="handleToolbarItem('[table]')" class="btn btn-secondary"><i class="fa fa-table"></i></button>
+				  <button type="button" @click="handleToolbarItem('[img]')" class="btn btn-secondary"><i class="fa fa-image"></i></button>
+				  <button type="button" @click="handleToolbarItem('[eg]')" class="btn btn-secondary">E.g.</button>
+				  <button type="button" @click="handleToolbarItem('[sn]')" class="btn btn-secondary">Sn.</button>
+				  <button type="button" @click="handleToolbarItem('[th]')" class="btn btn-secondary">Th.</button>
+				  <button type="button" @click="handleToolbarItem('[pr]')" class="btn btn-secondary">Pr.</button>
+				  <button type="button" @click="handleToolbarItem('[def]')" class="btn btn-secondary">Def.</button>
+				  <button type="button" @click="handleToolbarItem('[box]')" class="btn btn-secondary">Box</button>
+				  <button type="button" @click="handleToolbarItem('[center]')" class="btn btn-secondary">Center</button>
+				  <button type="button" @click="update();" class="btn btn-secondary"><i class="fa fa-eye"></i></button>
+
+
+
+				</div>
+	          
+
+      		</div>
+      		<div>
+				<textarea ref="source">{{ this.source }}</textarea>
+			</div>
+		</div>
 
 		<!-- Article HTML Body after conversion -->
-		<div class="markdown-body" id="buffer" style="display:none;position:absolute;top:0; left: 0"></div>
+		<portal to="edit-link">
+			<button class="btn btn-link text-grey float-right" @click="toggleEditing()"><i class="fa fa-edit"></i> Edit</button>
+		</portal>
 
-		<div id="preview"></div>
+		<div v-show="this.inEdit == false">
+			<div class="markdown-body" ref="buffer" style="display: none;"></div>
+
+			<div class="markdown-body" ref="preview"></div>
+		</div>
 
 		
 
@@ -36,6 +78,7 @@
 			    textarea: null,
 			    buffer: null,
 			    preview: null,
+			    inEdit: false,
 
 	    	}	
     	},
@@ -63,11 +106,15 @@
 
         methods: {
 
+        	toggleEditing() {
+        		this.inEdit = !this.inEdit;
+        	},
+
         	// Initialise all elements to variables
             init() {
-              this.preview = document.getElementById("preview");
-		      this.buffer = document.getElementById("buffer");
-		      this.textarea = document.getElementById("source");
+              this.preview = this.$refs.preview;
+		      this.buffer = this.$refs.buffer;
+		      this.textarea = this.$refs.source;
 		    },
 
 		    // Switch the buffer and preview, and display the right one.
@@ -86,12 +133,15 @@
 		    update() {
 		      if (this.timeout) {clearTimeout(this.timeout)}
 		      this.timeout = setTimeout(this.callback,this.delay);
-		    },
+		  	},
 
 
 		    // Creates the preview and runs MathJax on it.
 		    createPreview(){
 		      
+
+		      	this.inEdit = false;
+
 		      this.timeout = null;
 		      
 		      if (this.mjRunning) return;
@@ -114,6 +164,8 @@
 
 		    // Handler when the preview is ready to ouput
 		    previewDone() {
+
+
 
 		    	this.mjRunning = false;
 
@@ -211,7 +263,127 @@
 			       
 			         return text;
 			         
-			}
+			},
+
+
+			handleToolbarItem(item) {
+				if(item == 'h2')
+				{
+					this.insertAtCaret('## Heading Comes Here')
+
+				} else if(item == 'b')
+				{
+					this.insertAtCaret('**boldtext**')
+
+				} else if(item == '[a]')
+				{
+					this.insertAtCaret('[Name your link](https://www.link.com)')
+
+				} else if(item == '[img]')
+				{
+					$("#fileInput").click();
+
+					var self = this;
+
+                    $("#fileInput").change(function (){
+
+                      console.log("FORM IS SUBMITTING");
+
+                        var formData = new FormData();
+
+                        formData.append('files', $('input[type=file]#fileInput')[0].files[0]);
+
+                        console.log(formData); 
+
+                        
+
+                        axios.post('/image/upload', formData).then(function(response){
+                        	self.insertAtCaret('![alt text]('+ response.data.src + ' "Image Title")');
+                        });
+                            
+                    });
+
+                  
+				} else if(item == '[a]')
+				{
+					this.insertAtCaret('[Name your link](https://www.link.com)')
+
+				} else if(item == '[ul]')
+				{
+					this.insertAtCaret('* Item 1\r\n* Item 2')
+
+				} else if(item == '[eg]')
+				{
+					this.insertAtCaret("<startexample>\r\n\r\n<endexample>");
+
+				} else if(item == '[sn]')
+				{
+					this.insertAtCaret("<startsolution>\r\n\r\n<endsolution>");
+
+				} else if(item == '[th]')
+				{
+					this.insertAtCaret("<starttheorem>\r\n\r\n<endtheorem>");
+
+				} else if(item == '[pr]')
+				{
+					this.insertAtCaret("<startproof>\r\n\r\n<endproof>");
+
+				} else if(item == '[box]')
+				{
+					this.insertAtCaret("<startbox>\r\n\r\n<endbox>");
+
+				} else if(item == '[def]')
+				{
+					this.insertAtCaret("<startdefinition>\r\n\r\n<enddefinition>");
+
+				} else if(item == '[center]')
+				{
+					this.insertAtCaret("<startcenter>\r\n\r\n<endcenter>");
+
+				}
+			},
+
+
+
+
+			insertAtCaret(text) {
+				    
+					var txtarea = this.$refs.source;
+					if (!txtarea) { return; }
+
+					var scrollPos = txtarea.scrollTop;
+					var strPos = 0;
+					var br = ((txtarea.selectionStart || txtarea.selectionStart == '0') ?
+						"ff" : (document.selection ? "ie" : false ) );
+					if (br == "ie") {
+						txtarea.focus();
+						var range = document.selection.createRange();
+						range.moveStart ('character', -txtarea.value.length);
+						strPos = range.text.length;
+					} else if (br == "ff") {
+						strPos = txtarea.selectionStart;
+					}
+
+					var front = (txtarea.value).substring(0, strPos);
+					var back = (txtarea.value).substring(strPos, txtarea.value.length);
+					txtarea.value = front + text + back;
+					strPos = strPos + text.length;
+					if (br == "ie") {
+						txtarea.focus();
+						var ieRange = document.selection.createRange();
+						ieRange.moveStart ('character', -txtarea.value.length);
+						ieRange.moveStart ('character', strPos);
+						ieRange.moveEnd ('character', 0);
+						ieRange.select();
+					} else if (br == "ff") {
+						txtarea.selectionStart = strPos;
+						txtarea.selectionEnd = strPos;
+						txtarea.focus();
+					}
+
+					txtarea.scrollTop = scrollPos;
+			} 	
+
 
         }
 

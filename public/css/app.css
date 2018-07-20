@@ -10957,6 +10957,39 @@ a.text-dark:focus {
   text-shadow: 0 0 5px #09f;
 }
 
+.latex-editor {
+  -webkit-box-shadow: 0 1px 5px 1px #f3f3f3;
+          box-shadow: 0 1px 5px 1px #f3f3f3;
+  border: 2px solid #f3f3f3;
+  margin-bottom: 15px;
+}
+
+.latex-editor textarea {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  font-size: 17px;
+  height: 300px;
+}
+
+.latex-editor .toolbar {
+  background: #6c757d;
+}
+
+.latex-editor .toolbar .btn-group .btn {
+  border-radius: 0 !important;
+}
+
+.latex-editor .toolbar .btn-group {
+  width: 100%;
+}
+
+.latex-editor textarea {
+  outline: none;
+}
+
 .hidden {
   display: none;
 }
