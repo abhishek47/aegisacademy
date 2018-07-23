@@ -4,37 +4,7 @@
 
 @section('content')
 
-	<div class="bg-grey-darker shadow h-16">
-		<div class="container mx-auto">
-			<div class="flex bg-grey-darker">
-				<a href="{{ url('/wiki') }}"
-				   class="no-underline hover:bg-grey-darkest flex-1 pt-20 h-16 text-white text-center text-xl tracking-wide font-semibold px-4 py-4">
-					<i class="fa fa-home"></i> Home
-				</a>
 
-				<a href="{{ url('/wiki') }}"
-				   class="bg-grey-darkest no-underline hover:bg-grey-darkest flex-1 pt-20 h-16 text-white text-center text-xl tracking-wide font-semibold px-4 py-4">
-					<i class="far fa-file-alt"></i> Wiki
-				</a>
-				<a href="#"
-				   class="no-underline hover:bg-grey-darkest flex-1 pt-20 h-16 text-white text-center text-xl tracking-wide font-semibold px-4 py-4">
-					<i class="fa fa-video"></i> Courses
-				</a>
-				<a href="#"
-				   class="no-underline hover:bg-grey-darkest flex-1 pt-20 h-16 text-white text-center text-xl tracking-wide font-semibold px-4 py-4">
-					<i class="fa fa-question"></i> Practice
-				</a>
-				<a href="#"
-				    class="no-underline hover:bg-grey-darkest flex-1 pt-20 h-16 text-white text-center text-xl tracking-wide font-semibold px-4 py-4">
-					<i class="fa fa-book"></i> Books
-				</a>
-				<a href="#"
-				   class="no-underline hover:bg-grey-darkest flex-1 pt-20 h-16 text-white text-center text-xl tracking-wide font-semibold px-4 py-4">
-					<i class="fa fa-comments"></i> Discussions
-				</a>
-			</div>
-		</div>
-	</div>
 
 	<div class="bg-grey-lightest pb-60 pt-45">
 		<div class="container mx-auto">
