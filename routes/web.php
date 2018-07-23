@@ -31,3 +31,5 @@ Route::post('/wiki/{wiki}/body', 'WikisController@updateBody')->name('wikis.upda
 
 
 Route::post('/image/upload', 'ImageController@upload');
+
+
