@@ -8,6 +8,11 @@
 		<div class="container mx-auto">
 			<div class="flex bg-grey-darker">
 				<a href="{{ url('/wiki') }}"
+				   class="no-underline hover:bg-grey-darkest flex-1 pt-20 h-16 text-white text-center text-xl tracking-wide font-semibold px-4 py-4">
+					<i class="fa fa-home"></i> Home
+				</a>
+
+				<a href="{{ url('/wiki') }}"
 				   class="bg-grey-darkest no-underline hover:bg-grey-darkest flex-1 pt-20 h-16 text-white text-center text-xl tracking-wide font-semibold px-4 py-4">
 					<i class="far fa-file-alt"></i> Wiki
 				</a>
