@@ -7,29 +7,29 @@ use Illuminate\Http\Request;
 
 class WikisController extends Controller
 {
-	
-	/**
+
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('index');
     }
 
 
-	/**
+    /**
      * List all wiki articles
      *
      * @return index view with wiki articles
      */
-   
+
     public function index()
     {
-    	$articles = Wiki::orderBy('created_at', "DESC")->paginate(10);
+        $articles = Wiki::orderBy('created_at', "DESC")->paginate(10);
 
-    	return view('wikis.index', compact('articles'));
+        return view('wikis.index', compact('articles'));
     }
 
 
@@ -38,23 +38,22 @@ class WikisController extends Controller
      *
      * @return wiki show page
      */
-   
+
     public function show($slug)
     {
-    	$wiki = Wiki::where('slug', $slug)->first();
+        $wiki = Wiki::where('slug', $slug)->first();
 
-    	return view('wikis.show2', compact('wiki'));
+        return view('wikis.show2', compact('wiki'));
     }
 
-     /**
-     * Get body of wiki by id
-     *
-     * @return wiki show page
-     */
-   
+    /**
+    * Get body of wiki by id
+    *
+    * @return wiki show page
+    */
     public function getBody(Wiki $wiki)
     {
-    	return response(['body' => $wiki->body], 200);
+        return response(['body' => $wiki->body], 200);
     }
 
     /**
@@ -62,14 +61,14 @@ class WikisController extends Controller
      *
      * @return wiki show page
      */
-   
+
     public function updateBody(Request $request, Wiki $wiki)
     {
-    	$wiki->body = $request->get('body');
+        $wiki->body = $request->get('body');
 
-    	$wiki->save();
+        $wiki->save();
 
-    	return response([$request->get('body')], 200);
+        return response([$request->get('body')], 200);
     }
 
     /**
@@ -80,15 +79,14 @@ class WikisController extends Controller
 
     public function update(Request $request, Wiki $wiki)
     {
-    	$request->validate([
+        $request->validate([
                 'comment'  => 'required',
-    		]);
+            ]);
 
-    	$wiki->body = $request->get('comment');
+        $wiki->body = $request->get('comment');
 
-    	$wiki->save();
+        $wiki->save();
 
-    	return redirect($wiki->url);
+        return redirect($wiki->url);
     }
-
 }

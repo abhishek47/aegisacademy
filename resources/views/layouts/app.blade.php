@@ -17,7 +17,7 @@
 </head>
 <body class="bg-white h-screen">
     <div id="app">
-        <nav class="bg-white h-14 shadow mb-35 p-4 md:px-0" >
+        <nav class="bg-white h-14 shadow p-4 md:px-0" >
             <div class="container mx-auto h-full">
                 <div class="flex items-center justify-between h-12">
                     <div class="flex-1">
@@ -35,15 +35,20 @@
                               Sign Up
                             </a>
                         @else
-                            <span class="text-grey-darker text-sm pr-4">{{ Auth::user()->name }}</span>
+                            <a class="no-underline" href="#">
+                                <span class="text-black  hover:text-teal font-semibold text-xl uppercase pr-4">
+                                   <i class="fa fa-user mr-2"></i> {{ Auth::user()->name }}
+                                   <i class="fa fa-chevron-down"></i>
+                                </span>
+                            </a>
 
-                            <a href="{{ route('logout') }}"
-                                class="no-underline hover:underline text-grey-darker text-sm"
+                         {{--    <a href="{{ route('logout') }}"
+                                class="no-underline hover:text-brand text-grey-darkest uppercase text-xl"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">Logout</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                                 {{ csrf_field() }}
-                            </form>
+                            </form> --}}
                         @endguest
                     </div>
                 </div>
@@ -53,7 +58,7 @@
         @yield('content')
 
 
-        <footer class="h-12 bg-black p-2 py-4">
+        <footer class="h-12 bg-black p-2 py-4 relative w-full pin-b">
             <div class="container mx-auto">
                 <div class="flex">
                     <span class="flex-1 text-semibold text-white">&copy; Copyright 2018. Powered by <a href="#" class="text-white font-semibold no-underline hover:underline">Trumpets</a></span>

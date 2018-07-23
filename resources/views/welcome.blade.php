@@ -12,7 +12,7 @@
 
                 <div class="flex w-3/5 mx-auto bg-white shadow-md rounded border-2 border-grey">
                     <i class="fa fa-search text-xl mt-4 ml-3" style="color: #8795a185;margin-top: 21px;"></i>
-                    <input type="text" class="w-full p-4 mt-1 text-grey-dark" autocomplete="off" placeholder="What will you learn?" name="search" style="font-size: 20px;">
+                    <input type="text" class="search-input w-full p-4 mt-1 text-grey-dark" autocomplete="off" placeholder="What will you learn?" name="search" style="font-size: 20px;">
                     <button class="btn bg-brand text-white font-semibold uppercase p-2 rounded rounded-l-none tracking-wide text-sm px-4">Search</button>
                 </div>
 
@@ -91,7 +91,7 @@
         </div>
 
         <div class="flex justify-center mt-8 mx-w-md">
-            <a href="{{ url('/register') }}" class="no-underline bg-transparent hover:bg-brand text-brand-dark font-semibold hover:text-white py-3 px-45 border border-brand hover:border-transparent rounded mr-6">
+            <a href="{{ url('/wiki') }}" class="no-underline bg-transparent hover:bg-brand text-brand-dark font-semibold hover:text-white py-3 px-45 border border-brand hover:border-transparent rounded mr-6">
                   View More
                 </a>
         </div>
