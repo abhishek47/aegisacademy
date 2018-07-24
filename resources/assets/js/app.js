@@ -37,19 +37,21 @@ const app = new Vue({
     components: {
     	'vue-core-image-upload': VueCoreImageUpload,
 	},
-	  
+
 	data() {
 	    return {
 	      src: 'http://img1.vued.vanthink.cn/vued0a233185b6027244f9d43e653227439a.png',
 	    }
 	},
-	
+
+
+
 	methods: {
-	
+
 	    imageuploaded(res) {
 	    	console.log(res);
 	        insertAtCaret('![alt text]('+ res.src + ' "Image Title")');
-	      
+
 	    },
 
 	}

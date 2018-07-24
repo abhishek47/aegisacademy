@@ -52,3 +52,52 @@ textarea, select, input, button { outline: none; }
    text-transform: uppercase !important;
   font-size: 20px !important;
 }
+
+
+.markdown-body p {
+   @apply text-lg;
+}
+
+.markdown-body h3{
+
+   @apply text-2xl border border-black pb-3;
+   border-top: none;
+   border-left: none;
+   border-right: none;
+}
+
+.table-of-contents {
+  @apply shadow p-4 bg-grey-lighter pr-8 max-w-xs my-8;
+}
+
+.table-of-contents ul {
+  @apply list-reset;
+}
+
+.table-of-contents ul li a{
+  @apply text-grey-darkest no-underline text-grey-darker text-lg;
+}
+
+.table-of-contents ul li a:hover {
+  @apply text-brand;
+}
+
+.table-of-contents .heading {
+  @apply text-black text-xl font-semibold;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border: none;
+}
+
+
+.panel {
+  @apply shadow bg-grey-lightest p-3;
+}
+
+.example .panel.solution {
+  @apply shadow-none bg-white mt-2;
+}
+
+.markdown-body img {
+  @apply mt-2;
+}

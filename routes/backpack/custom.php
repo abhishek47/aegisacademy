@@ -12,6 +12,8 @@ Route::group([
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
 
+    CRUD::resource('problems', 'ProblemCrudController');
+
     CRUD::resource('colors', 'ColorCrudController');
 
 	CRUD::resource('wikis', 'WikiCrudController');

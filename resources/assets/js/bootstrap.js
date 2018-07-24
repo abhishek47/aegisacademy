@@ -5,6 +5,7 @@ window._ = require("lodash");
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
+window.$ = window.jQuery = require('jquery');
 
 window.axios = require("axios");
 
@@ -25,6 +26,19 @@ if (token) {
     "CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token"
   );
 }
+
+window.md = require('markdown-it')({
+  html: true,
+  linkify: true,
+  typographer: true
+});
+
+md.use(require("markdown-it-anchor")); // Optional, but makes sense as you really want to link to something
+md.use(require("markdown-it-table-of-contents"), { "includeLevel" : [1,2,3] });
+md.use(require('markdown-it-decorate'));
+md.use(require('markdown-it-deflist'));
+
+md.use(require('markdown-it-emoji'));
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

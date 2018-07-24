@@ -1,5 +1,5 @@
 <template>
-	
+
 	<div>
 
 		<!-- File Upload Input -->
@@ -11,10 +11,10 @@
 
 		<!-- Article Source Container -->
 		<div  class="latex-editor" v-show="this.inEdit">
-			<div class="toolbar"> 
-            	
+			<div class="toolbar">
+
             	<div class="btn-group flex" role="group" aria-label="Basic example">
-				  
+
 				  <button type="button" @click="handleToolbarItem('h2')" class="btn btn-secondary"><i class="fa fa-heading"></i></button>
 				  <button type="button" @click="handleToolbarItem('b')" class="btn btn-secondary"><i class="fa fa-bold"></i></button>
 				  <button type="button" @click="handleToolbarItem('[a]')" class="btn btn-secondary"><i class="fa fa-link"></i></button>
@@ -35,7 +35,7 @@
 
 
 				</div>
-	          
+
 
       		</div>
       		<div>
@@ -54,7 +54,7 @@
 			<div class="markdown-body" ref="preview"></div>
 		</div>
 
-		
+
 
 	</div>
 
@@ -82,7 +82,7 @@
 			    preview: null,
 			    inEdit: false,
 
-	    	}	
+	    	}
     	},
 
         mounted() {
@@ -103,7 +103,7 @@
 				self.update();
 
         	});
-        	
+
         },
 
         methods: {
@@ -117,7 +117,7 @@
 
         		var self = this;
         		axios.post(this.sourceUrl, {body: this.source}).then(function(){
-        			self.$toastr.s("The wiki page was updated!");    
+        			self.$toastr.s("The wiki page was updated!");
         			self.update();
         		});
         	},
@@ -137,7 +137,7 @@
 		      this.preview = preview;
 		      buffer.style.display = "none";
 		      buffer.style.position = "absolute";
-		      preview.style.position = ""; 
+		      preview.style.position = "";
 		      preview.style.display = "";
 		    },
 
@@ -150,18 +150,18 @@
 
 		    // Creates the preview and runs MathJax on it.
 		    createPreview(){
-		      
+
 
 		      	this.inEdit = false;
 
 		      this.timeout = null;
-		      
+
 		      if (this.mjRunning) return;
-		      
+
 		      var text = this.textarea.value;
 
 		      if (text === this.oldtext) return;
-		      
+
 		      text = this.escape(text);                       //Escape tags before doing stuff
 		      this.buffer.innerHTML = this.oldtext = text;
 		      this.mjRunning = true;
@@ -191,6 +191,8 @@
 
 		        this.swapBuffers();
 
+		        $('.table-of-contents').prepend('<h3 class="heading">Contents</h3>');
+
 		    },
 
 		    // Escape the unnessary chars
@@ -202,8 +204,8 @@
 		        .replace(/"/g, '&quot;')
 		       .replace(/'/g, '&#39;');
 		    },
-		    
-		    // If you want to enable such buggy fast updates, you should 
+
+		    // If you want to enable such buggy fast updates, you should
 		    // add something like  onkeypress="Preview.UpdateKeyPress(event)" to textarea's attributes.
 		    updateKeyPress(event) {
 
@@ -220,27 +222,27 @@
 		    // AEGIS SPECIAL MARKDOWN
 		    aegismarked(text)
 			{
-					
-					//Example	
-					text = text.replace(/&lt;startexample&gt;/g,'<div class="panel panel-default example"> \r\n \
-						    <div class="panel-body" style="padding:0px;padding-top:15px;"><small style="padding-left:15px;" class="text-muted">EXAMPLE</small>\r\n<div style="padding-left:15px;">').replace(/&lt;endexample&gt;/g, '</div></div>\r\n</div>');
-			         
-			        //Solution	
-					text = text.replace(/&lt;startsolution&gt;/g,'</div><div class="panel panel-default solution" style="margin-bottom: 0px;"> \r\n \
-						    <div class="panel-body"><small class="text-muted">SOLUTION</small>\r\n<div>').replace(/&lt;endsolution&gt;/g, '</div></div>\r\n</div>');
-			         
+
+					//Example
+					text = text.replace(/&lt;startexample&gt;/g,'<div class="panel example"> \r\n \
+						    <div class="panel-body" ><small class="block text-md tracking-wide font-semibold mb-3">EXAMPLE</small>\r\n<div>').replace(/&lt;endexample&gt;/g, '</div></div>\r\n</div>');
+
+			        //Solution
+					text = text.replace(/&lt;startsolution&gt;/g,'</div><div class="panel solution" style="margin-bottom: 0px;"> \r\n \
+						    <div class="panel-body"><small class="block text-md tracking-wide font-semibold mb-3">SOLUTION</small>\r\n<div>').replace(/&lt;endsolution&gt;/g, '</div></div>\r\n</div>');
+
 
 
 					// Defintion
-			        text = text.replace(/&lt;startdefinition&gt;/g,'<div class="panel panel-default definition"> \r\n \
-						    <div class="panel-body"><small class="text-muted">DEFINITION</small>\r\n<div>').replace(/&lt;enddefinition&gt;/g, '</div></div>\r\n</div>');
+			        text = text.replace(/&lt;startdefinition&gt;/g,'<div class="panel definition"> \r\n \
+						    <div class="panel-body"><small class="block text-md tracking-wide font-semibold mb-3">DEFINITION</small>\r\n<div>').replace(/&lt;enddefinition&gt;/g, '</div></div>\r\n</div>');
 
 
 
 			        // Proof
-			        text = text.replace(/&lt;startproof&gt;/g,'</div><div class="panel panel-default proof" style="margin-bottom: 0px;"> \r\n \
-						    <div class="panel-body"><small class="text-muted">PROOF</small>\r\n<div>').replace(/&lt;endproof&gt;/g, '</div></div>\r\n</div>');
-			        
+			        text = text.replace(/&lt;startproof&gt;/g,'</div><div class="panel proof" style="margin-bottom: 0px;"> \r\n \
+						    <div class="panel-body"><small class="block text-md tracking-wide font-semibold mb-3">PROOF</small>\r\n<div>').replace(/&lt;endproof&gt;/g, '</div></div>\r\n</div>');
+
 
 
 			         // Question
@@ -256,26 +258,26 @@
 								        <h3 class="quizLevel"><strong>Ranking:</strong> <span></span></h3> \
 								        <div class="quizResultsCopy"></div> \
 								    </div>').replace(/&lt;\/endquestion&gt;/g, '</div>');
-			       
+
 
 
 			        // Theory
-			        text = text.replace(/&lt;starttheorem&gt;/g,'<div class="panel panel-default theorem"> \r\n \
-						    <div class="panel-body" style="padding:0px;padding-top:15px;"><small class="text-muted" style="padding-left:15px;">THEOREM</small>\r\n<div style="padding-left:15px;">').replace(/&lt;endtheorem&gt;/g, '</div></div>\r\n</div>');
+			        text = text.replace(/&lt;starttheorem&gt;/g,'<div class="panel theorem"> \r\n \
+						    <div class="panel-body"><small class="block text-md tracking-wide font-semibold mb-3">THEOREM</small>\r\n<div>').replace(/&lt;endtheorem&gt;/g, '</div></div>\r\n</div>');
 
 			         // Theory
-			        text = text.replace(/&lt;startbox&gt;/g,'<div class="panel panel-default box"> \r\n \
+			        text = text.replace(/&lt;startbox&gt;/g,'<div class="panel box"> \r\n \
 						    <div class="panel-body">\r\n<div>').replace(/&lt;endbox&gt;/g, '</div></div>\r\n</div>');
 
 			        text = text.replace(/&lt;startcenter&gt;/g,'<p class="text-center">').replace(/&lt;endcenter&gt;/g, '</p>');
 
 			        text = text.replace(/&lt;hr-(\d+)&gt;/g, "<hr style=\"height:$1px;\"");
-			        
+
 			        text = text.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 
-			       
+
 			         return text;
-			         
+
 			},
 
 
@@ -306,17 +308,17 @@
 
                         formData.append('files', $('input[type=file]#fileInput')[0].files[0]);
 
-                        console.log(formData); 
+                        console.log(formData);
 
-                        
+
 
                         axios.post('/image/upload', formData).then(function(response){
                         	self.insertAtCaret('![alt text]('+ response.data.src + ' "Image Title")');
                         });
-                            
+
                     });
 
-                  
+
 				} else if(item == '[a]')
 				{
 					this.insertAtCaret('[Name your link](https://www.link.com)')
@@ -360,7 +362,7 @@
 
 
 			insertAtCaret(text) {
-				    
+
 					var txtarea = this.$refs.source;
 					if (!txtarea) { return; }
 
@@ -395,7 +397,7 @@
 					}
 
 					txtarea.scrollTop = scrollPos;
-			} 	
+			}
 
 
         }
