@@ -57,14 +57,14 @@
 						                	<div class="flex justify-between">
 						                		<span class="rounded p-1 px-4 text-white tracking-wide text-xs" style="background-color: {{ $article->category->color->code }}">{{ $article->category->name }}</span>
 
-						                		<span class="flex-1 text-grey-darker mt-1"><i class="fa fa-star text-yellow"></i> <i class="fa fa-star text-yellow"></i> <i class="fa fa-star text-yellow"></i>  </span>
+						                		<span class="text-grey-darker mt-1"><i class="fa fa-star text-yellow"></i> <i class="fa fa-star text-yellow"></i> <i class="fa fa-star text-yellow"></i>  </span>
 
 						                	</div>
 
 						                    <h3 class="w-full text-xl font-normal tracking-normal leading-normal mt-4 mb-4">{{ str_limit($article->title, 30) }}</h3>
 						                    <div class="flex justify-between">
 
-						                    <div class="flex">
+						                    <div class="flex mt-1">
 										        <img class="mr-2" src="/img/studentsicon.png" style="width: 25px;height:100%;">
 										        <span class="text-blue mt-1"> 27 people read this.</span>
 										    </div>
