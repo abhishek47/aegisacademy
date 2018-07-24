@@ -91,7 +91,7 @@ textarea, select, input, button { outline: none; }
 
 
 .panel {
-  @apply shadow bg-grey-lightest p-3;
+  @apply shadow bg-grey-lightest p-3 mb-4;
 }
 
 .example .panel.solution {
@@ -101,3 +101,9 @@ textarea, select, input, button { outline: none; }
 .markdown-body img {
   @apply mt-2;
 }
+
+.theorem .panel.proof {
+  @apply shadow-none bg-white mt-2;
+}
+
+
