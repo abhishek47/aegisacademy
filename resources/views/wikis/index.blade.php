@@ -52,7 +52,7 @@
 								@foreach($articlesList as $article)
 
 									 <a href="{{ url($article->url)}}" class="no-underline text-black w-1/2 pr-6 mb-8">
-						                <div class="rounded shadow bg-white p-6">
+						                <div class="rounded shadow-md bg-white p-6">
 						                    <span class="rounded p-1 px-4 text-white tracking-wide text-xs" style="background-color: {{ $article->category->color->code }}">{{ $article->category->name }}</span>
 						                    <h3 class="w-full text-xl font-normal tracking-normal leading-normal mt-4 mb-4">{{ str_limit($article->title, 30) }}</h3>
 						                    <div class="flex flex-end">
