@@ -58,7 +58,7 @@ textarea, select, input, button { outline: none; }
    @apply text-lg;
 }
 
-.markdown-body h3{
+.markdown-body h3,.markdown-body  h2{
 
    @apply text-2xl border border-black pb-3;
    border-top: none;
