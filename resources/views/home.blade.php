@@ -75,7 +75,7 @@
                              <li class="block w-full">
                                 <a class="flex w-full block text-lg no-underline hover:bg-grey-lightest hover:rounded-2 p-2 tracking-wide" href="">
                                     <span class="border-2 border-grey-darker p-2 mr-4 bg-grey-lighter" style="width: 35px;height: 35px;border-radius: 100%;">
-                                        <span class="rounded-full h-6 w-6 bg-grey-darkest absolute -mt-1 -ml-1" style="width: 34px;height: 24px;border-radius: 100%;"></span>
+                                        <span class="rounded-full h-6 w-6 bg-grey-darkest absolute -mt-1 -ml-1"></span>
                                     </span>
                                     <span class="mt-2 text-black">Another something</span>
                                 </a>
