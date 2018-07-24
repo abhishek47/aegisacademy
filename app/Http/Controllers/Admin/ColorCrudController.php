@@ -5,15 +5,15 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\WikicategoryRequest as StoreRequest;
-use App\Http\Requests\WikicategoryRequest as UpdateRequest;
+use App\Http\Requests\ColorRequest as StoreRequest;
+use App\Http\Requests\ColorRequest as UpdateRequest;
 
 /**
- * Class WikicategoryCrudController
+ * Class ColorCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class WikiCategoryCrudController extends CrudController
+class ColorCrudController extends CrudController
 {
     public function setup()
     {
@@ -22,9 +22,9 @@ class WikiCategoryCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\WikiCategory');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/wiki_categories');
-        $this->crud->setEntityNameStrings('Wiki Category', 'Wiki Categories');
+        $this->crud->setModel('App\Models\Color');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/colors');
+        $this->crud->setEntityNameStrings('color', 'colors');
 
         /*
         |--------------------------------------------------------------------------
@@ -32,19 +32,15 @@ class WikiCategoryCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->addColumns(['name', 'count']);
+        $this->crud->addColumns(['name', 'code']);
 
         $this->crud->addFields([
-            ['lable' => 'Category Name', 'name' => 'name'],
-             [  // Select2
-               'label' => "Color",
-               'type' => 'select2',
-               'name' => 'color_id', // the db column for the foreign key
-               'entity' => 'color', // the method that defines the relationship in your Model
-               'attribute' => 'name', // foreign key attribute that is shown to user
-               'model' => "App\Models\Color", // foreign key model
-               'allows_null' => false
-            ],
+            ['lable' => 'Color Name', 'name' => 'name'],
+            [   // color_picker
+                'label' => 'Color',
+                'name' => 'code',
+                'type' => 'color',
+            ]
         ]);
 
         // ------ CRUD COLUMNS
@@ -61,7 +57,7 @@ class WikiCategoryCrudController extends CrudController
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
-        // add asterisk for fields that are required in WikicategoryRequest
+        // add asterisk for fields that are required in ColorRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
 

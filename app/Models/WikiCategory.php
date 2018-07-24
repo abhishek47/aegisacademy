@@ -28,6 +28,11 @@ class WikiCategory extends Model
         return $this->hasMany(Wiki::class, 'wiki_category_id');
    }
 
+   public function color()
+   {
+        return $this->belongsTo(Color::class, 'color_id');
+   }
+
    public function getCountAttribute()
    {
         return count($this->wikis);

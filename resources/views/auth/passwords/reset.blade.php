@@ -1,52 +1,52 @@
+
 @extends('layouts.app')
 
 @section('content')
-<div class="flex items-center">
-    <div class="md:w-1/2 md:mx-auto">
-        <div class="rounded shadow">
-            <div class="font-medium text-lg text-brand-darker bg-brand-lighter p-3 rounded-t">
-                Reset Password
-            </div>
-            <div class="bg-white p-3 rounded-b">
-                <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">
-                    {{ csrf_field() }}
+<div class="bg-grey-lightest bg-cover bg-no-repeat flex pt-60 px-6 md:px-0" style="min-height: 840px;background-image: url('img/pattern.png');">
+    <div class="w-full max-w-md mx-auto">
+       <h2 class="my-30 text-left text-brand tracking-wide text-3xl">
+          Reset Your Password
+      </h2>
+  <form class="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('password.request') }}">
+  {{ csrf_field() }}
 
-                    <input type="hidden" name="token" value="{{ $token }}">
+    <input type="hidden" name="token" value="{{ $token }}">
 
-                    <div class="flex items-stretch mb-3">
-                        <label for="email" class="text-right font-semibold text-grey-dark text-sm pt-2 pr-3 align-middle w-1/4">E-Mail Address</label>
-                        <div class="flex flex-col w-3/4">
-                            <input id="email" type="email" class="flex-grow h-8 px-2 border rounded {{ $errors->has('email') ? 'border-red-dark' : 'border-grey-light' }}" name="email" value="{{ $email or old('email') }}" required autofocus>
-                            {!! $errors->first('email', '<span class="text-red-dark text-sm mt-2">:message</span>') !!}
-                        </div>
-                    </div>
 
-                    <div class="flex items-stretch mb-3">
-                        <label for="password" class="text-right font-semibold text-grey-dark text-sm pt-2 pr-3 align-middle w-1/4">Password</label>
-                        <div class="flex flex-col w-3/4">
-                            <input id="password" type="password" class="flex-grow h-8 px-2 rounded border {{ $errors->has('password') ? 'border-red-dark' : 'border-grey-light' }}" name="password" required>
-                            {!! $errors->first('password', '<span class="text-red-dark text-sm mt-2">:message</span>') !!}
-                        </div>
-                    </div>
-
-                    <div class="flex items-stretch mb-3">
-                        <label for="password_confirmation" class="text-right font-semibold text-grey-dark text-sm pt-2 pr-3 align-middle w-1/4">Confirm Password</label>
-                        <div class="flex flex-col w-3/4">
-                            <input id="password_confirmation" type="password" class="flex-grow h-8 px-2 rounded border {{ $errors->has('password_confirmation') ? 'border-red-dark' : 'border-grey-light' }}" name="password_confirmation" required>
-                            {!! $errors->first('password_confirmation', '<span class="text-red-dark text-sm mt-2">:message</span>') !!}
-                        </div>
-                    </div>
-
-                    <div class="flex">
-                        <div class="w-3/4 ml-auto">
-                            <button type="submit" class="bg-brand hover:bg-brand-dark text-white text-sm font-sembiold py-2 px-4 rounded mr-3">
-                                Reset Password
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <div class="mb-4">
+      <label class="block text-grey-darker text-md font-bold mb-2" for="email">
+        E-mail Address
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-4 px-3 text-grey-darker leading-tight  {{ $errors->has('email') ? 'mb-3 border-red-dark' : 'border-grey-light' }}" id="email" name="email" type="text" placeholder="E-Mail Address">
+       {!! $errors->first('email', '<p class="text-red text-xs italic">:message</p>') !!}
     </div>
+    <div class="mb-4">
+      <label class="block text-grey-darker text-md font-bold mb-2" for="password">
+        Password
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-4 px-3 text-grey-darker leading-tight {{ $errors->has('password') ? 'mb-3 border-red-dark' : 'border-grey-light' }}" id="password" name="password" type="password" placeholder="Your password">
+       {!! $errors->first('password', '<p class="text-red text-xs italic">:message</p>') !!}
+
+    </div>
+    <div class="mb-6">
+      <label class="block text-grey-darker text-md font-bold mb-2" for="password">
+        Confirm Password
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-4 px-3 text-grey-darker leading-tight {{ $errors->has('password_confirmation') ? 'mb-3 border-red-dark' : 'border-grey-light' }}" id="password_confirmation" name="password_confirmation" type="password" placeholder="Confirm password">
+       {!! $errors->first('password_confirmation', '<p class="text-red text-xs italic">:message</p>') !!}
+
+    </div>
+    <div class="flex items-stretch">
+      <button class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-4 px-8 rounded tracking-wide" type="submit">
+        Reset Password
+      </button>
+
+    </div>
+  </form>
+
+</div>
+
 </div>
 @endsection
+
+

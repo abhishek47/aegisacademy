@@ -12,6 +12,8 @@ Route::group([
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
 
+    CRUD::resource('colors', 'ColorCrudController');
+
 	CRUD::resource('wikis', 'WikiCrudController');
 	CRUD::resource('wiki_categories', 'WikicategoryCrudController');
 	CRUD::resource('quizzes', 'QuizCrudController');
@@ -19,9 +21,9 @@ Route::group([
 	CRUD::resource('quiz_questions', 'QuizQuestionCrudController')->with(function(){
     // add extra routes to this resource
     Route::get('quiz_questions/quiz:{quiz}', 'QuizQuestionCrudController@get');
-    
+
 });
 
 }); // this should be the absolute last line of this file
-    
-  
+
+

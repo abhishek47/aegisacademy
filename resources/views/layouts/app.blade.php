@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 
+    @include('includes._mathjax-markdown')
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -35,20 +36,20 @@
                               Sign Up
                             </a>
                         @else
-                            <a class="no-underline" href="#">
-                                <span class="text-black  hover:text-teal font-semibold text-xl uppercase pr-4">
+                            <a class="no-underline" href="{{ url('/home') }}">
+                                <span class="text-black  hover:text-teal-darker font-semibold text-lg uppercase pr-4">
                                    <i class="fa fa-user mr-2"></i> {{ Auth::user()->name }}
-                                   <i class="fa fa-chevron-down"></i>
                                 </span>
                             </a>
 
-                         {{--    <a href="{{ route('logout') }}"
-                                class="no-underline hover:text-brand text-grey-darkest uppercase text-xl"
+                           <a href="{{ route('logout') }}"
+                                class="no-underline hover:text-teal-darker font-semibold text-black uppercase text-lg"
                                 onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">Logout</a>
+                                document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt mr-1"></i>  Logout</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                                 {{ csrf_field() }}
-                            </form> --}}
+                            </form>
                         @endguest
                     </div>
                 </div>
@@ -56,32 +57,32 @@
         </nav>
 
         @auth
-        <div class="bg-grey-darker shadow h-16">
+        <div class="bg-brand shadow h-16">
         <div class="container mx-auto">
-            <div class="flex bg-grey-darker">
+            <div class="flex bg-brand">
                 <a href="{{ url('/home') }}"
-                   class="{{ request()->is('home*') ? 'bg-grey-darkest' : '' }} no-underline hover:bg-grey-darkest flex-1 pt-20 h-16 text-white text-center text-xl tracking-wide font-semibold px-4 py-4">
+                   class="{{ request()->is('home*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1  px-4 py-3 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold">
                     <i class="fa fa-home"></i> Home
                 </a>
 
                 <a href="{{ url('/wiki') }}"
-                   class="{{ request()->is('wiki*') ? 'bg-grey-darkest' : '' }} no-underline hover:bg-grey-darkest flex-1 pt-20 h-16 text-white text-center text-xl tracking-wide font-semibold px-4 py-4">
+                   class="{{ request()->is('wiki*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
                     <i class="far fa-file-alt"></i> Wiki
                 </a>
                 <a href="#"
-                   class="{{ request()->is('courses*') ? 'bg-grey-darkest' : '' }} no-underline hover:bg-grey-darkest flex-1 pt-20 h-16 text-white text-center text-xl tracking-wide font-semibold px-4 py-4">
+                   class="{{ request()->is('courses*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
                     <i class="fa fa-video"></i> Courses
                 </a>
                 <a href="#"
-                   class="{{ request()->is('practice*') ? 'bg-grey-darkest' : '' }} no-underline hover:bg-grey-darkest flex-1 pt-20 h-16 text-white text-center text-xl tracking-wide font-semibold px-4 py-4">
+                   class="{{ request()->is('practice*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
                     <i class="fa fa-question"></i> Practice
                 </a>
                 <a href="#"
-                    class="{{ request()->is('books*') ? 'bg-grey-darkest' : '' }} no-underline hover:bg-grey-darkest flex-1 pt-20 h-16 text-white text-center text-xl tracking-wide font-semibold px-4 py-4">
+                    class="{{ request()->is('books*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
                     <i class="fa fa-book"></i> Books
                 </a>
                 <a href="#"
-                   class="{{ request()->is('discussions*') ? 'bg-grey-darkest' : '' }} no-underline hover:bg-grey-darkest flex-1 pt-20 h-16 text-white text-center text-xl tracking-wide font-semibold px-4 py-4">
+                   class="{{ request()->is('discussions*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
                     <i class="fa fa-comments"></i> Discussions
                 </a>
             </div>

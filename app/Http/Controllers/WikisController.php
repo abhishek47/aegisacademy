@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Wiki;
+use App\Models\WikiCategory;
 use Illuminate\Http\Request;
 
 class WikisController extends Controller
@@ -25,11 +26,16 @@ class WikisController extends Controller
      * @return index view with wiki articles
      */
 
-    public function index()
+    public function index($categoryId = null)
     {
-        $articles = Wiki::orderBy('created_at', "DESC")->paginate(10);
-
-        return view('wikis.index', compact('articles'));
+        if(isset($categoryId))
+        {
+           $articles = Wiki::where('wiki_category_id', $categoryId)->orderBy('created_at', "DESC")->paginate(10);
+        } else {
+           $articles = Wiki::orderBy('created_at', "DESC")->paginate(10);
+        }
+        $categories = WikiCategory::orderBy('name', "DESC")->get();
+        return view('wikis.index', compact('articles', 'categories', 'categoryId'));
     }
 
 

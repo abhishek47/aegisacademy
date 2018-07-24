@@ -13137,7 +13137,7 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-5d42652a"
+var __vue_scopeId__ = "data-v-e5189ad2"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -13148,7 +13148,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "node_modules\\vue-core-image-upload\\dist\\resize-bar.vue"
+Component.options.__file = "node_modules/vue-core-image-upload/dist/resize-bar.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -13157,9 +13157,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5d42652a", Component.options)
+    hotAPI.createRecord("data-v-e5189ad2", Component.options)
   } else {
-    hotAPI.reload("data-v-5d42652a", Component.options)
+    hotAPI.reload("data-v-e5189ad2", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -31609,7 +31609,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "node_modules\\vue-core-image-upload\\dist\\vue-core-image-upload.vue"
+Component.options.__file = "node_modules/vue-core-image-upload/dist/vue-core-image-upload.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -31618,9 +31618,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8eeadfcc", Component.options)
+    hotAPI.createRecord("data-v-35cae6e6", Component.options)
   } else {
-    hotAPI.reload("data-v-8eeadfcc", Component.options)
+    hotAPI.reload("data-v-35cae6e6", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -31641,13 +31641,13 @@ var content = __webpack_require__(46);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("7eba82a0", content, false, {});
+var update = __webpack_require__(4)("3da61a19", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../css-loader/index.js!../../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8eeadfcc\",\"scoped\":false,\"hasInlineConfig\":true}!./style.css", function() {
-     var newContent = require("!!../../../css-loader/index.js!../../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8eeadfcc\",\"scoped\":false,\"hasInlineConfig\":true}!./style.css");
+   module.hot.accept("!!../../../css-loader/index.js!../../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-35cae6e6\",\"scoped\":false,\"hasInlineConfig\":true}!./style.css", function() {
+     var newContent = require("!!../../../css-loader/index.js!../../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-35cae6e6\",\"scoped\":false,\"hasInlineConfig\":true}!./style.css");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -32442,7 +32442,7 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-68e68340"
+var __vue_scopeId__ = "data-v-35c5a66d"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -32453,7 +32453,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "node_modules\\vue-core-image-upload\\dist\\crop.vue"
+Component.options.__file = "node_modules/vue-core-image-upload/dist/crop.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -32462,9 +32462,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-68e68340", Component.options)
+    hotAPI.createRecord("data-v-35c5a66d", Component.options)
   } else {
-    hotAPI.reload("data-v-68e68340", Component.options)
+    hotAPI.reload("data-v-35c5a66d", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -32485,13 +32485,13 @@ var content = __webpack_require__(53);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("c131fc78", content, false, {});
+var update = __webpack_require__(4)("3833215e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../css-loader/index.js!../../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-68e68340\",\"scoped\":true,\"hasInlineConfig\":true}!./crop.css", function() {
-     var newContent = require("!!../../../css-loader/index.js!../../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-68e68340\",\"scoped\":true,\"hasInlineConfig\":true}!./crop.css");
+   module.hot.accept("!!../../../css-loader/index.js!../../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-35c5a66d\",\"scoped\":true,\"hasInlineConfig\":true}!./crop.css", function() {
+     var newContent = require("!!../../../css-loader/index.js!../../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-35c5a66d\",\"scoped\":true,\"hasInlineConfig\":true}!./crop.css");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -32509,7 +32509,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.g-crop-image-principal[data-v-68e68340] {\n  overflow: hidden;\n  position: relative;\n  background-color: #fff;\n  background-image: -webkit-gradient(linear, left bottom, right top, color-stop(25%, #efefef), color-stop(25%, transparent), color-stop(75%, transparent), color-stop(75%, #efefef), to(#efefef)), -webkit-gradient(linear, left bottom, right top, color-stop(25%, #efefef), color-stop(25%, transparent), color-stop(75%, transparent), color-stop(75%, #efefef), to(#efefef));\n  background-image: linear-gradient(to top right, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef), linear-gradient(to top right, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef);\n  background-position: 0 0, 10px 10px;\n  background-size: 21px 21px;\n}\n.image-aside[data-v-68e68340] {\n  overflow: hidden;\n  position: absolute;\n  right: 30px;\n  left: 30px;\n  top: 70px;\n  bottom: 40px;\n  text-align: center;\n}\n.image-aside .image-wrap[data-v-68e68340] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-box-shadow: 0 3px 5px -2px rgba(0, 0, 0, .25);\n          box-shadow: 0 3px 5px -2px rgba(0, 0, 0, .25);\n  background-size: cover;\n}\n.image-mask[data-v-68e68340] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n}\n.image-mask .mask[data-v-68e68340] {\n  position: absolute;\n  background-color: rgba(255, 255, 255, .6);\n}\n.crop-box[data-v-68e68340] {\n  z-index: 2000;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  position: absolute;\n  background: none;\n  cursor: move;\n  width: 100px;\n  height: 100px;\n  border: 1px solid rgba(255, 255, 255, .95);\n}\n.crop-box[data-v-68e68340]:after,\n.crop-box[data-v-68e68340]:before {\n  content: '';\n  display: block;\n  opacity: 0;\n  position: absolute;\n  left: 33.3333%;\n  top: 0;\n  width: 33.334%;\n  height: 100%;\n  background-color: transparent;\n  border-color: rgba(255, 255, 255, .7);\n  border-style: solid;\n  border-width: 0;\n}\n.crop-box[data-v-68e68340]:active::before,\n.crop-box[data-v-68e68340]:active::after {\n  opacity: 1;\n}\n.crop-box[data-v-68e68340]:before {\n  border-left-width: 1px;\n  border-right-width: 1px;\n}\n.crop-box[data-v-68e68340]:after {\n  top: 33.3333%;\n  left: 0;\n  height: 33.3334%;\n  width: 100%;\n  border-top-width: 1px;\n  border-bottom-width: 1px;\n}\n.crop-box .g-resize[data-v-68e68340] {\n  display: inline-block;\n  z-index: 1910;\n  position: absolute;\n  bottom: -8px;\n  right: -8px;\n  width: 16px;\n  height: 16px;\n  cursor: se-resize;\n  border-radius: 10px;\n  background-color: #fff;\n  -webkit-box-shadow: 0 2px 4px -2px rgba(0, 0, 0, .25);\n          box-shadow: 0 2px 4px -2px rgba(0, 0, 0, .25);\n}\n", ""]);
+exports.push([module.i, "\n.g-crop-image-principal[data-v-35c5a66d] {\n  overflow: hidden;\n  position: relative;\n  background-color: #fff;\n  background-image: -webkit-gradient(linear, left bottom, right top, color-stop(25%, #efefef), color-stop(25%, transparent), color-stop(75%, transparent), color-stop(75%, #efefef), to(#efefef)), -webkit-gradient(linear, left bottom, right top, color-stop(25%, #efefef), color-stop(25%, transparent), color-stop(75%, transparent), color-stop(75%, #efefef), to(#efefef));\n  background-image: linear-gradient(to top right, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef), linear-gradient(to top right, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef);\n  background-position: 0 0, 10px 10px;\n  background-size: 21px 21px;\n}\n.image-aside[data-v-35c5a66d] {\n  overflow: hidden;\n  position: absolute;\n  right: 30px;\n  left: 30px;\n  top: 70px;\n  bottom: 40px;\n  text-align: center;\n}\n.image-aside .image-wrap[data-v-35c5a66d] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-box-shadow: 0 3px 5px -2px rgba(0, 0, 0, .25);\n          box-shadow: 0 3px 5px -2px rgba(0, 0, 0, .25);\n  background-size: cover;\n}\n.image-mask[data-v-35c5a66d] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n}\n.image-mask .mask[data-v-35c5a66d] {\n  position: absolute;\n  background-color: rgba(255, 255, 255, .6);\n}\n.crop-box[data-v-35c5a66d] {\n  z-index: 2000;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  position: absolute;\n  background: none;\n  cursor: move;\n  width: 100px;\n  height: 100px;\n  border: 1px solid rgba(255, 255, 255, .95);\n}\n.crop-box[data-v-35c5a66d]:after,\n.crop-box[data-v-35c5a66d]:before {\n  content: '';\n  display: block;\n  opacity: 0;\n  position: absolute;\n  left: 33.3333%;\n  top: 0;\n  width: 33.334%;\n  height: 100%;\n  background-color: transparent;\n  border-color: rgba(255, 255, 255, .7);\n  border-style: solid;\n  border-width: 0;\n}\n.crop-box[data-v-35c5a66d]:active::before,\n.crop-box[data-v-35c5a66d]:active::after {\n  opacity: 1;\n}\n.crop-box[data-v-35c5a66d]:before {\n  border-left-width: 1px;\n  border-right-width: 1px;\n}\n.crop-box[data-v-35c5a66d]:after {\n  top: 33.3333%;\n  left: 0;\n  height: 33.3334%;\n  width: 100%;\n  border-top-width: 1px;\n  border-bottom-width: 1px;\n}\n.crop-box .g-resize[data-v-35c5a66d] {\n  display: inline-block;\n  z-index: 1910;\n  position: absolute;\n  bottom: -8px;\n  right: -8px;\n  width: 16px;\n  height: 16px;\n  cursor: se-resize;\n  border-radius: 10px;\n  background-color: #fff;\n  -webkit-box-shadow: 0 2px 4px -2px rgba(0, 0, 0, .25);\n          box-shadow: 0 2px 4px -2px rgba(0, 0, 0, .25);\n}\n", ""]);
 
 // exports
 
@@ -33114,13 +33114,13 @@ var content = __webpack_require__(57);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("4a288859", content, false, {});
+var update = __webpack_require__(4)("467d4958", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5d42652a\",\"scoped\":true,\"hasInlineConfig\":true}!../../vue-loader/lib/selector.js?type=styles&index=0!./resize-bar.vue", function() {
-     var newContent = require("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5d42652a\",\"scoped\":true,\"hasInlineConfig\":true}!../../vue-loader/lib/selector.js?type=styles&index=0!./resize-bar.vue");
+   module.hot.accept("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e5189ad2\",\"scoped\":true,\"hasInlineConfig\":true}!../../vue-loader/lib/selector.js?type=styles&index=0!./resize-bar.vue", function() {
+     var newContent = require("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e5189ad2\",\"scoped\":true,\"hasInlineConfig\":true}!../../vue-loader/lib/selector.js?type=styles&index=0!./resize-bar.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -33138,7 +33138,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.g-resize-bar[data-v-5d42652a] {\n  position: absolute;\n  bottom: 0;\n  margin: 17px auto;\n  height: 6px;\n  border-radius: 3px;\n  width: 200px;\n  margin-left: -100px;\n  left: 50%;\n  background-color: #a8f9ca;\n  -webkit-box-shadow: 0 2px 3px -1px rgba(0, 0, 0, .3);\n          box-shadow: 0 2px 3px -1px rgba(0, 0, 0, .3);\n}\n.g-resize-highlight[data-v-5d42652a] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 6px;\n  background-color: #27ae60;\n  border-radius: 3px;\n}\n.circle-btn[data-v-5d42652a] {\n  display: block;\n  position: absolute;\n  left: 0;\n  top: -5px;\n  width: 14px;\n  height: 14px;\n  margin-left: -7px;\n  background-color: #fff;\n  border-radius: 7px;\n  -webkit-box-shadow: 0 2px 3px -2px rgba(0, 0, 0, .6), 0 -2px 3px -2px rgba(0, 0, 0, .55);\n          box-shadow: 0 2px 3px -2px rgba(0, 0, 0, .6), 0 -2px 3px -2px rgba(0, 0, 0, .55);\n  border-width: 0;\n}\n", ""]);
+exports.push([module.i, "\n.g-resize-bar[data-v-e5189ad2] {\n  position: absolute;\n  bottom: 0;\n  margin: 17px auto;\n  height: 6px;\n  border-radius: 3px;\n  width: 200px;\n  margin-left: -100px;\n  left: 50%;\n  background-color: #a8f9ca;\n  -webkit-box-shadow: 0 2px 3px -1px rgba(0, 0, 0, .3);\n          box-shadow: 0 2px 3px -1px rgba(0, 0, 0, .3);\n}\n.g-resize-highlight[data-v-e5189ad2] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 6px;\n  background-color: #27ae60;\n  border-radius: 3px;\n}\n.circle-btn[data-v-e5189ad2] {\n  display: block;\n  position: absolute;\n  left: 0;\n  top: -5px;\n  width: 14px;\n  height: 14px;\n  margin-left: -7px;\n  background-color: #fff;\n  border-radius: 7px;\n  -webkit-box-shadow: 0 2px 3px -2px rgba(0, 0, 0, .6), 0 -2px 3px -2px rgba(0, 0, 0, .55);\n          box-shadow: 0 2px 3px -2px rgba(0, 0, 0, .6), 0 -2px 3px -2px rgba(0, 0, 0, .55);\n  border-width: 0;\n}\n", ""]);
 
 // exports
 
@@ -33311,7 +33311,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5d42652a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-e5189ad2", module.exports)
   }
 }
 
@@ -33345,7 +33345,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "node_modules\\vue-core-image-upload\\dist\\rotate-bar.vue"
+Component.options.__file = "node_modules/vue-core-image-upload/dist/rotate-bar.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -33354,9 +33354,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-55340ed1", Component.options)
+    hotAPI.createRecord("data-v-f5354784", Component.options)
   } else {
-    hotAPI.reload("data-v-55340ed1", Component.options)
+    hotAPI.reload("data-v-f5354784", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -33377,13 +33377,13 @@ var content = __webpack_require__(62);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("16013c70", content, false, {});
+var update = __webpack_require__(4)("3629938a", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-55340ed1\",\"scoped\":false,\"hasInlineConfig\":true}!../../vue-loader/lib/selector.js?type=styles&index=0!./rotate-bar.vue", function() {
-     var newContent = require("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-55340ed1\",\"scoped\":false,\"hasInlineConfig\":true}!../../vue-loader/lib/selector.js?type=styles&index=0!./rotate-bar.vue");
+   module.hot.accept("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f5354784\",\"scoped\":false,\"hasInlineConfig\":true}!../../vue-loader/lib/selector.js?type=styles&index=0!./rotate-bar.vue", function() {
+     var newContent = require("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f5354784\",\"scoped\":false,\"hasInlineConfig\":true}!../../vue-loader/lib/selector.js?type=styles&index=0!./rotate-bar.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -33524,7 +33524,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-55340ed1", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-f5354784", module.exports)
   }
 }
 
@@ -33675,7 +33675,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-68e68340", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-35c5a66d", module.exports)
   }
 }
 
@@ -33842,7 +33842,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-8eeadfcc", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-35cae6e6", module.exports)
   }
 }
 
@@ -34987,7 +34987,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\ExampleComponent.vue"
+Component.options.__file = "resources/assets/js/components/ExampleComponent.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34996,9 +34996,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0ca92eac", Component.options)
+    hotAPI.createRecord("data-v-7168fb6a", Component.options)
   } else {
-    hotAPI.reload("data-v-0ca92eac", Component.options)
+    hotAPI.reload("data-v-7168fb6a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -35076,7 +35076,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0ca92eac", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-7168fb6a", module.exports)
   }
 }
 
@@ -35106,7 +35106,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\LatexEditor.vue"
+Component.options.__file = "resources/assets/js/components/LatexEditor.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -35115,9 +35115,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-58927178", Component.options)
+    hotAPI.createRecord("data-v-0bd426b8", Component.options)
   } else {
-    hotAPI.reload("data-v-58927178", Component.options)
+    hotAPI.reload("data-v-0bd426b8", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -35821,7 +35821,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-58927178", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-0bd426b8", module.exports)
   }
 }
 
@@ -35851,7 +35851,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\LatexParagraph.vue"
+Component.options.__file = "resources/assets/js/components/LatexParagraph.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -35860,9 +35860,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-59949033", Component.options)
+    hotAPI.createRecord("data-v-b5d05a1a", Component.options)
   } else {
-    hotAPI.reload("data-v-59949033", Component.options)
+    hotAPI.reload("data-v-b5d05a1a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -36090,7 +36090,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-59949033", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-b5d05a1a", module.exports)
   }
 }
 

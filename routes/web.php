@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/wiki', 'WikisController@index')->name('wikis');
-
+Route::get('/wiki/category:{categoryId}', 'WikisController@index')->name('wikis.show');
 Route::get('/wiki/{slug}', 'WikisController@show')->name('wikis.show');
 
 Route::post('/wiki/update/{wiki}', 'WikisController@update')->name('wikis.update');
