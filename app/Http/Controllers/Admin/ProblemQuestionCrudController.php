@@ -5,15 +5,15 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\ProblemRequest as StoreRequest;
-use App\Http\Requests\ProblemRequest as UpdateRequest;
+use App\Http\Requests\ProblemQuestionRequest as StoreRequest;
+use App\Http\Requests\ProblemQuestionRequest as UpdateRequest;
 
 /**
- * Class ProblemCrudController
+ * Class ProblemQuestionCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class ProblemCrudController extends CrudController
+class ProblemQuestionCrudController extends CrudController
 {
     public function setup()
     {
@@ -22,9 +22,9 @@ class ProblemCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Problem');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/problems');
-        $this->crud->setEntityNameStrings('problem', 'problems');
+        $this->crud->setModel('App\Models\ProblemQuestion');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/problem-questions');
+        $this->crud->setEntityNameStrings('Question', 'Questions');
 
         /*
         |--------------------------------------------------------------------------
@@ -32,11 +32,50 @@ class ProblemCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->addColumns(['title']);
+        $this->crud->addColumns(['question', 'level']);
 
         $this->crud->addFields([
-            ['lable' => 'Title', 'name' => 'title'],
-            ['lable' => 'Problems Description', 'name' => 'description', 'type' => 'textarea'],
+             [  // Select2
+               'label' => "Problem Set",
+               'type' => 'select2',
+               'name' => 'problem_id', // the db column for the foreign key
+               'entity' => 'problem', // the method that defines the relationship in your Model
+               'attribute' => 'title', // foreign key attribute that is shown to user
+               'model' => "App\Models\Problem", // foreign key model
+               'allows_null' => false
+            ],
+
+             ['label' => 'Question', 'name' => 'question', 'type' => 'latex'],
+
+            [ // Table
+                'name' => 'options',
+                'label' => 'Options',
+                'type' => 'table',
+                'entity_singular' => 'option', // used on the "Add X" button
+                'columns' => [
+                    'text' => 'Value',
+                ],
+                'max' => 5, // maximum rows allowed in the table
+                'min' => 0 // minimum rows allowed in the table
+            ],
+
+            ['label' => 'Answer Index ( Give option number. For ex. if option 1 is answer then enter 1 )', 'name' => 'answer', 'type' => 'number'],
+
+
+
+            ['label' => 'Solution', 'name' => 'solution', 'type' => 'summernote'],
+
+            ['label' => 'Hint', 'name' => 'hint', 'type' => 'summernote'],
+
+            [ // select_from_array
+                'name' => 'level',
+                'label' => "Difficulty Level",
+                'type' => 'select_from_array',
+                'options' => [1, 2, 3, 4, 5],
+                'allows_null' => false,
+                // 'allows_multiple' => true, // OPTIONAL; needs you to cast this to array in your model;
+            ],
+
 
 
         ]);
@@ -55,7 +94,7 @@ class ProblemCrudController extends CrudController
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
-        // add asterisk for fields that are required in ProblemRequest
+        // add asterisk for fields that are required in ProblemQuestionRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
 

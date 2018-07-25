@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Models\Wiki;
+use App\Models\ProblemQuestion;
+use App\Models\ProblemQuestionSolution;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -39,6 +41,16 @@ class User extends Authenticatable
         return $this->belongsToMany(Wiki::class, 'wiki_rating')->withTimeStamps()->withPivot('rating');
     }
 
+    public function solutionUpvotes()
+    {
+        return $this->belongsToMany(ProblemQuestionSolution::class, 'pquestion_solution_upvotes');
+    }
+
+    public function solvedProblemQuestions()
+    {
+        return $this->belongsToMany(ProblemQuestion::class, 'user_problem_questions')->withTimeStamps()->withPivot(['answer', 'is_correct']);
+    }
+
     public function hasRead(Wiki $wiki)
     {
         return $this->readWikis->contains($wiki);
@@ -48,6 +60,13 @@ class User extends Authenticatable
     {
         return $this->ratedWikis->contains($wiki) ? $this->ratedWikis()->where('wiki_id', $wiki->id)->first()->pivot->rating  : 0;
     }
+
+    public function answerFor(ProblemQuestion $question)
+    {
+        return $this->solvedProblemQuestions->contains($question) ? $this->solvedProblemQuestions()->where('problem_question_id', $question->id)->first()->pivot->answer  : null;
+    }
+
+
 
 
 }

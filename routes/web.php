@@ -38,4 +38,14 @@ Route::get('/wiki/{wiki}/unread', 'ReadWikiController@destroy');
 
 Route::post('/wiki/{wiki}/rate', 'RateWikiController@store');
 
+Route::get('/problems/{problem}', 'ProblemsController@get');
+Route::get('/problem-question/{question}/question', 'ProblemQuestionsController@getQuestion');
+Route::get('/problem-question/{question}/solutions', 'ProblemQuestionsController@getSolutions');
+Route::post('/problem-question/{question}/answer', 'ProblemQuestionsController@answer');
+
+Route::delete('/problem-question/solution/{solution}', 'ProblemQuestionSolutionsController@destroy');
+Route::put('/problem-question/solution/{solution}', 'ProblemQuestionSolutionsController@update');
+Route::post('/problem-question/solution/{solution}/upvote', 'ProblemQuestionSolutionsController@upvote');
+Route::post('/problem-question/solution/{solution}/downvote', 'ProblemQuestionSolutionsController@downvote');
+Route::post('/problem-question/{question}/solutions', 'ProblemQuestionSolutionsController@store');
 

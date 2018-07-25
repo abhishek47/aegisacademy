@@ -13,6 +13,7 @@ Route::group([
 ], function () { // custom admin routes
 
     CRUD::resource('problems', 'ProblemCrudController');
+    CRUD::resource('problem-questions', 'ProblemQuestionCrudController');
 
     CRUD::resource('colors', 'ColorCrudController');
 

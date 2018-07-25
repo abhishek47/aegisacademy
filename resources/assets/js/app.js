@@ -15,6 +15,8 @@ import PortalVue from 'portal-vue'
 import Toastr from 'vue-toastr';
 
 
+
+
 require('vue-toastr/src/vue-toastr.scss');
 
 /**
@@ -28,9 +30,11 @@ Vue.component('latex-editor', require('./components/LatexEditor.vue'));
 Vue.component('platex', require('./components/LatexParagraph.vue'));
 Vue.component('mark-as-read', require('./components/MarkAsRead.vue'));
 Vue.component('rate-wiki', require('./components/RateWiki.vue'));
+Vue.component('practice-problems', require('./components/PracticeProblems.vue'));
 
 Vue.use(PortalVue)
 Vue.use(Toastr);
+Vue.use(require('vue-moment'))
 
 
 const app = new Vue({
