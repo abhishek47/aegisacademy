@@ -49,3 +49,8 @@ Route::post('/problem-question/solution/{solution}/upvote', 'ProblemQuestionSolu
 Route::post('/problem-question/solution/{solution}/downvote', 'ProblemQuestionSolutionsController@downvote');
 Route::post('/problem-question/{question}/solutions', 'ProblemQuestionSolutionsController@store');
 
+
+Route::get('/discussions', 'DiscussionsController@index');
+Route::post('/discussions', 'DiscussionsController@store');
+Route::get('/discussions/{discussion}', 'DiscussionsController@show');
+

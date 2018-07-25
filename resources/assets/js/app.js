@@ -13,6 +13,8 @@ window.Vue = require('vue');
 import VueCoreImageUpload from 'vue-core-image-upload';
 import PortalVue from 'portal-vue'
 import Toastr from 'vue-toastr';
+import VModal from 'vue-js-modal'
+
 
 
 
@@ -34,7 +36,8 @@ Vue.component('practice-problems', require('./components/PracticeProblems.vue'))
 
 Vue.use(PortalVue)
 Vue.use(Toastr);
-Vue.use(require('vue-moment'))
+Vue.use(require('vue-moment'));
+Vue.use(VModal);
 
 
 const app = new Vue({
@@ -61,6 +64,12 @@ const app = new Vue({
 
 	    },
 
+	     showModal (name) {
+   			 this.$modal.show(name);
+		  },
+		  hideModal () {
+		    this.$modal.hide(name);
+		  }
 	}
 });
 

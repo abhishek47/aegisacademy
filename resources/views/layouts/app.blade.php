@@ -62,28 +62,46 @@
             <div class="flex bg-brand">
                 <a href="{{ url('/home') }}"
                    class="{{ request()->is('home*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1  px-4 py-3 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold">
-                    <i class="fa fa-home"></i> Home
+                   <div class="flex w-full justify-center">
+                    <img class="" src="{{ asset('/img/home.png') }}" style="width: 25px;height: 100%;">
+                    <span class="mt-1 ml-2">Home</span>
+                    </div>
                 </a>
 
                 <a href="{{ url('/wiki') }}"
                    class="{{ request()->is('wiki*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
-                    <i class="far fa-file-alt"></i> Wiki
+                    <div class="flex w-full justify-center">
+                    <img class="" src="{{ asset('/img/article.png') }}" style="width: 25px;height: 100%;">
+                    <span class="mt-1 ml-2">Wiki</span>
+                    </div>
                 </a>
                 <a href="#"
                    class="{{ request()->is('courses*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
-                    <i class="fa fa-video"></i> Courses
+                   <div class="flex w-full justify-center">
+                    <img class="" src="{{ asset('/img/courses-icon.png') }}" style="width: 25px;height: 100%;">
+                    <span class="mt-1 ml-2">Courses</span>
+                    </div>
                 </a>
                 <a href="#"
                    class="{{ request()->is('practice*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
-                    <i class="fa fa-question"></i> Practice
+                    <div class="flex w-full justify-center">
+                    <img class="" src="{{ asset('/img/calc.png') }}" style="width: 25px;height: 100%;">
+                    <span class="mt-1 ml-2">Practice</span>
+                    </div>
                 </a>
                 <a href="#"
                     class="{{ request()->is('books*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
-                    <i class="fa fa-book"></i> Books
+                    <div class="flex w-full justify-center">
+                    <img class="" src="{{ asset('/img/book.png') }}" style="width: 25px;height: 100%;">
+                    <span class="mt-1 ml-2">Books</span>
+                    </div>
                 </a>
-                <a href="#"
+                <a href="{{ url('/discussions') }}"
                    class="{{ request()->is('discussions*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
-                    <i class="fa fa-comments"></i> Discussions
+                    <div class="flex w-full justify-center">
+                    <img class="" src="{{ asset('/img/discuss.png') }}" style="width: 25px;height: 100%;">
+                    <span class="mt-1 ml-2">Discussions</span>
+                    </div>
                 </a>
             </div>
         </div>
