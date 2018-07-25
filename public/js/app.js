@@ -58178,7 +58178,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var self = this;
                 axios.post('/problem-question/' + this.currentQuestion.id + '/answer', { answer: answer, is_correct: is_correct }).then(function () {
                     self.currentQuestion.user_answer = answer;
-                    this.showSolutions = !this.showSolutions;
+                    self.showSolutions = !self.showSolutions;
                 });
             }
         },
