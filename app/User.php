@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Wiki;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -26,6 +27,27 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function readWikis()
+    {
+        return $this->belongsToMany(Wiki::class, 'wiki_read')->withTimeStamps();
+    }
+
+    public function ratedWikis()
+    {
+        return $this->belongsToMany(Wiki::class, 'wiki_rating')->withTimeStamps()->withPivot('rating');
+    }
+
+    public function hasRead(Wiki $wiki)
+    {
+        return $this->readWikis->contains($wiki);
+    }
+
+    public function ratingFor(Wiki $wiki)
+    {
+        return $this->ratedWikis->contains($wiki) ? $this->ratedWikis()->where('wiki_id', $wiki->id)->first()->pivot->rating  : 0;
+    }
 
 
 }

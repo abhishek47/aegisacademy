@@ -33,3 +33,9 @@ Route::post('/wiki/{wiki}/body', 'WikisController@updateBody')->name('wikis.upda
 Route::post('/image/upload', 'ImageController@upload');
 
 
+Route::get('/wiki/{wiki}/read', 'ReadWikiController@store');
+Route::get('/wiki/{wiki}/unread', 'ReadWikiController@destroy');
+
+Route::post('/wiki/{wiki}/rate', 'RateWikiController@store');
+
+

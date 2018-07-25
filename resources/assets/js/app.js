@@ -14,6 +14,7 @@ import VueCoreImageUpload from 'vue-core-image-upload';
 import PortalVue from 'portal-vue'
 import Toastr from 'vue-toastr';
 
+
 require('vue-toastr/src/vue-toastr.scss');
 
 /**
@@ -25,6 +26,8 @@ require('vue-toastr/src/vue-toastr.scss');
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('latex-editor', require('./components/LatexEditor.vue'));
 Vue.component('platex', require('./components/LatexParagraph.vue'));
+Vue.component('mark-as-read', require('./components/MarkAsRead.vue'));
+Vue.component('rate-wiki', require('./components/RateWiki.vue'));
 
 Vue.use(PortalVue)
 Vue.use(Toastr);
