@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-grey-lightest bg-cover bg-no-repeat flex pt-60 px-6 md:px-0" style="min-height: 840px;background-image: url('img/pattern.png');">
+<div class="bg-grey-lightest bg-cover bg-no-repeat flex pt-60 px-6 md:px-0" style="min-height: 840px;">
     <div class="w-full max-w-md mx-auto">
        <h2 class="my-30 text-left text-brand tracking-wide text-3xl">
           Reset Your Password
