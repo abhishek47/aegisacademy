@@ -36,8 +36,15 @@ class PracticeController extends Controller
     public function topic($slug, Topic $topic)
     {
         $subject = $topic->subject;
-        $problems = $topic->problems()->paginate(10);
-        $topicgroup = 'Problems under <b class="text-grey-darkest">' . $topic->name . '</b>.';
+        $problems = $topic->problems();
+        $topicgroup = 'Problems under <b class="text-grey-darkest">' . $topic->name . '</b>';
+        if(request()->has('query'))
+        {
+            $problems = $problems->where('title', 'LIKE', '%' . request('query')  .'%')->paginate(10);
+            $topicgroup = $topicgroup . ' related to \'' . request('query') . '\'';
+        } else {
+            $problems = $problems->paginate(10);
+        }
         return view('practice.topic', compact('subject', 'topic', 'problems', 'topicgroup'));
     }
 
