@@ -5406,6 +5406,66 @@ button:focus {
   margin-top: .5rem;
 }
 
+.is-loading {
+  color: transparent !important;
+}
+
+.is-loading::after {
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 800ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+     -moz-animation-name: spin;
+     -moz-animation-duration: 800ms;
+     -moz-animation-iteration-count: infinite;
+     -moz-animation-timing-function: linear;
+      -ms-animation-name: spin;
+      -ms-animation-duration: 800ms;
+      -ms-animation-iteration-count: infinite;
+      -ms-animation-timing-function: linear;
+          animation-name: spin;
+          animation-duration: 800ms;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+  border: 2px solid #fff;
+  border-radius: 290486px;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  content: "";
+  display: block;
+  height: 1em;
+  position: relative;
+  width: 1em;
+  color: transparent;
+  top: 0;
+  margin-top: -19px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;

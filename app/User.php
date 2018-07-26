@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Models\Wiki;
+use App\Models\Discussion;
+use App\Models\ThreadReply;
 use App\Models\ProblemQuestion;
 use App\Models\ProblemQuestionSolution;
 use Illuminate\Notifications\Notifiable;
@@ -30,6 +32,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function discussions()
+    {
+        return $this->hasMany(Discussion::class);
+    }
+
 
     public function readWikis()
     {
@@ -39,6 +46,11 @@ class User extends Authenticatable
     public function ratedWikis()
     {
         return $this->belongsToMany(Wiki::class, 'wiki_rating')->withTimeStamps()->withPivot('rating');
+    }
+
+    public function likedReplies()
+    {
+        return $this->belongsToMany(ThreadReply::class, 'user_reply')->withTimeStamps();
     }
 
     public function solutionUpvotes()
@@ -64,6 +76,12 @@ class User extends Authenticatable
     public function answerFor(ProblemQuestion $question)
     {
         return $this->solvedProblemQuestions->contains($question) ? $this->solvedProblemQuestions()->where('problem_question_id', $question->id)->first()->pivot->answer  : null;
+    }
+
+
+    public function isCreaterOf($model)
+    {
+        return $model->user_id == $this->id;
     }
 
 

@@ -53,4 +53,17 @@ Route::post('/problem-question/{question}/solutions', 'ProblemQuestionSolutionsC
 Route::get('/discussions', 'DiscussionsController@index');
 Route::post('/discussions', 'DiscussionsController@store');
 Route::get('/discussions/{discussion}', 'DiscussionsController@show');
+Route::put('/discussions/{discussion}', 'DiscussionsController@update');
+Route::get('/discussions/{discussion}/delete', 'DiscussionsController@destroy');
+
+Route::post('/discussions/{discussion}/replies', 'ThreadRepliesController@store');
+
+
+Route::post('/discussions/replies/{reply}', 'ThreadRepliesController@update');
+Route::delete('/discussions/replies/{reply}', 'ThreadRepliesController@destroy');
+Route::post('/discussions/replies/{reply}/like', 'ThreadRepliesController@like');
+Route::post('/discussions/replies/{reply}/dislike', 'ThreadRepliesController@dislike');
+
+Route::post('/discussions/replies/{reply}/best', 'ThreadRepliesController@best');
+
 

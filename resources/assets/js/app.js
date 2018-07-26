@@ -33,6 +33,9 @@ Vue.component('platex', require('./components/LatexParagraph.vue'));
 Vue.component('mark-as-read', require('./components/MarkAsRead.vue'));
 Vue.component('rate-wiki', require('./components/RateWiki.vue'));
 Vue.component('practice-problems', require('./components/PracticeProblems.vue'));
+Vue.component('new-thread', require('./components/NewThread.vue'));
+Vue.component('edit-thread', require('./components/EditThread.vue'));
+Vue.component('thread-reply', require('./components/ThreadReply.vue'));
 
 Vue.use(PortalVue)
 Vue.use(Toastr);
