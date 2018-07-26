@@ -9,33 +9,33 @@ use Illuminate\Http\Request;
 class WikisController extends Controller
 {
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-
-    /**
-     * List all wiki articles
-     *
-     * @return index view with wiki articles
-     */
-
     public function index($categoryId = null)
     {
+        $wikigroup = "All Wiki Pages";
         if(isset($categoryId))
         {
-           $articles = Wiki::where('wiki_category_id', $categoryId)->orderBy('created_at', "DESC")->paginate(10);
+           $articles = Wiki::where('wiki_category_id', $categoryId)->orderBy('created_at', "DESC");
+           $category = WikiCategory::find($categoryId);
+           $wikigroup = $category->name  . ' Wiki Pages';
         } else {
-           $articles = Wiki::orderBy('created_at', "DESC")->paginate(10);
+           $articles = Wiki::orderBy('created_at', "DESC");
         }
+
+        if(request()->has('query') && request('query') != '')
+        {
+            $articles = $articles->where('title', 'Like', '%' . request('query') . '%')->paginate(10);
+            $wikigroup = $wikigroup . ' related to \'' . request('query') . '\'';
+        } else {
+            $articles = $articles->paginate(10);
+        }
+
         $categories = WikiCategory::orderBy('name', "DESC")->get();
-        return view('wikis.index', compact('articles', 'categories', 'categoryId'));
+        return view('wikis.index', compact('articles', 'categories', 'categoryId', 'wikigroup'));
     }
 
 

@@ -15587,6 +15587,9 @@ var app = new Vue({
 		},
 		hideModal: function hideModal() {
 			this.$modal.hide(name);
+		},
+		openUrl: function openUrl(url) {
+			window.location = url;
 		}
 	}
 });
@@ -65577,9 +65580,10 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("div", { staticClass: "flex items-center justify-between" }, [
-            _c("span", { staticClass: "text-grey-dark tracking-wide" }, [
-              _vm._v(_vm._s(_vm.likesString))
-            ]),
+            _c("span", {
+              staticClass: "text-grey-dark tracking-wide",
+              domProps: { innerHTML: _vm._s(_vm.likesString) }
+            }),
             _vm._v(" "),
             _c("div", [
               _vm.isLiked

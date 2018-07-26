@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePracticeProblemsTable extends Migration
+class CreateSubjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePracticeProblemsTable extends Migration
      */
     public function up()
     {
-       Schema::create('problems', function (Blueprint $table) {
+        Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('slug')->nullable();
-            $table->string('description')->nullable();
+            $table->string('name');
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreatePracticeProblemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('problems');
+        Schema::dropIfExists('subjects');
     }
 }

@@ -42,7 +42,6 @@ class Wiki extends Model
     public function getRatingAttribute()
     {
         return \DB::table('wiki_rating')->where('wiki_id', $this->id)
-                                       ->where('user_id', auth()->id())
                                        ->avg('rating');
     }
 

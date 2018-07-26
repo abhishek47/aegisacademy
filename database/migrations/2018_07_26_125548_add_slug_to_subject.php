@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProblemsTable extends Migration
+class AddSlugToSubject extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateProblemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('problems', function (Blueprint $table) {
-            $table->string('title');
-            $table->text('description');
-            $table->integer('level');
+        Schema::table('subjects', function (Blueprint $table) {
+            $table->string('slug')->nullable();
         });
     }
 
@@ -27,6 +25,8 @@ class CreateProblemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('problems');
+        Schema::table('subjects', function (Blueprint $table) {
+            $table->dropColumn('slug');
+        });
     }
 }

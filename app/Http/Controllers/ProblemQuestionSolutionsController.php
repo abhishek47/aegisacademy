@@ -8,6 +8,10 @@ use App\Models\ProblemQuestionSolution;
 
 class ProblemQuestionSolutionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function store(ProblemQuestion $question)
     {

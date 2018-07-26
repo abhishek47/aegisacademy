@@ -41,12 +41,12 @@ class ThreadReply extends Model
             {
                 if($this->likers->count() == 1)
                 {
-                     return  'You liked this';
+                     return  '<b class="font-semibold">You</b> liked this';
                  } else {
-                     return 'You and ' . $this->likers->count()  . ' others liked this' ;
+                     return '<b class="font-semibold">You</b> and <b class="font-semibold">' . $this->likers->count()  . '</b> others liked this' ;
                  }
             } else {
-                return $this->likers->count() . ' others liked this';
+                return '<b class="font-semibold">' . $this->likers->count() . '</b> others liked this';
             }
 
         } else {

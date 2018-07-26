@@ -27,6 +27,8 @@
                         </a>
                     </div>
 
+
+
                     <div class="flex-3 text-right">
                         @guest
                             <a href="{{ url('/login') }}" class="no-underline  bg-orange hover:bg-orange-dark text-white font-semibold hover:text-white py-3 px-6 border hover:border-transparent rounded mr-4">
@@ -82,7 +84,7 @@
                     <span class="mt-1 ml-2">Courses</span>
                     </div>
                 </a>
-                <a href="#"
+                <a href="/practice"
                    class="{{ request()->is('practice*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
                     <div class="flex w-full justify-center">
                     <img class="" src="{{ asset('/img/calc.png') }}" style="width: 25px;height: 100%;">

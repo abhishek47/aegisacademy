@@ -44,6 +44,17 @@
 				<div class="w-3/4 p-3 pt-0">
 					<div class="flex flex-col">
 
+						  <form class="flex w-full mx-auto bg-white shadow-md rounded border-2 border-grey mb-6">
+
+			                      <i class="fa fa-search text-xl ml-3" style="color: #8795a185;margin-top: 10px;"></i>
+			                      <input type="text" class="w-full p-2 pt-1 mt-1 text-grey-dark" value="{{ request('query') }}" autocomplete="off" placeholder="Type something..." name="query" style="font-size: 20px;">
+			                      <button class="btn bg-brand hover:bg-brand-darker text-white font-semibold uppercase p-2 rounded rounded-l-none tracking-wide text-sm px-4">Search</button>
+
+			                </form>
+
+
+			                	<span class="text-grey-dark text-md font-semibold mb-6 tracking-wide">{{ $wikigroup }}</span>
+
 						<?php $articleChunks = $articles->chunk(2); ?>
 
 						@foreach($articleChunks as $articlesList)

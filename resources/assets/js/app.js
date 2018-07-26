@@ -72,6 +72,11 @@ const app = new Vue({
 		  },
 		  hideModal () {
 		    this.$modal.hide(name);
+		  },
+
+		  openUrl(url)
+		  {
+		  	window.location = url;
 		  }
 	}
 });

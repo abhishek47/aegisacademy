@@ -7,6 +7,11 @@ use App\Models\ProblemQuestion;
 
 class ProblemQuestionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function getQuestion(ProblemQuestion $question)
     {
         return response(['body' => $question->question], 200);

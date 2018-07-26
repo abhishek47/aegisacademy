@@ -39,7 +39,7 @@
           </div>
 
           <div class="flex items-center justify-between">
-            <span class="text-grey-dark tracking-wide">{{ likesString }}</span>
+            <span class="text-grey-dark tracking-wide" v-html="likesString"></span>
 
             <div>
               <a v-if="isLiked" href="" @click.prevent="unlikeReply" class="no-underline text-sm hover:text-brand text-grey-dark font-semibold"><i class="fa fa-thumbs-down"></i> Unlike</a>

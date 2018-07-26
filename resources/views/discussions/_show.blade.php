@@ -1,7 +1,7 @@
 <div class="flex mt-8">
       <img class="rounded-full" src="/img/user.png" style="width: 45px;height: 45px;">
       <div class="flex flex-col ml-4 w-full">
-            <a href="/discussions/show" class="no-underline">
+            <a href="#" class="no-underline">
               <h4 class="text-xl text-blue-dark font-semibold">
               {{ $discussion->title }}
               </h4>

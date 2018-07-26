@@ -51,6 +51,7 @@ Route::post('/problem-question/{question}/solutions', 'ProblemQuestionSolutionsC
 
 
 Route::get('/discussions', 'DiscussionsController@index');
+Route::get('/discussions/filter:{filter}', 'DiscussionsController@index');
 Route::post('/discussions', 'DiscussionsController@store');
 Route::get('/discussions/{discussion}', 'DiscussionsController@show');
 Route::put('/discussions/{discussion}', 'DiscussionsController@update');
@@ -65,5 +66,12 @@ Route::post('/discussions/replies/{reply}/like', 'ThreadRepliesController@like')
 Route::post('/discussions/replies/{reply}/dislike', 'ThreadRepliesController@dislike');
 
 Route::post('/discussions/replies/{reply}/best', 'ThreadRepliesController@best');
+
+
+Route::get('/practice', 'PracticeController@index');
+Route::get('/practice/{subject}/', 'PracticeController@subject');
+Route::get('/practice/{subject}/topic:{topic}', 'PracticeController@topic');
+Route::get('/practice/{subject}/topic:{topic}/problem:{problem}', 'PracticeController@problem');
+
 
 

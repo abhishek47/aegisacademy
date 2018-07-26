@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ThreadRepliesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function store(Discussion $discussion)
     {

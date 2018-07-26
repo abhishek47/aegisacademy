@@ -19,6 +19,10 @@ Route::group([
 
 	CRUD::resource('wikis', 'WikiCrudController');
 	CRUD::resource('wiki_categories', 'WikicategoryCrudController');
+
+    CRUD::resource('subjects', 'SubjectCrudController');
+    CRUD::resource('topics', 'TopicCrudController');
+
 	CRUD::resource('quizzes', 'QuizCrudController');
 
 	CRUD::resource('quiz_questions', 'QuizQuestionCrudController')->with(function(){
