@@ -49,7 +49,7 @@ class WikisController extends Controller
     {
         $wiki = Wiki::where('slug', $slug)->first();
 
-        return view('wikis.show2', compact('wiki'));
+        return view('wikis.show', compact('wiki'));
     }
 
     /**
