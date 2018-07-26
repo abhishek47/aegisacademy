@@ -12,12 +12,18 @@
               <a href="#" @click.prevent="editing = true" v-if="reply.is_mine" class="no-underline border-grey border-l pl-3 border-r-0 border-y-0 text-sm hover:underline  text-blue-dark font-normal tracking-wide ml-4" >Edit</a>
             </div>
 
+
+
             <div v-if="ownedThread" class="flex items-center">
             <button v-if="isBest" class="bg-green hover:bg-green-dark ml-2 p-2 px-4 shadow text-xs tracking-wide pointer-events-none rounded-lg text-white uppercase font-semibold">
               <i class="fa fa-star"></i> Best Answer</button>
 
             <button @click="markBest" v-else class="bg-transparent border-2 border-grey-darkest hover:bg-grey-lighter ml-2 p-2 px-4 text-xs tracking-wide rounded text-grey-darker uppercase font-semibold">Best Answer</button>
             </div>
+
+             <button v-if="isBest" class="bg-green hover:bg-green-dark ml-2 p-2 px-4 shadow text-xs tracking-wide pointer-events-none rounded-lg text-white uppercase font-semibold">
+              <i class="fa fa-star"></i> Best Answer</button>
+
           </div>
           <div class="mt-6 mb-8 pb-6 text-lg text-grey-darker leading-normal">
              <div v-if="editing" >

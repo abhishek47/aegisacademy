@@ -65339,6 +65339,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['replyData', 'ownedThread'],
@@ -65493,6 +65499,20 @@ var render = function() {
                         [_vm._v("Best Answer")]
                       )
                 ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.isBest
+              ? _c(
+                  "button",
+                  {
+                    staticClass:
+                      "bg-green hover:bg-green-dark ml-2 p-2 px-4 shadow text-xs tracking-wide pointer-events-none rounded-lg text-white uppercase font-semibold"
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-star" }),
+                    _vm._v(" Best Answer")
+                  ]
+                )
               : _vm._e()
           ]),
           _vm._v(" "),
