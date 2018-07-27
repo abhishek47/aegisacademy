@@ -29,7 +29,7 @@ class Problem extends Model
 
     public function topic()
     {
-        return $this->belongsTo(Subject::class);
+        return $this->belongsTo(Topic::class);
     }
 
     public function getLevelAttribute($value)

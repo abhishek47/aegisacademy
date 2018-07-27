@@ -163,3 +163,4 @@ button:focus { outline: none; }
     to {transform:rotate(360deg);}
 }
 
+.chapter-item:before {position: absolute; border: 1px solid #999; width: 0; height: 50px; display: block; content: ''; left: 50%; z-index: 1; top: -54px; margin-left: -1px;}

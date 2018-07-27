@@ -7,8 +7,15 @@
           @include('practice._sidebar')
           <div class="w-3/4 p-6 pl-8">
 
+               <span class="text-blue-dark text-sm font-semibold tracking-wide">
+                <a href="/practice/{{ $subject->slug }}" class="no-underline text-blue-dark hover:text-brand">
+                 {{ $subject->name }}
+                </a>
 
-                <form class="flex w-full mx-auto bg-white shadow-md rounded border-2 border-grey mb-6">
+                <i class="fa fa-chevron-right text-grey-dark"></i>  <span class="text-grey-darker">{{ $topic->name }}</span>
+              </span>
+
+                <form class="flex w-full mx-auto bg-white shadow-md rounded border-2 border-grey mt-4 mb-6">
 
                       <i class="fa fa-search text-xl ml-3" style="color: #8795a185;margin-top: 10px;"></i>
                       <input type="text" class="w-full p-2 pt-1 mt-1 text-grey-dark" value="{{ request('query') }}" autocomplete="off" placeholder="Type something..." name="query" style="font-size: 20px;">

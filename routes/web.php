@@ -73,5 +73,9 @@ Route::get('/practice/{subject}/', 'PracticeController@subject');
 Route::get('/practice/{subject}/topic:{topic}', 'PracticeController@topic');
 Route::get('/practice/{subject}/topic:{topic}/problem:{problem}', 'PracticeController@problem');
 
+Route::get('/books', 'BooksController@index');
+Route::get('/books/{subject}', 'BooksController@subject');
+Route::get('/books/{subject}/{slug}', 'BooksController@show');
+
 
 

@@ -5,28 +5,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Subject extends Model
+class Book extends Model
 {
     use CrudTrait;
 
-    protected $table = 'subjects';
-    protected $fillable = ['name', 'icon', 'slug'];
+    protected $table = 'books';
+    protected $fillable = ['title', 'description', 'subject_id', 'topic_id', 'image'];
 
-    public function topics()
+    public function subject()
     {
-        return $this->hasMany(Topic::class)->orderBy('name');
+        return $this->belongsTo(Subject::class);
     }
 
-    public function books()
+    public function topic()
     {
-        return $this->hasMany(Book::class);
+        return $this->belongsTo(Topic::class);
     }
 
-    public function setIconAttribute($value)
+    public function setImageAttribute($value)
     {
-        $attribute_name = "icon";
+        $attribute_name = "image";
         $disk = "public";
-        $destination_path = "uploads/subjects/icons";
+        $destination_path = "uploads/books/posters";
 
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
     }
@@ -84,4 +84,5 @@ class Subject extends Model
             $this->attributes[$attribute_name] = 'storage/' . $file_path;
         }
     }
+
 }

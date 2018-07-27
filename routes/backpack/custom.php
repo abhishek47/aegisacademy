@@ -23,7 +23,11 @@ Route::group([
     CRUD::resource('subjects', 'SubjectCrudController');
     CRUD::resource('topics', 'TopicCrudController');
 
+    CRUD::resource('books', 'BookCrudController');
+
+
 	CRUD::resource('quizzes', 'QuizCrudController');
+
 
 	CRUD::resource('quiz_questions', 'QuizQuestionCrudController')->with(function(){
     // add extra routes to this resource
