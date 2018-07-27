@@ -22,7 +22,7 @@ class BookChapterQuestionsController extends Controller
     {
         auth()->user()->solvedBookQuestions()->attach($question, ['answer' => request('answer'), 'is_correct' => request('is_correct')]);
 
-        return response(['success'], 200);
+        return response(['book_success'], 200);
     }
 
 
