@@ -78,6 +78,7 @@ Route::get('/books/{subject}', 'BooksController@subject');
 Route::get('/books/{subject}/{slug}', 'BooksController@show');
 Route::get('/books/{subject}/{slug}/chapter:{chapter}', 'BooksController@chapter');
 Route::get('/book-chapter-question/{question}/question', 'BookChapterQuestionsController@getQuestion');
+Route::post('/book-chapter-question/{question}/answer', 'ProblemQuestionsController@answer');
 
 Route::get('/book-chapter-question/{question}/solutions', 'BookChapterQuestionsController@getSolutions');
 Route::delete('/book-chapter-question/solution/{solution}', 'BookChapterQuestionSolutionController@destroy');

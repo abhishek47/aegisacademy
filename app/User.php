@@ -71,6 +71,11 @@ class User extends Authenticatable
         return $this->belongsToMany(ProblemQuestion::class, 'user_problem_questions')->withTimeStamps()->withPivot(['answer', 'is_correct']);
     }
 
+     public function solvedBookQuestions()
+    {
+        return $this->belongsToMany(BookChapterQuestion::class, 'user_book_questions')->withTimeStamps()->withPivot(['answer', 'is_correct']);
+    }
+
     public function hasRead(Wiki $wiki)
     {
         return $this->readWikis->contains($wiki);
