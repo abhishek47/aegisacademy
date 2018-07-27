@@ -48,9 +48,23 @@
 
 
                     <div>
+
+                       @if($book->is_complete)
                      <a href="/books/{{$book->subject->slug}}/{{$book->slug}}/" class="no-underline btn flex bg-orange hover:bg-orande-dark mt-6 text-white font-semibold  p-2 rounded  tracking-wide text-sm px-4">
-                            Read Book <i class="fa fa-arrow-right ml-2" style="margin-top: 1px;"></i>
+                            <i class="fa fa-check-circle mr-2" style="margin-top: 1px;"></i> Completed
                          </a>
+                         @elseif($book->is_ongoing)
+
+                            <a href="/books/{{$book->subject->slug}}/{{$book->slug}}/" class="no-underline btn flex bg-orange hover:bg-orande-dark mt-6 text-white font-semibold  p-2 rounded  tracking-wide text-sm px-4">
+                            <i class="fa fa-play mr-2" style="margin-top: 1px;"></i> Continue
+                         </a>
+
+                         @else
+                           <a href="/books/{{$book->subject->slug}}/{{$book->slug}}/" class="no-underline btn flex bg-orange hover:bg-orande-dark mt-6 text-white font-semibold  p-2 rounded  tracking-wide text-sm px-4">
+                           Start Solving <i class="fa fa-arrow-right ml-2" style="margin-top: 1px;"></i>
+                         </a>
+
+                         @endif
                          </div>
 
                   </div>
