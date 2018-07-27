@@ -34,24 +34,6 @@ class BookChapter extends Model
         return $this->book->title;
     }
 
-     public function getIsOngoingAttribute()
-    {
-        foreach ($this->questions()->pluck('id') as $key => $id) {
-            if(auth()->user()->solvedBookQuestions->contains($id)){
-              return true;
-            }
-        }
-        return false;
-    }
 
-    public function getIsCompleteAttribute()
-    {
-        foreach ($this->questions()->pluck('id') as $key => $id) {
-          if(!auth()->user()->solvedBookQuestions->contains($id)){
-            return false;
-          }
-        }
-        return true;
-    }
 
 }

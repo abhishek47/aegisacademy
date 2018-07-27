@@ -44,9 +44,19 @@
 
                     @if(isset($startChapter))
                     <div>
+                     @if($book->is_complete)
                      <a href="/books/{{$book->subject->slug}}/{{$book->slug}}/chapter:{{$startChapter->id}}" class="no-underline btn flex bg-orange hover:bg-orande-dark mt-8 text-white font-semibold uppercase p-3 rounded  tracking-wide text-sm px-8">
-                           <i class="fa fa-eye mr-3"></i>  Begin Reading
+                           <i class="fa fa-check-circle mr-3"></i>  Completed
                          </a>
+                         @elseif($book->is_ongoing)
+                             <a href="/books/{{$book->subject->slug}}/{{$book->slug}}/chapter:{{$startChapter->id}}" class="no-underline btn flex bg-orange hover:bg-orande-dark mt-8 text-white font-semibold uppercase p-3 rounded  tracking-wide text-sm px-8">
+                           <i class="fa fa-play mr-3"></i>  Continue
+                         </a>
+                         @else
+                           <a href="/books/{{$book->subject->slug}}/{{$book->slug}}/chapter:{{$startChapter->id}}" class="no-underline btn flex bg-orange hover:bg-orande-dark mt-8 text-white font-semibold uppercase p-3 rounded  tracking-wide text-sm px-8">
+                            Start Solving <i class="fa fa-arrow-right ml-3"></i>
+                         </a>
+                         @endif
                          </div>
 
                   </div>

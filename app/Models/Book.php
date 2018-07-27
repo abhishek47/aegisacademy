@@ -41,6 +41,26 @@ class Book extends Model
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
     }
 
+     public function getIsOngoingAttribute()
+    {
+        foreach ($this->questions()->pluck('id') as $key => $id) {
+            if(auth()->user()->solvedBookQuestions->contains($id)){
+              return true;
+            }
+        }
+        return false;
+    }
+
+    public function getIsCompleteAttribute()
+    {
+        foreach ($this->questions()->pluck('id') as $key => $id) {
+          if(!auth()->user()->solvedBookQuestions->contains($id)){
+            return false;
+          }
+        }
+        return true;
+    }
+
     /*
     }
     |--------------------------------------------------------------------------
