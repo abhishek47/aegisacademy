@@ -37,12 +37,12 @@ class BookChapterQuestion extends Model
 
     public function getUserAnswerAttribute()
     {
-        return auth()->user()->solvedProblemQuestions->contains($this) ? auth()->user()->solvedBookQuestions()->where('book_chapter_question_id', $this->id)->first()->pivot->answer  : null;
+        return auth()->user()->solvedBookQuestions->contains($this) ? auth()->user()->solvedBookQuestions()->where('book_chapter_question_id', $this->id)->first()->pivot->answer  : null;
     }
 
     public function getIsSolvedCorrectAttribute()
     {
-        return auth()->user()->solvedProblemQuestions->contains($this) ? auth()->user()->solvedProblemQuestions()->where('book_chapter_question_id', $this->id)->first()->pivot->is_correct  : null;
+        return auth()->user()->solvedBookQuestions->contains($this) ? auth()->user()->solvedProblemQuestions()->where('book_chapter_question_id', $this->id)->first()->pivot->is_correct  : null;
     }
 
     public function getSolvingsCountAttribute()
