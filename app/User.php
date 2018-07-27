@@ -8,6 +8,7 @@ use App\Models\ThreadReply;
 use App\Models\ProblemQuestion;
 use App\Models\ProblemQuestionSolution;
 use Illuminate\Notifications\Notifiable;
+use App\Models\BookChapterQuestion;
 use App\Models\BookChapterQuestionSolution;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
