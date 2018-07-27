@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Problem;
 use App\Models\Subject;
+use App\Models\BookChapter;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -53,6 +54,18 @@ class BooksController extends Controller
         $subject = Subject::where('slug', $subjectSlug)->first();
         $book = Book::where('slug', $slug)->first();
         $problem = Problem::first();
-        return view('books.show', compact('subject', 'book', 'problem'));
+        $startChapter = $book->chapters()->first();
+        return view('books.show', compact('subject', 'book', 'startChapter'));
+        //return redirect('/books/' . $subject->name . '/' . $book->slug . '/chapter:' . $currentChapter->id);
+    }
+
+
+    public function chapter($subjectSlug, $slug, BookChapter $chapter)
+    {
+         $subject = Subject::where('slug', $subjectSlug)->first();
+         $book = Book::where('slug', $slug)->first();
+         $problem = Problem::first();
+         $currentChapter = $chapter;
+         return view('books.chapter', compact('subject', 'book', 'problem', 'currentChapter'));
     }
 }

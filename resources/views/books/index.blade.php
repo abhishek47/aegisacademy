@@ -22,21 +22,39 @@
 
                 <span class="text-grey-dark text-lg font-semibold tracking-wide">{!! isset($bookgroup) ? $bookgroup : 'All Books'!!}</span>
 
-                <div class="mt-8">
+                <div class="mt-1 mb-4">
 
-                     <div class="flex flex-wrap">
+                     <div class="flex">
                          @foreach($books as $book)
-                          <div class="w-1/3 mr-2">
-                            <a href="/books/{{$book->subject->slug}}/{{$book->slug}}" class="no-underline w-full flex flex-col rounded bg-white shadow-md text-black">
-                                <img src="{{ isset($book->image) ? url($book->image) : '/img/poster.jpg' }}" class="w-full" style="height: 220px">
-                                <div class="mt-0 p-2">
-                                     <h2 class="text-lg leading-normal tracking-wide">
-                                        {{ $book->title }}
-                                     </h2>
-                                </div>
+                         <div class="w-1/2 pr-3">
+                           <div class="flex items-start flex-col shadow-md rounded bg-white mt-8 p-4 border-4 border-brand border-l-0 border-b-0 border-r-0">
 
-                            </a>
-                          </div>
+                    <h2 class="text-lg">{{ str_limit($book->title, 33) }}</h2>
+
+                    <div class="flex mt-3">
+                    <img src="/img/author.png" class="mr-3" style="width: 22px;height: 100%;">
+                      <p class="mt-1 font-semibold tracking-wide text-sm text-brand">{{ $book->author }}</p>
+                     </div>
+
+
+
+                    <div class="flex mt-4">
+                      <img src="/img/chapters.png" class="mr-3 mt-1" style="width: 22px;height: 100%;">
+                      <p class="mt-2 font-semibold tracking-wide text-brand">{{ $book->chapters->count() }} Chapters</p>
+
+                      <img src="/img/questions.png" class="mr-3 ml-8 mt-1" style="width: 25px;height: 100%;">
+                      <p class="mt-2 font-semibold tracking-wide text-brand">{{ $book->questions->count() }} Questions</p>
+                    </div>
+
+
+                    <div>
+                     <a href="/books/{{$book->subject->slug}}/{{$book->slug}}/" class="no-underline btn flex bg-orange hover:bg-orande-dark mt-6 text-white font-semibold  p-2 rounded  tracking-wide text-sm px-4">
+                            Read Book <i class="fa fa-arrow-right ml-2" style="margin-top: 1px;"></i>
+                         </a>
+                         </div>
+
+                  </div>
+                  </div>
                          @endforeach
                      </div>
 

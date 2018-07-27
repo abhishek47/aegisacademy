@@ -52,9 +52,11 @@ class BookCrudController extends CrudController
                 'upload' => true,// if you store files in the /public folder, please ommit this; if you store them in /storage or S3, please specify it;
             ],
 
-            ['lable' => 'Book Title', 'name' => 'title'],
+            ['label' => 'Book Title', 'name' => 'title'],
 
-            ['lable' => 'Description', 'name' => 'description', 'type' => 'textarea'],
+            ['label' => 'Description', 'name' => 'description', 'type' => 'textarea'],
+
+            ['label' => 'Author/Publication', 'name' => 'author'],
 
              [  // Select2
                'label' => "Subject",

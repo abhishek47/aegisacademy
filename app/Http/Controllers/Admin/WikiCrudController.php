@@ -35,8 +35,8 @@ class WikiCrudController extends CrudController
         $this->crud->addColumns(['title', 'slug', 'views']);
 
         $this->crud->addFields([
-            ['lable' => 'Title', 'name' => 'title'],
-            ['lable' => 'Body', 'name' => 'body', 'type' => 'latex'],
+            ['label' => 'Title', 'name' => 'title'],
+            ['label' => 'Body', 'name' => 'body', 'type' => 'latex'],
             [  // Select2
                'label' => "Category",
                'type' => 'select2',
@@ -46,7 +46,7 @@ class WikiCrudController extends CrudController
                'model' => "App\Models\WikiCategory", // foreign key model
                'allows_null' => false
             ],
-            ['lable' => 'Published to Users', 'name' => 'published', 'type' => 'checkbox'],
+            ['label' => 'Published to Users', 'name' => 'published', 'type' => 'checkbox'],
         ]);
 
         // ------ CRUD COLUMNS

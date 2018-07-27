@@ -10,11 +10,21 @@ class Book extends Model
     use CrudTrait;
 
     protected $table = 'books';
-    protected $fillable = ['title', 'description', 'subject_id', 'topic_id', 'image'];
+    protected $fillable = ['title', 'description', 'subject_id', 'topic_id', 'image', 'author'];
 
     public function subject()
     {
         return $this->belongsTo(Subject::class);
+    }
+
+    public function chapters()
+    {
+        return $this->hasMany(BookChapter::class);
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(BookChapterQuestion::class);
     }
 
     public function topic()

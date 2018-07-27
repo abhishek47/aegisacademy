@@ -13,8 +13,7 @@
                             </a>
 
                               <a  v-for="(question,index) in questions" class="shadow-md border-t border-b border-l border-brand-light px-4 py-2  hover:text-white no-underline"
-                                  :class="question.id == currentQuestion.id ? 'bg-brand hover:bg-brand-light text-white' : question.user_answer == null ? 'bg-white hover:bg-brand-dark text-brand' :
-                                    'bg-grey-darkest text-white'"
+                                  :class="question.id == currentQuestion.id ? 'bg-brand hover:bg-brand-light text-white' : 'bg-white hover:bg-brand-dark text-brand'"
                                   href="#" @click.prevent="changeQuestion(index)" v-text="index+1"></a>
 
 
@@ -29,39 +28,30 @@
                             </a>
                         </div>
 
-                   <div class="flex">
-                    <div class="w-3/5">
+                   <div class="flex mb-6">
+                    <div class="w-full">
 
 
-                    <span class="problem-question block text-md tracking-wide font-normal leading-normal" style="min-height: 300px;">
-                        <platex ref="questionBody" :sourceUrl="'/problem-question/'+currentQuestion.id+'/question'"></platex>
+                    <span class="problem-question block text-md tracking-wide font-normal leading-normal" >
+                        <platex ref="questionBody" :sourceUrl="'/book-chapter-question/'+currentQuestion.id+'/question'"></platex>
                     </span>
 
 
-                    <div class="flex mt-6">
-                        <img class="mr-4" src="/img/studentsicon.png" style="width: 70px;height: 100%;">
-                        <div class="mt-3">
-                            <p class="text-lg text-blue font-normal mb-2"><b class="font-semibold" v-text="currentQuestion.solvings_count"></b> people solved this.</p>
-                             <p class="text-lg text-blue mt-1 font-normal"><b class="font-semibold" v-text="currentQuestion.solutions_count"></b> comments in discussion.</p>
-                        </div>
-                    </div>
+
 
 
                     </div>
-                    <div class="flex flex-col w-2/5 p-3 pl-8 items-stretch justify-center">
-                        <ul class="block w-4/5 list-reset">
-                            <li v-for="(option,index) in currentQuestion.options"   class="block w-full">
-                                <div v-if="currentQuestion.user_answer == null" @click="chooseOption(index)"  @mouseover="hoveredIndex = index" @mouseleave="hoveredIndex = null" class="flex w-full block text-lg no-underline hover:bg-grey-lightest hover:rounded-2 p-2 tracking-wide cursor-pointer" :class="selectedIndex == index ? 'bg-grey-lightest' : ''">
-                                    <span class="border-2 border-grey-darker p-2 mr-4 bg-grey-lighter" style="width: 35px;height: 35px;border-radius: 100%;">
-                                        <span v-if="hoveredIndex == index || selectedIndex == index" class="rounded-full h-6 w-6 bg-grey-darker absolute -mt-1 -ml-1"></span>
-                                    </span>
-                                    <span class="mt-2 text-black" v-text="option.text"></span>
-                                </div>
-                                <div v-else class="flex w-full block text-lg no-underline p-2 tracking-wide cursor-pointer"
+
+                </div>
+
+                <div class="flex flex-col w-full p-3 pl-0 items-stretch justify-space-around">
+                        <ul class="block w-full list-reset flex justify-space-around mb-4 mt-4">
+                            <li v-for="(option,index) in currentQuestion.options"   class="block w-full pr-8 ">
+                                <div class="flex w-full block text-lg no-underline p-2 tracking-wide cursor-pointer"
                                     :class="currentQuestion.answer == index+1 ? 'bg-white border border-grey shadow' : ''">
 
                                     <span class="border-2 border-grey-darker p-2 mr-4 bg-grey-lighter" style="width: 35px;height: 35px;border-radius: 100%;">
-                                        <span v-if="currentQuestion.user_answer == index+1" class="rounded-full h-6 w-6 bg-grey-darker absolute -mt-1 -ml-1"></span>
+
                                     </span>
                                     <span class="mt-2 text-black" :class="currentQuestion.answer != index+1  ? 'text-grey-dark' : ''" v-text="option.text"></span>
                                     <img v-if="currentQuestion.answer == index+1" src="/img/thisnoe.png" style="width: 40px;height: 100%;" class="mt-1 ml-3"/>
@@ -70,6 +60,13 @@
 
 
                         </ul>
+
+                         <div class="flex mt-6">
+                        <img class="mr-4" src="/img/studentsicon.png" style="width: 50px;height: 100%;">
+                        <div class="mt-3">
+                             <p class="text-lg text-blue mt-1 font-normal"><b class="font-semibold" v-text="currentQuestion.solutions_count"></b> comments in discussion.</p>
+                        </div>
+                    </div>
 
 
 
@@ -89,15 +86,14 @@
                         </button>
 
                     </div>
-                </div>
 
-                <problem-solutions v-if="showSolutions" :solution="currentQuestion.solution" :question-id="currentQuestion.id"></problem-solutions>
+                <chapter-solutions v-if="showSolutions" :solution="currentQuestion.solution" :question-id="currentQuestion.id"></chapter-solutions>
                 </div>
 </template>
 
 <script>
 
-    import ProblemSolutions from './ProblemSolutions.vue';
+    import BookChapterSolutions from './BookChapterSolutions.vue';
 
     export default {
         props: ['problemSet'],
@@ -115,7 +111,7 @@
         },
 
         components: {
-            'problem-solutions': ProblemSolutions
+            'chapter-solutions': BookChapterSolutions
         },
 
         created() {
@@ -128,20 +124,9 @@
 
         methods: {
             showSolution() {
-                if(this.currentQuestion.user_answer != null)
-                {
-                    this.showSolutions = !this.showSolutions;
-                } else {
-                     var answer = 0;
-                    var is_correct = 0;
 
-                    var self = this;
-                    axios.post('/problem-question/' + this.currentQuestion.id + '/answer', { answer: answer, is_correct: is_correct})
-                        .then(function(){
-                            self.currentQuestion.user_answer = answer;
-                            self.showSolutions = !self.showSolutions;
-                        });
-                }
+                    this.showSolutions = !this.showSolutions;
+
 
             },
             changeQuestion(index){
@@ -149,40 +134,15 @@
                 {
                     this.selectedIndex = null;
                     this.currentQuestion = this.questions[index];
-                    this.$refs.questionBody.fetchBody('/problem-question/'+this.currentQuestion.id+'/question');
+                    this.$refs.questionBody.fetchBody('/book-chapter-question/'+this.currentQuestion.id+'/question');
                     this.questionIndex = index;
                     this.showSolutions = false;
                 }
 
             },
 
-            chooseOption(index)
-            {
-                if(this.currentQuestion.user_answer == null)
-                {
-                      if(this.selectedIndex == index)
-                        {
-                             this.selectedIndex = null;
-                        } else {
-                             this.selectedIndex = index;
-                        }
-                }
 
 
-            },
-
-            submitAnswer()
-            {
-
-                var answer = this.selectedIndex + 1;
-                var is_correct = answer == this.currentQuestion.answer ? 1 : 0;
-
-                var self = this;
-                axios.post('/problem-question/' + this.currentQuestion.id + '/answer', { answer: answer, is_correct: is_correct})
-                    .then(function(){
-                        self.currentQuestion.user_answer = answer;
-                    });
-            }
         }
     }
 </script>

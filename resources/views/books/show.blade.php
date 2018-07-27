@@ -17,19 +17,40 @@
                 <a href="/books/{{ $subject->slug }}" class="no-underline text-blue-dark hover:text-brand">
                  {{ $subject->name }}
                 </a>
-                 <i class="fa fa-chevron-right text-grey-dark"></i>
-                <a href="/books/{{ $subject->slug }}/{{$book->slug}}" class="no-underline text-blue-dark hover:text-brand">
-                {{ $book->title }}
-                </a>
                 <i class="fa fa-chevron-right text-grey-dark"></i>  <span class="text-grey-darker">
-                Chapter 1</span>
+                {{ $book->title }}</span>
               </span>
 
-                <div class="flex flex-col shadow-md rounded bg-white mt-8 p-4 border-4 border-brand border-l-0 border-b-0 border-r-0">
+                <div class="flex items-start flex-col shadow-md rounded bg-white mt-8 p-4 border-4 border-brand border-l-0 border-b-0 border-r-0">
 
+                    <h2>{{ $book->title }}</h2>
 
-                <book-chapter problem-set="{{ $problem }}"></book-chapter>
-            </div>
+                    <div class="flex mt-3">
+                    <img src="/img/author.png" class="mr-3" style="width: 22px;height: 100%;">
+                      <p class="mt-1 font-semibold tracking-wide text-sm text-brand">{{ $book->author }}</p>
+                     </div>
+
+                    <p class="leading-normal tracking-wide text-lg mt-6">
+                      {{ $book->description }}
+                    </p>
+
+                    <div class="flex mt-6">
+                      <img src="/img/chapters.png" class="mr-3 mt-1" style="width: 22px;height: 100%;">
+                      <p class="mt-2 font-semibold tracking-wide text-brand">{{ $book->chapters->count() }} Chapters</p>
+
+                      <img src="/img/questions.png" class="mr-3 ml-8 mt-1" style="width: 25px;height: 100%;">
+                      <p class="mt-2 font-semibold tracking-wide text-brand">{{ $book->questions->count() }} Questions</p>
+                    </div>
+
+                    @if(isset($startChapter))
+                    <div>
+                     <a href="/books/{{$book->subject->slug}}/{{$book->slug}}/chapter:{{$startChapter->id}}" class="no-underline btn flex bg-orange hover:bg-orande-dark mt-8 text-white font-semibold uppercase p-3 rounded  tracking-wide text-sm px-8">
+                           <i class="fa fa-eye mr-3"></i>  Begin Reading
+                         </a>
+                         </div>
+
+                  </div>
+                  @endif
 
           </div>
       </div>

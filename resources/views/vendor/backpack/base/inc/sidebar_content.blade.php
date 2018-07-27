@@ -8,6 +8,10 @@
 <li><a href="{{ backpack_url('problem-questions') }}"><i class='fa fa-question'></i> <span>Problem Questions</span></a></li>
 
 <li><a href="{{ backpack_url('books') }}"><i class='fa fa-book'></i> <span>Books</span></a></li>
+<li><a href="{{ backpack_url('book-chapters') }}"><i class='fa fa-book'></i> <span>Book Chapters</span></a></li>
+<li><a href="{{ backpack_url('book-chapter-questions') }}"><i class='fa fa-question'></i> <span>Book Chapters Questions</span></a></li>
+
+
 
 
 

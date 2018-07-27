@@ -76,6 +76,15 @@ Route::get('/practice/{subject}/topic:{topic}/problem:{problem}', 'PracticeContr
 Route::get('/books', 'BooksController@index');
 Route::get('/books/{subject}', 'BooksController@subject');
 Route::get('/books/{subject}/{slug}', 'BooksController@show');
+Route::get('/books/{subject}/{slug}/chapter:{chapter}', 'BooksController@chapter');
+Route::get('/book-chapter-question/{question}/question', 'BookChapterQuestionsController@getQuestion');
+
+Route::get('/book-chapter-question/{question}/solutions', 'BookChapterQuestionsController@getSolutions');
+Route::delete('/book-chapter-question/solution/{solution}', 'BookChapterQuestionSolutionController@destroy');
+Route::put('/book-chapter-question/solution/{solution}', 'BookChapterQuestionSolutionController@update');
+Route::post('/book-chapter-question/solution/{solution}/upvote', 'BookChapterQuestionSolutionController@upvote');
+Route::post('/book-chapter-question/solution/{solution}/downvote', 'BookChapterQuestionSolutionController@downvote');
+Route::post('/book-chapter-question/{question}/solutions', 'BookChapterQuestionSolutionController@store');
 
 
 

@@ -24,6 +24,8 @@ Route::group([
     CRUD::resource('topics', 'TopicCrudController');
 
     CRUD::resource('books', 'BookCrudController');
+    CRUD::resource('book-chapters', 'BookChapterCrudController');
+    CRUD::resource('book-chapter-questions', 'BookChapterQuestionCrudController');
 
 
 	CRUD::resource('quizzes', 'QuizCrudController');

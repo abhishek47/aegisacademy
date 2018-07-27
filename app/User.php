@@ -8,6 +8,7 @@ use App\Models\ThreadReply;
 use App\Models\ProblemQuestion;
 use App\Models\ProblemQuestionSolution;
 use Illuminate\Notifications\Notifiable;
+use App\Models\BookChapterQuestionSolution;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -57,6 +58,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(ProblemQuestionSolution::class, 'pquestion_solution_upvotes');
     }
+
+    public function chapterSolutionUpvotes()
+    {
+        return $this->belongsToMany(BookChapterQuestionSolution::class, 'cquestion_solution_upvotes', 'user_id', 'cquestion_solution_id');
+    }
+
+
 
     public function solvedProblemQuestions()
     {
