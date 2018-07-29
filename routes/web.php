@@ -88,4 +88,6 @@ Route::post('/book-chapter-question/solution/{solution}/downvote', 'BookChapterQ
 Route::post('/book-chapter-question/{question}/solutions', 'BookChapterQuestionSolutionController@store');
 
 
+Route::get('/profile', 'ProfileController@index');
+Route::get('/profile/acheivements', 'ProfileController@acheivements');
 
