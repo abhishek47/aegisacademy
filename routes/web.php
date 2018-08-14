@@ -87,4 +87,10 @@ Route::post('/book-chapter-question/solution/{solution}/downvote', 'BookChapterQ
 Route::post('/book-chapter-question/{question}/solutions', 'BookChapterQuestionSolutionController@store');
 
 
+Route::get('/courses', 'CoursesController@index');
+Route::get('/courses/subject:{subjectSlug}', 'CoursesController@index');
+
+Route::get('/courses/{courseSlug}', 'CoursesController@show');
+
+
 

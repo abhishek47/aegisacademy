@@ -5,33 +5,54 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Subject extends Model
+class Course extends Model
 {
     use CrudTrait;
 
-    protected $table = 'subjects';
-    protected $fillable = ['name', 'icon', 'slug'];
+    /*
+    |--------------------------------------------------------------------------
+    | GLOBAL VARIABLES
+    |--------------------------------------------------------------------------
+    */
 
-    public function topics()
+    protected $table = 'courses';
+    // protected $primaryKey = 'id';
+    // public $timestamps = false;
+    // protected $guarded = ['id'];
+    protected $fillable = ['title', 'description', 'subject_id', 'topic_id', 'banner', 'color_id', 'level'];
+
+    protected $levels = ['Beginner', 'Intermidiate', 'Advance'];
+
+     public function chapters()
     {
-        return $this->hasMany(Topic::class)->orderBy('name');
+        return $this->hasMany(CourseChapter::class)->orderBy('sequence', 'ASC');
     }
 
-    public function books()
+    public function color()
+   {
+        return $this->belongsTo(Color::class, 'color_id');
+   }
+
+    public function subject()
     {
-        return $this->hasMany(Book::class);
+        return $this->belongsTo(Subject::class);
     }
 
-    public function courses()
+    public function topic()
     {
-        return $this->hasMany(Course::class);
+        return $this->belongsTo(Topic::class);
     }
 
-    public function setIconAttribute($value)
+    public function getLevelAttribute($value)
     {
-        $attribute_name = "icon";
+        return $this->levels[$value];
+    }
+
+    public function setBannerAttribute($value)
+    {
+        $attribute_name = "banner";
         $disk = "public";
-        $destination_path = "uploads/subjects/icons";
+        $destination_path = "uploads/courses/banners";
 
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
     }

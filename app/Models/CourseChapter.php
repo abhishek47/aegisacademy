@@ -5,33 +5,34 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Subject extends Model
+class CourseChapter extends Model
 {
     use CrudTrait;
 
-    protected $table = 'subjects';
-    protected $fillable = ['name', 'icon', 'slug'];
+    /*
+    |--------------------------------------------------------------------------
+    | GLOBAL VARIABLES
+    |--------------------------------------------------------------------------
+    */
 
-    public function topics()
+    protected $table = 'course_chapters';
+    // protected $primaryKey = 'id';
+    // public $timestamps = false;
+    // protected $guarded = ['id'];
+    protected $fillable = ['title', 'description', 'course_id', 'sequence', 'banner', 'slug'];
+    // protected $hidden = [];
+    // protected $dates = [];
+
+    public function course()
     {
-        return $this->hasMany(Topic::class)->orderBy('name');
+        return $this->belongsTo(Course::class);
     }
 
-    public function books()
+   public function setBannerAttribute($value)
     {
-        return $this->hasMany(Book::class);
-    }
-
-    public function courses()
-    {
-        return $this->hasMany(Course::class);
-    }
-
-    public function setIconAttribute($value)
-    {
-        $attribute_name = "icon";
+        $attribute_name = "banner";
         $disk = "public";
-        $destination_path = "uploads/subjects/icons";
+        $destination_path = "uploads/courses/banners";
 
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
     }

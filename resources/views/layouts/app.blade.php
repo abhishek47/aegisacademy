@@ -77,7 +77,7 @@
                     <span class="mt-1 ml-2">Wiki</span>
                     </div>
                 </a>
-                <a href="#"
+                <a href="/courses"
                    class="{{ request()->is('courses*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
                    <div class="flex w-full justify-center">
                     <img class="" src="{{ asset('/img/courses-icon.png') }}" style="width: 25px;height: 100%;">
