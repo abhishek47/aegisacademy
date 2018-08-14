@@ -78,6 +78,7 @@ Route::get('/books/{subject}', 'BooksController@subject');
 Route::get('/books/{subject}/{slug}', 'BooksController@show');
 Route::get('/books/{subject}/{slug}/chapter:{chapter}', 'BooksController@chapter');
 Route::get('/book-chapter-question/{question}/question', 'BookChapterQuestionsController@getQuestion');
+Route::post('/book-chapter-question/{question}/answer', 'BookChapterQuestionsController@answer');
 
 Route::get('/book-chapter-question/{question}/solutions', 'BookChapterQuestionsController@getSolutions');
 Route::delete('/book-chapter-question/solution/{solution}', 'BookChapterQuestionSolutionController@destroy');
@@ -87,10 +88,15 @@ Route::post('/book-chapter-question/solution/{solution}/downvote', 'BookChapterQ
 Route::post('/book-chapter-question/{question}/solutions', 'BookChapterQuestionSolutionController@store');
 
 
+
 Route::get('/courses', 'CoursesController@index');
 Route::get('/courses/subject:{subjectSlug}', 'CoursesController@index');
 
 Route::get('/courses/{courseSlug}', 'CoursesController@show');
 
+
+
+Route::get('/profile', 'ProfileController@index');
+Route::get('/profile/acheivements', 'ProfileController@acheivements');
 
 

@@ -13,7 +13,8 @@
                             </a>
 
                               <a  v-for="(question,index) in questions" class="shadow-md border-t border-b border-l border-brand-light px-4 py-2  hover:text-white no-underline"
-                                  :class="question.id == currentQuestion.id ? 'bg-brand hover:bg-brand-light text-white' : 'bg-white hover:bg-brand-dark text-brand'"
+                                  :class="question.id == currentQuestion.id ? 'bg-brand hover:bg-brand-light text-white' : question.user_answer == null ? 'bg-white hover:bg-brand-dark text-brand' :
+                                    'bg-grey-darkest text-white'"
                                   href="#" @click.prevent="changeQuestion(index)" v-text="index+1"></a>
 
 
@@ -47,11 +48,17 @@
                 <div class="flex flex-col w-full p-3 pl-0 items-stretch justify-space-around">
                         <ul class="block w-full list-reset flex justify-space-around mb-4 mt-4">
                             <li v-for="(option,index) in currentQuestion.options"   class="block w-full pr-8 ">
-                                <div class="flex w-full block text-lg no-underline p-2 tracking-wide cursor-pointer"
+                                 <div v-if="currentQuestion.user_answer == null" @click="chooseOption(index)"  @mouseover="hoveredIndex = index" @mouseleave="hoveredIndex = null" class="flex w-full block text-lg no-underline hover:bg-grey-lightest hover:rounded-2 p-2 tracking-wide cursor-pointer" :class="selectedIndex == index ? 'bg-grey-lightest' : ''">
+                                    <span class="border-2 border-grey-darker p-2 mr-4 bg-grey-lighter" style="width: 35px;height: 35px;border-radius: 100%;">
+                                        <span v-if="hoveredIndex == index || selectedIndex == index" class="rounded-full h-6 w-6 bg-grey-darker absolute -mt-1 -ml-1"></span>
+                                    </span>
+                                    <span class="mt-2 text-black" v-text="option.text"></span>
+                                </div>
+                                <div v-else class="flex w-full block text-lg no-underline p-2 tracking-wide cursor-pointer"
                                     :class="currentQuestion.answer == index+1 ? 'bg-white border border-grey shadow' : ''">
 
                                     <span class="border-2 border-grey-darker p-2 mr-4 bg-grey-lighter" style="width: 35px;height: 35px;border-radius: 100%;">
-
+                                         <span v-if="currentQuestion.user_answer == index+1" class="rounded-full h-6 w-6 bg-grey-darker absolute -mt-1 -ml-1"></span>
                                     </span>
                                     <span class="mt-2 text-black" :class="currentQuestion.answer != index+1  ? 'text-grey-dark' : ''" v-text="option.text"></span>
                                     <img v-if="currentQuestion.answer == index+1" src="/img/thisnoe.png" style="width: 40px;height: 100%;" class="mt-1 ml-3"/>
@@ -61,18 +68,30 @@
 
                         </ul>
 
-                         <div class="flex mt-6">
-                        <img class="mr-4" src="/img/studentsicon.png" style="width: 50px;height: 100%;">
+                           <div class="flex mt-6">
+                        <img class="mr-4" src="/img/studentsicon.png" style="width: 70px;height: 100%;">
                         <div class="mt-3">
+                            <p class="text-lg text-blue font-normal mb-2"><b class="font-semibold" v-text="currentQuestion.solvings_count"></b> people solved this.</p>
                              <p class="text-lg text-blue mt-1 font-normal"><b class="font-semibold" v-text="currentQuestion.solutions_count"></b> comments in discussion.</p>
                         </div>
                     </div>
 
+                             <div class="answer-response" v-show="currentQuestion.user_answer != null">
+                            <h4 v-if="currentQuestion.user_answer != currentQuestion.answer && currentQuestion.user_answer != 0" class="font-normal tracking-wide text-xl ml-4 mt-2">You answered incorrect. <img class="ml-2 -mb-1" src="/img/thumb-down.png" style="width: 30px;"></h4>
+
+                            <h4 v-if="currentQuestion.user_answer == currentQuestion.answer" class="font-normal tracking-wide text-xl ml-4 mt-2">You answered correct. <img class="ml-2 -mb-1" src="/img/happy.png" style="width: 30px;"></h4>
+
+                            <h4 v-if="currentQuestion.user_answer == 0" class="font-normal tracking-wide text-xl ml-4 mt-2">You viewed the solution <img class="ml-2 -mb-1" src="/img/view.png" style="width: 30px;"></h4>
+                        </div>
+
+                        <button v-if="currentQuestion.user_answer == null" @click="submitAnswer()" class="rounded bg-orange hover:bg-orange-dark p-2 px-8 mt-6 text-md text-white font-semibold tracking-wide ml-4 mr-8"
+                            :class="selectedIndex == null ? 'pointer-events-none cursor-not-allowed bg-orange-lightest' : 'pointer-events-auto cursor-pointer'">
+                            Submit
+                        </button>
 
 
 
-
-                        <button v-if="questionIndex + 1 != questions.length" @click="changeQuestion(questionIndex+1)"
+                        <button v-if="currentQuestion.user_answer != null && questionIndex + 1 != questions.length" @click="changeQuestion(questionIndex+1)"
                           class="rounded bg-teal hover:bg-teal-dark p-2 px-8 mt-6 text-md text-white font-semibold tracking-wide ml-4 mr-8">
                             Next Question
                         </button>
@@ -124,9 +143,20 @@
 
         methods: {
             showSolution() {
+             if(this.currentQuestion.user_answer != null)
+                    {
+                        this.showSolutions = !this.showSolutions;
+                    } else {
+                         var answer = 0;
+                        var is_correct = 0;
 
-                    this.showSolutions = !this.showSolutions;
-
+                        var self = this;
+                        axios.post('/book-chapter-question/' + this.currentQuestion.id + '/answer', { answer: answer, is_correct: is_correct})
+                            .then(function(){
+                                self.currentQuestion.user_answer = answer;
+                                self.showSolutions = !self.showSolutions;
+                            });
+                    }
 
             },
             changeQuestion(index){
@@ -140,6 +170,34 @@
                 }
 
             },
+
+            chooseOption(index)
+            {
+                if(this.currentQuestion.user_answer == null)
+                {
+                      if(this.selectedIndex == index)
+                        {
+                             this.selectedIndex = null;
+                        } else {
+                             this.selectedIndex = index;
+                        }
+                }
+
+
+            },
+
+            submitAnswer()
+            {
+
+                var answer = this.selectedIndex + 1;
+                var is_correct = answer == this.currentQuestion.answer ? 1 : 0;
+
+                var self = this;
+                axios.post('/book-chapter-question/' + this.currentQuestion.id + '/answer', { answer: answer, is_correct: is_correct})
+                    .then(function(){
+                        self.currentQuestion.user_answer = answer;
+                    });
+            }
 
 
 

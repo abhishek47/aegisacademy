@@ -8,6 +8,7 @@ use App\Models\ThreadReply;
 use App\Models\ProblemQuestion;
 use App\Models\ProblemQuestionSolution;
 use Illuminate\Notifications\Notifiable;
+use App\Models\BookChapterQuestion;
 use App\Models\BookChapterQuestionSolution;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -69,6 +70,11 @@ class User extends Authenticatable
     public function solvedProblemQuestions()
     {
         return $this->belongsToMany(ProblemQuestion::class, 'user_problem_questions')->withTimeStamps()->withPivot(['answer', 'is_correct']);
+    }
+
+     public function solvedBookQuestions()
+    {
+        return $this->belongsToMany(BookChapterQuestion::class, 'user_book_questions')->withTimeStamps()->withPivot(['answer', 'is_correct']);
     }
 
     public function hasRead(Wiki $wiki)

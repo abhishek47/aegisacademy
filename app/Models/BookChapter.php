@@ -34,4 +34,6 @@ class BookChapter extends Model
         return $this->book->title;
     }
 
+
+
 }
