@@ -28,6 +28,11 @@ class CourseChapter extends Model
         return $this->belongsTo(Course::class);
     }
 
+    public function sections()
+    {
+        return $this->hasMany(CourseChapterSection::class)->orderBy('sequence', "ASC");
+    }
+
    public function setBannerAttribute($value)
     {
         $attribute_name = "banner";

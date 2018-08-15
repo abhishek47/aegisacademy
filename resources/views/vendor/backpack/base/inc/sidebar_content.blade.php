@@ -14,6 +14,7 @@
 
 <li><a href="{{ backpack_url('courses') }}"><i class='fa fa-camera'></i> <span>Courses</span></a></li>
 <li><a href="{{ backpack_url('course-chapters') }}"><i class='fa fa-list-ol'></i> <span>Course Chapters</span></a></li>
+<li><a href="{{ backpack_url('course-chapter-sections') }}"><i class='fa fa-list-ol'></i> <span>Course Chapter Sections</span></a></li>
 
 
 

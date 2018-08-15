@@ -14,7 +14,10 @@
 
     @include('includes._mathjax-markdown')
     <!-- Styles -->
+    <link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
 </head>
 <body class="bg-white h-screen">
     <div id="app">

@@ -93,6 +93,8 @@ Route::get('/courses', 'CoursesController@index');
 Route::get('/courses/subject:{subjectSlug}', 'CoursesController@index');
 
 Route::get('/courses/{courseSlug}', 'CoursesController@show');
+Route::get('/courses/{courseSlug}/chapter:{chapterSlug}', 'CourseChaptersController@show');
+Route::get('/courses/{courseSlug}/chapter:{chapterSlug}/section:{sectionSlug}', 'CourseChaptersController@show');
 
 
 

@@ -9,6 +9,9 @@ window.$ = window.jQuery = require('jquery');
 
 window.axios = require("axios");
 
+window.videojs = require('video.js');
+window.Youtube = require('videojs-youtube')
+
 
 
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";

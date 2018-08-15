@@ -56,12 +56,12 @@
                          <div class="flex flex-col w-100">
 
                               @foreach($course->chapters as $chapter)
-                                  <a href="#" class="bg-white shadow-md p-3 flex rounded no-underline text-black hover:bg-grey-lightest mb-4" style="width: 100%;">
+                                  <a href="/courses/{{$course->slug}}/chapter:{{$chapter->slug}}" class="bg-white shadow-md p-3 flex rounded no-underline text-black hover:bg-grey-lightest mb-4" style="width: 100%;">
                                       <img src="{{ url($chapter->banner) }}" style="width: 80px;height: 80px;">
 
-                                      <div class="flex flex-col ml-4 w-100 mt-4">
+                                      <div class="flex flex-col ml-4 w-100 my-auto align-center">
                                         <h3 class="font-semibold tracking-wide text-xl mb-2">{{ $chapter->title }}</h3>
-                                        <p class="tracking-wide text-grey-dark text-lg">{{ $chapter->description }}</p>
+                                        <p class="tracking-wide text-grey-dark text-lg leading-normal">{{ $chapter->description }}</p>
                                       </div>
                                   </a>
                               @endforeach
