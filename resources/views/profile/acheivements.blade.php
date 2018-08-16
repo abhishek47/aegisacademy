@@ -14,7 +14,7 @@
 
                         <div class="mb-4 mr-4">
                             <div class="w-full flex flex-col items-center justify-center  bg-white  p-3 px-8">
-                                @if(auth()->user()->xp >= 2000)
+                                @if(auth()->user()->xp >= 1000)
                                     <img class="" src="/img/badges/learner.png" style="width: 100px;height: 100px;">
                                 @else
                                     <img class="" src="/img/badges/lock.png" style="width: 100px;height: 100px;">
