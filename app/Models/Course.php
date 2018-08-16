@@ -57,7 +57,7 @@ class Course extends Model
             }
         }
 
-        return true;
+        return false;
     }
 
     public function getCompletedAttribute()
