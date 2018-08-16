@@ -34,6 +34,17 @@ class CourseChapterSection extends Model
         return $this->belongsTo(Problem::class);
     }
 
+    public function markComplete()
+    {
+        $this->completed = 1;
+        $this->save();
+    }
+
+    public function scopeCompleted($query)
+    {
+        return $query->where('completed', '=', 1);
+    }
+
     public function getVideoAttribute()
     {
         return json_decode($this->attributes['video']);

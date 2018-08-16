@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-grey-lighter flex" style="min-height: 840px;">
+    <div class="bg-grey-lighter flex" style="min-height: 100vh;">
 
         <div class="container md:mx-auto mt-8">
             <div class="flex flex-col shadow-md rounded bg-white p-4 mb-6">

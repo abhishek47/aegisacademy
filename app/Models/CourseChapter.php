@@ -33,6 +33,26 @@ class CourseChapter extends Model
         return $this->hasMany(CourseChapterSection::class)->orderBy('sequence', "ASC");
     }
 
+    public function finish()
+    {
+        $this->completed = 1;
+        $this->save();
+
+        auth()->user()->xp += 200;
+
+        if($this->course->chapters()->where('completed', 0)->count() == 0)
+        {
+            auth()->user()->xp += 400;
+        }
+
+        auth()->user()->save();
+    }
+
+    public function isPreviousFinished(CourseChapter $previous)
+    {
+        return $previous->completed;
+    }
+
    public function setBannerAttribute($value)
     {
         $attribute_name = "banner";

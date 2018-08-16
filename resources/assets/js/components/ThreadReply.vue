@@ -21,7 +21,7 @@
             <button @click="markBest" v-else class="bg-transparent border-2 border-grey-darkest hover:bg-grey-lighter ml-2 p-2 px-4 text-xs tracking-wide rounded text-grey-darker uppercase font-semibold">Best Answer</button>
             </div>
 
-             <button v-if="isBest" class="bg-green hover:bg-green-dark ml-2 p-2 px-4 shadow text-xs tracking-wide pointer-events-none rounded-lg text-white uppercase font-semibold">
+             <button v-if="isBest && !ownedThread" class="bg-green hover:bg-green-dark ml-2 p-2 px-4 shadow text-xs tracking-wide pointer-events-none rounded-lg text-white uppercase font-semibold">
               <i class="fa fa-star"></i> Best Answer</button>
 
           </div>

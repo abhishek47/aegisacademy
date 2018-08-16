@@ -8,9 +8,9 @@
             <h2 class="mt-2 text-lg tracking-wide text-center text-grey-darker">{{ auth()->user()->xp }} XP</h2>
         </div>
 
-        <ul class="mt-4 list-reset pt-2 border-t">
+        <ul class="mt-6 list-reset pt-2 border-t">
                 <li class="mt-3 mr-8 text-md">
-                    <a href="#" class="no-underline font-semibold tracking-wide text-grey-darker hover:text-blue-dark {{ request()->is('profile') ? 'text-blue-dark' : '' }} leading-normal">
+                    <a href="/profile" class="no-underline font-semibold tracking-wide text-grey-darker hover:text-blue-dark {{ request()->is('profile') ? 'text-blue-dark' : '' }} leading-normal">
                         <i class="fa fa-chevron-right mr-1"></i> My Profile
                     </a>
                 </li>
@@ -22,7 +22,7 @@
                 </li>
 
                  <li class="mt-3 mr-8 text-md">
-                    <a href="#" class="no-underline font-semibold tracking-wide text-grey-darker hover:text-blue-dark {{ request()->is('/profile') ? 'text-blue-dark' : '' }} leading-normal">
+                    <a href="/profile/security" class="no-underline font-semibold tracking-wide text-grey-darker hover:text-blue-dark {{ request()->is('/profile/security') ? 'text-blue-dark' : '' }} leading-normal">
                         <i class="fa fa-chevron-right mr-1"></i> Security
                     </a>
                 </li>

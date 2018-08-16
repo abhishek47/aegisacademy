@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $wikis = \App\Models\Wiki::latest()->limit(4)->get();
+    return view('welcome', compact('wikis'));
 })->middleware('guest');
 
 Auth::routes();
@@ -98,7 +99,12 @@ Route::get('/courses/{courseSlug}/chapter:{chapterSlug}/section:{sectionSlug}', 
 
 
 
+
+
 Route::get('/profile', 'ProfileController@index');
+Route::post('/profile', 'ProfileController@updateProfile');
 Route::get('/profile/acheivements', 'ProfileController@acheivements');
+Route::get('/profile/security', 'ProfileController@security');
+Route::post('/profile/security', 'ProfileController@updatePassword');
 
 

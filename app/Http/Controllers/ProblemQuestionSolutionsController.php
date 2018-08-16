@@ -19,6 +19,7 @@ class ProblemQuestionSolutionsController extends Controller
 
         $solution->load(['question', 'user']);
 
+
         return response(['data' => $solution], 200);
     }
 

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\Wiki;
+use App\Models\Course;
 use App\Models\Problem;
 use Illuminate\Http\Request;
 
@@ -24,7 +27,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $problem = Problem::first();
-        return view('home', compact('problem'));
+        //$problem = Problem::first();
+        $wikis = Wiki::latest()->limit(8)->get();
+
+        $problems = Problem::all()->filter(function ($problem, $key) {
+            return $problem->is_ongoing;
+        })->slice(0, 2);
+
+        $books = Book::all()->filter(function ($book, $key) {
+            return $book->is_ongoing;
+        })->slice(0, 3);
+
+        $courses = Course::limit(4)->get();
+
+        return view('home', compact('wikis', 'problems', 'books', 'courses'));
     }
 }

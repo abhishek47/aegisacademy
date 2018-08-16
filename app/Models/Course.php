@@ -48,6 +48,18 @@ class Course extends Model
         return $this->levels[$value];
     }
 
+    public function getCompletedAttribute()
+    {
+        foreach ($this->chapters as $key => $chapter) {
+            if(!$chapter->completed)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public function setBannerAttribute($value)
     {
         $attribute_name = "banner";

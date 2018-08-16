@@ -1,4 +1,4 @@
-<div class="bg-blue-lightest p-4 pr-55" style="min-height: 800px;">
+<div class="bg-blue-lightest p-4 pr-55" style="min-height: 100vh;">
     <div class="flex flex-col p-4 pl-0 pr-6 mx-3">
         <button @click="showModal('new-thread')" class="shadow bg-green hover:bg-green-dark rounded text-white p-3 px-6 font-semibold tracking-wide">
         Add New Thread

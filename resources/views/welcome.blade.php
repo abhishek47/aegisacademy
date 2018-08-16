@@ -45,49 +45,34 @@
         </div>
 
         <div class="container mx-auto flex mt-8" style="flex-wrap: wrap;">
-            <a href="#" class="no-underline text-black w-1/2 pr-6 mb-8">
-                <div class="rounded shadow bg-white p-6">
-                    <span class="rounded bg-brand p-1 px-4 text-white tracking-wide text-sm">Topical</span>
-                    <h3 class="w-full text-2xl font-normal tracking-normal leading-normal mt-4 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
-                    <div class="flex flex-end">
-                     <span class="flex-1 text-grey-darker"><i class="fa fa-star text-yellow"></i> <i class="fa fa-star text-yellow"></i></span>
-                     <span class="text-grey-darker"><i class="fa fa-clock"></i> 23rd June 2018</span>
-                    </div>
-                </div>
-            </a>
+            @foreach($wikis as $article)
+                 <a href="{{ url($article->url)}}" class="no-underline text-black w-1/2 pr-6 mb-8">
+                                        <div class="rounded shadow-md bg-white p-6 pt-4 border-t-4 border-b-0 border-r-0 border-l-0 border-brand">
 
-             <a href="#" class="no-underline text-black w-1/2 pr-6 mb-8">
-                <div class="rounded shadow bg-white p-6">
-                   <span class="rounded bg-green p-1 px-4 text-white tracking-wide text-sm">Knowledge</span>
-                    <h3 class="w-full text-2xl font-normal tracking-normal leading-normal mt-4 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
-                    <div class="flex flex-end">
-                     <span class="flex-1 text-grey-darker"><i class="fa fa-star text-yellow"></i> <i class="fa fa-star text-yellow"></i> <i class="fa fa-star-half text-yellow"></i> </span>
-                     <span class="text-grey-darker"><i class="fa fa-clock"></i> 23rd June 2018</span>
-                    </div>
-                </div>
-            </a>
+                                            <div class="flex items-center justify-between">
+                                                <span class="rounded p-1 px-4 text-white tracking-wide text-xs" style="background-color: {{ $article->category->color->code }}">{{ $article->category->name }}</span>
 
-             <a href="#" class="no-underline text-black w-1/2 pr-6 mb-8">
-                <div class="rounded shadow bg-white p-6">
-                   <span class="rounded bg-orange p-1 px-4 text-white tracking-wide text-sm">Problematic</span>
-                    <h3 class="w-full text-2xl font-normal tracking-normal leading-normal mt-4 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
-                    <div class="flex flex-end">
-                     <span class="flex-1 text-grey-darker"><i class="fa fa-star text-yellow"></i> <i class="fa fa-star text-yellow"></i> <i class="fa fa-star text-yellow"></i> <i class="fa fa-star text-yellow"></i> </span>
-                     <span class="text-grey-darker"><i class="fa fa-clock"></i> 23rd June 2018</span>
-                    </div>
-                </div>
-            </a>
+                                                <rate-wiki id="{{$article->id}}" :edit="false" user-rating="{{$article->rating}}" size="20"></rate-wiki>
 
-            <a href="#" class="no-underline text-black w-1/2 pr-6 mb-8">
-                <div class="rounded shadow bg-white p-6">
-                    <span class="rounded bg-brand p-1 px-4 text-white tracking-wide text-sm">Topical</span>
-                    <h3 class="w-full text-2xl font-normal tracking-normal leading-normal mt-4 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
-                    <div class="flex flex-end">
-                     <span class="flex-1 text-grey-darker"><i class="fa fa-star text-yellow"></i> <i class="fa fa-star text-yellow"></i> <i class="fa fa-star text-yellow"></i>  </span>
-                     <span class="text-grey-darker"><i class="fa fa-clock"></i> 23rd June 2018</span>
-                    </div>
-                </div>
-            </a>
+                                            </div>
+
+                                            <h3 class="w-full text-xl font-normal tracking-normal leading-normal mt-4 mb-4">
+                                                {{ str_limit($article->title, 30) }}
+                                            </h3>
+                                            <div class="flex justify-between">
+
+                                            <div class="flex mt-1">
+                                                <img class="mr-2" src="/img/studentsicon.png" style="width: 25px;height:100%;">
+                                                <span class="text-blue mt-1"> {{$article->readings}} people read this.</span>
+                                            </div>
+
+                                             <span class="text-grey-darker mt-2"><i class="fa fa-clock"></i> {{ $article->created_at->format('jS M Y')}}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+            @endforeach
+
+
         </div>
 
         <div class="flex justify-center mt-8 mx-w-md">

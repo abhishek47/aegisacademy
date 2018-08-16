@@ -4,7 +4,7 @@
 
 
     <div class="bg-grey-lightest" >
-      <div class="flex bg-white shadow container md:mx-auto" style="min-height: 800px;">
+      <div class="flex bg-white shadow container md:mx-auto" style="min-height: 100vh;">
 
           @include('courses._sidebar')
           <div class="w-3/4 p-6 pl-8">
@@ -25,7 +25,8 @@
                          <div class="flex">
                              @foreach($courses as $course)
 
-                                <a href="/courses/{{$course->slug}}" class="bg-white shadow-md mr-1 rounded p-2 no-underline" style="background: {{$course->color->code}};height: 320px;width: 227px;">
+                                <a href="/courses/{{$course->slug}}" class="bg-white shadow-md mr-1 relative rounded p-2 no-underline {{ $course->completed ? 'border-2 border-green' : '' }}" style="background: {{$course->color->code}};height: 320px;width: 227px;">
+                                    <span class="rounded rounded-full p-2 bg-green text-white absolute" style="right: -10px;"><i class="fa fa-check"> </i></span>
                                     <h4 class="text-xl font-semibold text-white tracking-wide leading-normal pl-2">{{ str_limit($course->title, 20) }}</h4>
 
                                     <div class="w-100">

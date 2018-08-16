@@ -16,12 +16,20 @@ class ReadWikiController extends Controller
     {
         auth()->user()->readWikis()->attach($wiki);
 
+        auth()->user()->xp += 300;
+
+        auth()->user()->save();
+
         return response(['success', 200]);
     }
 
     public function destroy(Wiki $wiki)
     {
         auth()->user()->readWikis()->detach($wiki);
+
+        auth()->user()->xp -= 300;
+
+        auth()->user()->save();
 
         return response(['success', 200]);
     }

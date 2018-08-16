@@ -4,9 +4,9 @@
 
 
     <div class="bg-grey-lightest" >
-      <div class="flex bg-white shadow container md:mx-auto" style="min-height: 800px;">
+      <div class="flex bg-white shadow container md:mx-auto" style="min-height: 100vh;">
 
-          <div class="bg-blue-lightest p-4 " style="min-height: 800px;background: {{ $course->color->code }};max-width: 400px;">
+          <div class="bg-blue-lightest p-4 " style="min-height: 100vh;background: {{ $course->color->code }};max-width: 400px;">
               <div class="flex flex-col p-4">
 
                  <div class="w-100">
@@ -55,15 +55,29 @@
 
                          <div class="flex flex-col w-100">
 
-                              @foreach($course->chapters as $chapter)
-                                  <a href="/courses/{{$course->slug}}/chapter:{{$chapter->slug}}" class="bg-white shadow-md p-3 flex rounded no-underline text-black hover:bg-grey-lightest mb-4" style="width: 100%;">
+                              @foreach($course->chapters as $index => $chapter)
+                               @if($chapter->sections()->count())
+                                  <a href="/courses/{{$course->slug}}/chapter:{{$chapter->slug}}" class="bg-white shadow-md p-3 flex items-center rounded no-underline text-black hover:bg-grey-lightest mb-4 relative {{ $index > 0 && !$chapter->isPreviousFinished($course->chapters->get($index-1)) ? 'pointer-events-none' : '' }} {{ $chapter->completed ? 'border-2 border-green' : '' }}" style="width: 100%;">
+                                    @if($chapter->completed)
+                                     <span class="rounded rounded-full p-2 bg-green text-white absolute" style="left: -10px;"><i class="fa fa-check"> </i></span>
+                                   @endif
+                                    @if($index > 0 && !$chapter->isPreviousFinished($course->chapters->get($index-1)))
+                                     <span class="rounded rounded-full p-2 bg-grey absolute" style="left: -10px;"><i class="fa fa-lock"> </i></span>
+                                   @endif
                                       <img src="{{ url($chapter->banner) }}" style="width: 80px;height: 80px;">
 
-                                      <div class="flex flex-col ml-4 w-100 my-auto align-center">
-                                        <h3 class="font-semibold tracking-wide text-xl mb-2">{{ $chapter->title }}</h3>
-                                        <p class="tracking-wide text-grey-dark text-lg leading-normal">{{ $chapter->description }}</p>
+                                      <div class="flex flex-col ml-4 w-100 my-auto align-center flex-1">
+                                        <h3 class="font-semibold tracking-wide text-xl mb-2 {{ $index > 0 && !$chapter->isPreviousFinished($course->chapters->get($index-1)) ? 'text-grey' : '' }}">{{ $chapter->title }}</h3>
+                                        <p class="tracking-wide text-grey-dark text-lg leading-normal  {{ $index > 0 && !$chapter->isPreviousFinished($course->chapters->get($index-1)) ? 'text-grey-light' : '' }}">{{ $chapter->description }}</p>
                                       </div>
+
+                                      <div class="text-xl mr-4">
+                                        <p class="border rounded-full p-4  {{ $index > 0 && !$chapter->isPreviousFinished($course->chapters->get($index-1)) ? 'border-grey text-grey-light' : 'border-orange text-orange' }}">{{ $chapter->sections()->completed()->count() }} / {{ $chapter->sections()->count()}}</p>
+                                      </div>
+
+
                                   </a>
+                                @endif
                               @endforeach
 
                          </div>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <div class="bg-grey-lightest" style="min-height: 800px;">
+  <div class="bg-grey-lightest" style="min-height: 100vh;">
     <div class="container md:mx-auto pt-8 pl-45">
 
             <h2 class="font-semibold text-black tracking-wide text-4xl mb-60 mt-8">Choose a subject</h2>

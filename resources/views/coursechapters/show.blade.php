@@ -4,7 +4,7 @@
 @section('content')
 
         <div class="bg-grey-light" >
-                 <div class="flex bg-white shadow container md:mx-auto" style="min-height: 800px;">
+                 <div class="flex bg-white shadow container md:mx-auto" style="min-height: 100vh;">
 
           @include('coursechapters._sidebar')
           <div class="w-3/4 p-6 pl-8">

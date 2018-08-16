@@ -1,4 +1,4 @@
-<div class="bg-blue-lightest p-4" style="min-height: 800px;">
+<div class="bg-blue-lightest p-4" style="min-height: 100vh;">
     <div class="flex flex-col p-4 pl-0 pr-6 mx-3">
         <span class="mt-6 text-grey-darker uppercase text-lg font-bold tracking-wide">Topics</span>
         <ul class="mt-2 list-reset">
