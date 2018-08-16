@@ -48,6 +48,18 @@ class Course extends Model
         return $this->levels[$value];
     }
 
+    public function getOngoingAttribute()
+    {
+        foreach ($this->chapters as $key => $chapter) {
+            if($chapter->completed)
+            {
+                return true;
+            }
+        }
+
+        return true;
+    }
+
     public function getCompletedAttribute()
     {
         foreach ($this->chapters as $key => $chapter) {

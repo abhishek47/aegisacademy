@@ -38,7 +38,9 @@ class HomeController extends Controller
             return $book->is_ongoing;
         })->slice(0, 3);
 
-        $courses = Course::limit(4)->get();
+        $courses = Course::all()->filter(function ($course, $key) {
+            return $course->ongoing;
+        })->slice(0, 4);
 
         return view('home', compact('wikis', 'problems', 'books', 'courses'));
     }
