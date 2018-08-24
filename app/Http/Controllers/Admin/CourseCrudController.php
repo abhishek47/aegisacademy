@@ -77,6 +77,15 @@ class CourseCrudController extends CrudController
                'model' => "App\Models\Topic", // foreign key model
                'allows_null' => true
             ],
+
+            [ // select_from_array
+                'name' => 'is_premium',
+                'label' => "Is Premium Content",
+                'type' => 'select_from_array',
+                'options' => [0 => 'No', 1 => 'Yes'],
+                'allows_null' => false,
+                // 'allows_multiple' => true, // OPTIONAL; needs you to cast this to array in your model;
+            ],
         ]);
 
 

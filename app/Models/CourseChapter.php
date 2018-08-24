@@ -19,7 +19,7 @@ class CourseChapter extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['title', 'description', 'course_id', 'sequence', 'banner', 'slug'];
+    protected $fillable = ['title', 'description', 'course_id', 'sequence', 'banner', 'slug' , 'is_premium'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -51,6 +51,11 @@ class CourseChapter extends Model
     public function isPreviousFinished(CourseChapter $previous)
     {
         return $previous->completed;
+    }
+
+    public function getIsBlockedAttribute()
+    {
+        return $this->is_premium && !auth()->user()->is_premium;
     }
 
    public function setBannerAttribute($value)

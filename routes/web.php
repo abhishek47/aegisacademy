@@ -107,4 +107,9 @@ Route::get('/profile/acheivements', 'ProfileController@acheivements');
 Route::get('/profile/security', 'ProfileController@security');
 Route::post('/profile/security', 'ProfileController@updatePassword');
 
+Route::get('/profile/upgrade', 'ProfileController@upgrade');
+Route::get('/profile/downgrade', 'ProfileController@downgrade');
+
+Route::post('/payment/success', 'ProfileController@upgradeSuccess');
+
 

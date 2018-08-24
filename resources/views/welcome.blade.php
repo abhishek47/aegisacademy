@@ -9,12 +9,15 @@
                 If you love <b class="font-bold">challenging</b> problems then you are at the right place!
             </h2>
             <div class="flex-1 mt-6">
-
+                <form method="GET" action="/wiki">
                 <div class="flex w-3/5 mx-auto bg-white shadow-md rounded border-2 border-grey">
+
                     <i class="fa fa-search text-xl mt-4 ml-3" style="color: #8795a185;margin-top: 21px;"></i>
-                    <input type="text" class="search-input w-full p-4 mt-1 text-grey-dark" autocomplete="off" placeholder="What will you learn?" name="search" style="font-size: 20px;">
+                    <input type="text" class="search-input w-full p-4 mt-1 text-grey-dark" autocomplete="off" placeholder="What will you learn?" name="query" style="font-size: 20px;">
                     <button class="btn bg-brand text-white font-semibold uppercase p-2 rounded rounded-l-none tracking-wide text-sm px-4">Search</button>
+
                 </div>
+                 </form>
 
             </div>
 
@@ -91,9 +94,9 @@
                 </h2>
 
                 <p class="text-black text-xl tracking-wide leading-normal mb-3">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+                    Best way to learn is self education. In self-paced courses we provide step wise curated content to learn
+                    a specific topic with thorough understanding. This content can contain small wiki articles, videos as well as practice problems
+                    to perfect yourself as you learn.
                 </p>
 
                 <div class="flex items-center mt-8 pt-8 justify-start">
@@ -127,9 +130,9 @@
                 </h2>
 
                 <p class="text-black text-xl tracking-wide leading-normal mb-3">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+                    Practice makes man perfect. Hence, we provide a huge range of practice problems categorised under different
+                    subjects and topics for you to practice the right thing. Keep a track of what you solve, discuss solutions with experts and other
+                    students.
                 </p>
 
 
@@ -149,12 +152,10 @@
                 </h2>
 
                 <p class="w-full text-black text-xl text-left tracking-wide leading-normal">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.
+                    Learning is always about discussing and sharing things you know. We provide a curated and equipped discussion forum for
+                    you to discuss your concerns with our experts as well as other students. Ask questions, use your knowledge to answer some questions or just find out the
+                    proper discussion to solve your concerns.
+
                 </p>
 
                 <div class="mt-45 ">
@@ -176,11 +177,17 @@
             </div>
 
             <div class="flex justify-between">
-                <div class="bg-white shadow-md rounded w-full md:w-1/2 z-10 mr-6">
+                <div class="bg-white shadow-md rounded w-full md:w-1/2 z-10 mr-6 border-t-4  border-brand">
                     <div class="py-8 text-3xl text-center text-brand font-semibold uppercase">FREE</div>
                     <hr class="py-0 my-0 border border-grey-lighter">
                     <div class="py-8">
 
+                        <ul class="list-reset text-center">
+                            <li class="my-3 text-xl">Read Unlimited Wiki Pages</li>
+                            <li class="my-3 text-xl">Solve 10 Questions Daily</li>
+                            <li class="my-3 text-xl">Engage into 2 Discussions Daily</li>
+                            <li class="my-3 text-xl">Access all our Free courses</li>
+                        </ul>
 
 
                     </div>
@@ -192,11 +199,17 @@
                     </a>
                 </div>
 
-                <div class="bg-white shadow-md rounded w-full md:w-1/2 z-10">
-                    <div class="py-8 text-3xl text-center text-orange font-semibold uppercase">$10 / month</div>
+                <div class="bg-white shadow-md rounded w-full md:w-1/2 z-10 border-t-4  border-brand">
+                    <div class="py-8 text-3xl text-center text-orange font-semibold uppercase"><span class="capitalize">Rs.</span> 300 / month</div>
                     <hr class="py-0 my-0 border border-grey-lighter">
                     <div class="py-8">
 
+                         <ul class="list-reset text-center">
+                            <li class="my-3 text-xl">Read Unlimited Wiki Pages</li>
+                            <li class="my-3 text-xl">Solve Unlimited Questions Daily</li>
+                            <li class="my-3 text-xl">Engage into 2+ Discussions Daily</li>
+                            <li class="my-3 text-xl">Access all our Free &amp; Premium courses</li>
+                        </ul>
 
 
                     </div>

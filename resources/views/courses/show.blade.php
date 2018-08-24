@@ -57,13 +57,21 @@
 
                               @foreach($course->chapters as $index => $chapter)
                                @if($chapter->sections()->count())
-                                  <a href="/courses/{{$course->slug}}/chapter:{{$chapter->slug}}" class="bg-white shadow-md p-3 flex items-center rounded no-underline text-black hover:bg-grey-lightest mb-4 relative {{ $index > 0 && !$chapter->isPreviousFinished($course->chapters->get($index-1)) ? 'pointer-events-none' : '' }} {{ $chapter->completed ? 'border-2 border-green' : '' }}" style="width: 100%;">
-                                    @if($chapter->completed)
+                                  <a href="/courses/{{$course->slug}}/chapter:{{$chapter->slug}}" class="bg-white shadow-md p-3 flex items-center rounded no-underline text-black hover:bg-grey-lightest mb-4 relative {{ ($index > 0 && !$chapter->isPreviousFinished($course->chapters->get($index-1))) || $chapter->is_blocked ? 'pointer-events-none' : '' }} {{ $chapter->is_blocked ? 'border-2 border-red' : ($chapter->completed ? 'border-2 border-green' : '') }}" style="width: 100%;">
+
+                                    @if($chapter->is_blocked)
+                                     <span class="rounded rounded-full p-2 bg-red text-white absolute" style="right: -10px;top: -10px;"><i class="fa fa-lock"> </i></span>
+                                     @else
+                                       @if($chapter->completed)
                                      <span class="rounded rounded-full p-2 bg-green text-white absolute" style="left: -10px;"><i class="fa fa-check"> </i></span>
                                    @endif
                                     @if($index > 0 && !$chapter->isPreviousFinished($course->chapters->get($index-1)))
                                      <span class="rounded rounded-full p-2 bg-grey absolute" style="left: -10px;"><i class="fa fa-lock"> </i></span>
                                    @endif
+                                    @endif
+
+
+
                                       <img src="{{ url($chapter->banner) }}" style="width: 80px;height: 80px;">
 
                                       <div class="flex flex-col ml-4 w-100 my-auto align-center flex-1">

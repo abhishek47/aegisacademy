@@ -49,6 +49,7 @@
 		</portal>
 
 		<div v-show="this.inEdit == false">
+			<div class="text-center text-xl text-red" v-show="this.mjRunning">Please wait. Loading ...</div>
 			<div class="markdown-body" ref="buffer" style="display: none;"></div>
 
 			<div class="markdown-body" ref="preview"></div>

@@ -85,7 +85,7 @@
                         </div>
 
                         <button v-if="currentQuestion.user_answer == null" @click="submitAnswer()" class="rounded bg-orange hover:bg-orange-dark p-2 px-8 mt-6 text-md text-white font-semibold tracking-wide ml-4 mr-8"
-                            :class="selectedIndex == null ? 'pointer-events-none cursor-not-allowed bg-orange-lightest' : 'pointer-events-auto cursor-pointer'">
+                            :class="selectedIndex == null || currentQuestion.is_blocked  ? 'pointer-events-none cursor-not-allowed bg-orange-lightest' : 'pointer-events-auto cursor-pointer'">
                             Submit
                         </button>
 

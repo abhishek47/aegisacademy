@@ -10,7 +10,7 @@ class Book extends Model
     use CrudTrait;
 
     protected $table = 'books';
-    protected $fillable = ['title', 'description', 'subject_id', 'topic_id', 'image', 'author'];
+    protected $fillable = ['title', 'description', 'subject_id', 'topic_id', 'image', 'author', 'is_premium'];
 
     public function subject()
     {
@@ -59,6 +59,11 @@ class Book extends Model
           }
         }
         return true;
+    }
+
+    public function getIsBlockedAttribute()
+    {
+        return $this->is_premium && !auth()->user()->is_premium;
     }
 
     /*

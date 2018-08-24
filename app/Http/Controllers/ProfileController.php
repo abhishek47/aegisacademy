@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Appnings\Payment\Facades\Payment;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -19,6 +20,58 @@ class ProfileController extends Controller
     public function security()
     {
         return view('profile.security');
+    }
+
+    public function downgrade()
+    {
+        auth()->user()->is_premium = 0;
+        auth()->user()->save();
+
+        return back();
+    }
+
+    public function upgrade()
+    {
+       /* $uid = uniqid();
+         $parameters = [
+
+            'tid' => '1001' . $uid,
+
+            'order_id' => $uid,
+
+            'amount' => 300.0,
+            'billing_name' => \Auth::user()->name,
+            'billing_ email' => \Auth::user()->email,
+            'billing_ tel' => '9922367414',
+            'billing_ country' => 'India',
+
+          ];
+
+
+          $purchaseOrder = Payment::prepare($parameters);
+
+          return Payment::process($purchaseOrder); */
+
+           auth()->user()->is_premium = 1;
+           auth()->user()->save();
+
+           return back();
+    }
+
+    public function upgradeSuccess(Request $request)
+    {
+       $response = Payment::response($request);
+
+       if($response['order_status'] == 'Aborted')
+        {
+          return back();
+        } else {
+           auth()->user()->is_premium = 1;
+        auth()->user()->save();
+
+        return back();
+        }
+
     }
 
     public function updateProfile(Request $request)

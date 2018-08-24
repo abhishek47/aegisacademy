@@ -13,10 +13,10 @@
                 <a href="/books" class="no-underline text-blue-dark hover:text-brand">
                  Books
                 </a>
-                <i class="fa fa-chevron-right text-grey-dark"></i>
+              {{--   <i class="fa fa-chevron-right text-grey-dark"></i>
                 <a href="/books/{{ $subject->slug }}" class="no-underline text-blue-dark hover:text-brand">
                  {{ $subject->name }}
-                </a>
+                </a> --}}
                 <i class="fa fa-chevron-right text-grey-dark"></i>  <span class="text-grey-darker">
                 {{ $book->title }}</span>
               </span>

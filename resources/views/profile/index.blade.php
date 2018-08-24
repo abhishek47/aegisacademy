@@ -32,6 +32,36 @@
                     </div>
                 </form>
             </div>
+
+            <div class="flex flex-col shadow-md rounded bg-white p-4 border-4 border-brand border-l-0 border-b-0 border-r-0 ml-2 mt-6">
+
+                 <div class="flex items-center justify-between">
+
+                        @if(auth()->user()->is_premium)
+                            <div>
+                                <h2 class="text-black font-semibold tracking-wide text-2xl">Premium Plan (Rs. 300 / month)</h2>
+                                <p class="text-grey-dark tracking-wide leading-normal mt-3">You have access to all premium content.</p>
+                            </div>
+
+                            <a href="/profile/downgrade"  class="no-underline btn flex bg-red hover:bg-red-dark ml-8 mr-4 mt-2 text-white font-semibold uppercase p-3 rounded  tracking-wide text-sm px-8">
+                                       Downgrage
+                                     </a>
+                        @else
+                            <div>
+                                <h2 class="text-black font-semibold tracking-wide text-2xl">Free Plan (Rs. 0 / month)</h2>
+                                <p class="text-grey-dark tracking-wide leading-normal mt-3">Upgrade to premium and learn with more content.</p>
+                            </div>
+
+                             <a href="/profile/upgrade"  class="no-underline btn flex bg-green hover:bg-green-dark ml-8 mr-4 mt-2 text-white font-semibold uppercase p-3 rounded  tracking-wide text-sm px-8">
+                                       Be Premium
+                                     </a>
+                        @endif
+
+
+
+                 </div>
+
+            </div>
         </div>
     </div>
 </div>

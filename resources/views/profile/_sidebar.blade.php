@@ -22,10 +22,12 @@
                 </li>
 
                  <li class="mt-3 mr-8 text-md">
-                    <a href="/profile/security" class="no-underline font-semibold tracking-wide text-grey-darker hover:text-blue-dark {{ request()->is('/profile/security') ? 'text-blue-dark' : '' }} leading-normal">
+                    <a href="/profile/security" class="no-underline font-semibold tracking-wide text-grey-darker hover:text-blue-dark {{ request()->is('profile/security') ? 'text-blue-dark' : '' }} leading-normal">
                         <i class="fa fa-chevron-right mr-1"></i> Security
                     </a>
                 </li>
+
+
 
         </ul>
     </div>

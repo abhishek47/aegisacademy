@@ -6,7 +6,7 @@
         <div class="bg-grey-light" >
                  <div class="flex bg-white shadow container md:mx-auto" style="min-height: 100vh;">
 
-          @include('books._sidebar')
+        {{--   @include('books._sidebar') --}}
           <div class="w-3/4 p-6 pl-8">
 
 
@@ -27,8 +27,12 @@
                      <div class="flex">
                          @foreach($books as $book)
                          <div class="w-1/2 pr-3">
-                           <div class="flex items-start flex-col shadow-md rounded bg-white mt-8 p-4 border-4 border-brand border-l-0 border-b-0 border-r-0">
+                           <div class="flex items-start flex-col shadow-md rounded bg-white mt-8 p-4 relative
+                           {{ $book->is_blocked ? 'border-2 border-red pointer-events-none' : 'border-t-4 border-brand'}} ">
 
+                            @if($book->is_blocked)
+                               <span class="rounded rounded-full p-2 bg-red text-white absolute" style="left: -10px;top: -10px;"><i class="fa fa-lock"> </i></span>
+                             @endif
                     <h2 class="text-lg">{{ str_limit($book->title, 33) }}</h2>
 
                     <div class="flex mt-3">

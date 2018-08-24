@@ -107050,6 +107050,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -107631,6 +107632,22 @@ var render = function() {
           ]
         },
         [
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: this.mjRunning,
+                  expression: "this.mjRunning"
+                }
+              ],
+              staticClass: "text-center text-xl text-red"
+            },
+            [_vm._v("Please wait. Loading ...")]
+          ),
+          _vm._v(" "),
           _c("div", {
             ref: "buffer",
             staticClass: "markdown-body",
@@ -109472,7 +109489,8 @@ var render = function() {
                     staticClass:
                       "rounded bg-orange hover:bg-orange-dark p-2 px-8 mt-6 text-md text-white font-semibold tracking-wide ml-4 mr-8",
                     class:
-                      _vm.selectedIndex == null
+                      _vm.selectedIndex == null ||
+                      _vm.currentQuestion.is_blocked
                         ? "pointer-events-none cursor-not-allowed bg-orange-lightest"
                         : "pointer-events-auto cursor-pointer",
                     on: {
@@ -111744,7 +111762,7 @@ var render = function() {
                   staticClass:
                     "rounded bg-orange hover:bg-orange-dark p-2 px-8 mt-6 text-md text-white font-semibold tracking-wide ml-4 mr-8",
                   class:
-                    _vm.selectedIndex == null
+                    _vm.selectedIndex == null || _vm.currentQuestion.is_blocked
                       ? "pointer-events-none cursor-not-allowed bg-orange-lightest"
                       : "pointer-events-auto cursor-pointer",
                   on: {

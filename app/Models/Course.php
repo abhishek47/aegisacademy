@@ -19,7 +19,7 @@ class Course extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['title', 'description', 'subject_id', 'topic_id', 'banner', 'color_id', 'level'];
+    protected $fillable = ['title', 'description', 'subject_id', 'topic_id', 'banner', 'color_id', 'level', 'is_premium'];
 
     protected $levels = ['Beginner', 'Intermidiate', 'Advance'];
 
@@ -58,6 +58,11 @@ class Course extends Model
         }
 
         return false;
+    }
+
+    public function getIsBlockedAttribute()
+    {
+        return $this->is_premium && !auth()->user()->is_premium;
     }
 
     public function getCompletedAttribute()

@@ -24,7 +24,7 @@ class ProblemQuestion extends Model
     // protected $hidden = [];
     // protected $dates = [];
 
-    protected $appends = ['user_answer', 'is_solved_correct', 'solvings_count', 'solutions_count'];
+    protected $appends = ['user_answer', 'is_solved_correct', 'solvings_count', 'solutions_count', 'is_blocked'];
 
     public function solutions()
     {
@@ -64,5 +64,10 @@ class ProblemQuestion extends Model
      public function getSolutionsCountAttribute()
     {
         return $this->solutions->count();
+    }
+
+    public function getIsBlockedAttribute()
+    {
+        return !auth()->user()->is_premium && auth()->user()->daily_questions_count == 10;
     }
 }
