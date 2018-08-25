@@ -86,6 +86,11 @@ class Course extends Model
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
     }
 
+      public function manageChapters()
+    {
+        return '<a class="btn btn-xs btn-primary"   href="/admin/course-chapters?course=' . $this->id . '" data-toggle="tooltip" title="Manage Chapters">Manage Chapters</a>';
+    }
+
     /*
     }
     |--------------------------------------------------------------------------

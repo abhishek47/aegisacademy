@@ -15,6 +15,9 @@ use App\Http\Requests\CourseRequest as UpdateRequest;
  */
 class CourseCrudController extends CrudController
 {
+
+    protected $course;
+
     public function setup()
     {
 
@@ -88,6 +91,8 @@ class CourseCrudController extends CrudController
             ],
         ]);
 
+
+         $this->crud->addButtonFromModelFunction('line', 'manageChapters', 'manageChapters', 'end');
 
     }
 

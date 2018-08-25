@@ -89,6 +89,7 @@ class BookCrudController extends CrudController
             ],
         ]);
 
+        $this->crud->addButtonFromModelFunction('line', 'manageChapters', 'manageChapters', 'end');
 
 
     }

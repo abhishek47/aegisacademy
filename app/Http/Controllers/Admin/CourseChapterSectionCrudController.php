@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\CourseChapter;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-
-// VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\CourseChapterSectionRequest as StoreRequest;
 use App\Http\Requests\CourseChapterSectionRequest as UpdateRequest;
 
@@ -15,6 +14,8 @@ use App\Http\Requests\CourseChapterSectionRequest as UpdateRequest;
  */
 class CourseChapterSectionCrudController extends CrudController
 {
+    protected $chapter;
+
     public function setup()
     {
         /*
@@ -25,6 +26,8 @@ class CourseChapterSectionCrudController extends CrudController
         $this->crud->setModel('App\Models\CourseChapterSection');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/course-chapter-sections');
         $this->crud->setEntityNameStrings('coursechaptersection', 'course_chapter_sections');
+
+        $this->crud->backlink = config('backpack.base.route_prefix') . '/course-chapter-sections?course-chapter=' . request('course-chapter');
 
         $this->crud->addColumns([
             [
@@ -68,7 +71,46 @@ class CourseChapterSectionCrudController extends CrudController
                'allows_null' => true
             ],
 
-             [  // Select2
+
+
+
+        ]);
+
+
+
+        if(request()->has('course-chapter'))
+        {
+            $this->crud->addField([  // Select2
+               'label' => "Course Chapter",
+               'type' => 'hidden',
+               'name' => 'course_chapter_id',
+               'value' => request('course-chapter')
+
+            ]);
+
+             $this->chapter = CourseChapter::findOrFail(request('course-chapter'));
+
+             $this->crud->addClause('where', 'course_chapter_id', '=', $this->chapter->id);
+
+             $this->crud->setEntityNameStrings($this->chapter->title . ' | Section', $this->chapter->title . ' | Sections');
+
+             $this->crud->headlink = config('backpack.base.route_prefix') . '/course-chapters?course=' . $this->chapter->course->id;
+             $this->crud->headname = $this->chapter->title;
+
+               $this->crud->addField([  // Select2
+               'label' => "Course",
+               'type' => 'hidden',
+               'name' => 'course_id',
+               'value' => $this->chapter->course->id
+
+            ]);
+
+
+
+            // $this->crud->setRoute(config('backpack.base.route_prefix') . '/problem-questions?problem=' . $this->problem->id);
+
+        } else {
+            $this->crud->addFields([   [  // Select2
                'label' => "Course",
                'type' => 'select2',
                'name' => 'course_id', // the db column for the foreign key
@@ -86,13 +128,70 @@ class CourseChapterSectionCrudController extends CrudController
                'attribute' => 'title', // foreign key attribute that is shown to user
                'model' => "App\Models\CourseChapter", // foreign key model
                'allows_null' => false
-            ],
+            ]]
+            );
+             $this->crud->setEntityNameStrings('Course Section', 'Course Sections');
+
+            // $this->crud->setRoute(config('backpack.base.route_prefix') . '/problem-questions');
+        }
 
 
-        ]);
+
+
+        $this->crud->removeAllButtons();
+        $this->crud->addButtonFromModelFunction('line', 'edit', 'edit', 'beginning');
+        $this->crud->addButtonFromModelFunction('line', 'delete', 'delete', 'end');
+        $this->crud->addButtonFromModelFunction('top', 'add', 'add', 'beginning');
+
 
 
     }
+
+     /**
+     * Redirect to the correct URL, depending on which save action has been selected.
+     * @param  [type] $itemId [description]
+     * @return [type]         [description]
+     */
+    public function performSaveAction($itemId = null)
+    {
+        $saveAction = \Request::input('save_action', config('backpack.crud.default_save_action', 'save_and_back'));
+        $itemId = $itemId ? $itemId : \Request::input('id');
+
+        switch ($saveAction) {
+            case 'save_and_new':
+                $redirectUrl = 'admin/course-chapter-questions/create?course-chapter=' . $this->crud->entry->chapter->id;
+                break;
+            case 'save_and_edit':
+                $redirectUrl = 'admin/course-chapter-questions'.'/'.$itemId.'/edit?course-chapter='. $this->crud->entry->chapter->id;
+                if (\Request::has('locale')) {
+                    $redirectUrl .= '&locale='.\Request::input('locale');
+                }
+                break;
+            case 'save_and_back':
+            default:
+                $redirectUrl = 'admin/course-chapter-questions?course-chapter=' . $this->crud->entry->chapter->id;
+                break;
+        }
+
+        return \Redirect::to($redirectUrl);
+    }
+
+ /**
+     * Display all rows in the database for this entity.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $this->crud->hasAccessOrFail('list');
+
+        $this->data['crud'] = $this->crud;
+        $this->data['title'] = ucfirst(($this->chapter ? $this->chapter->title . ' --> ' : '') . $this->crud->entity_name_plural);
+
+        // load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
+        return view($this->crud->getListView(), $this->data);
+    }
+
 
     public function store(StoreRequest $request)
     {

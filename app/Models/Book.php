@@ -66,6 +66,11 @@ class Book extends Model
         return $this->is_premium && !auth()->user()->is_premium;
     }
 
+    public function manageChapters()
+    {
+        return '<a class="btn btn-xs btn-primary"   href="/admin/book-chapters?book=' . $this->id . '" data-toggle="tooltip" title="Manage Chapters">Manage Chapters</a>';
+    }
+
     /*
     }
     |--------------------------------------------------------------------------

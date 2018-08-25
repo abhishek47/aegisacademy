@@ -56,4 +56,9 @@ class Problem extends Model
         }
         return true;
     }
+
+    public function manageQuestions()
+    {
+        return '<a class="btn btn-xs btn-primary"   href="/admin/problem-questions?problem=' . $this->id . '" data-toggle="tooltip" title="Manage Problem Questions">Manage Questions</a>';
+    }
 }

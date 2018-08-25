@@ -60,6 +60,9 @@ class ProblemCrudController extends CrudController
         ]);
 
 
+        $this->crud->addButtonFromModelFunction('line', 'manageQuestions', 'manageQuestions', 'end');
+
+
     }
 
     public function store(StoreRequest $request)
