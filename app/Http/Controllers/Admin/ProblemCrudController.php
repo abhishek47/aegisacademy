@@ -44,7 +44,7 @@ class ProblemCrudController extends CrudController
                'entity' => 'subject', // the method that defines the relationship in your Model
                'attribute' => 'name', // foreign key attribute that is shown to user
                'model' => "App\Models\Subject", // foreign key model
-               'allows_null' => true
+               'allows_null' => false
             ],
 
              [  // Select2
@@ -54,7 +54,7 @@ class ProblemCrudController extends CrudController
                'entity' => 'topic', // the method that defines the relationship in your Model
                'attribute' => 'nameWithSubject', // foreign key attribute that is shown to user
                'model' => "App\Models\Topic", // foreign key model
-               'allows_null' => true
+               'allows_null' => false
             ],
 
         ]);

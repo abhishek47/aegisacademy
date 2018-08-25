@@ -46,22 +46,22 @@ class User extends Authenticatable
 
     public function readWikis()
     {
-        return $this->belongsToMany(Wiki::class, 'wiki_read')->withTimeStamps();
+        return $this->belongsToMany(Wiki::class, 'wiki_read', 'user_id')->withTimeStamps();
     }
 
     public function ratedWikis()
     {
-        return $this->belongsToMany(Wiki::class, 'wiki_rating')->withTimeStamps()->withPivot('rating');
+        return $this->belongsToMany(Wiki::class, 'wiki_rating', 'user_id')->withTimeStamps()->withPivot('rating');
     }
 
     public function likedReplies()
     {
-        return $this->belongsToMany(ThreadReply::class, 'user_reply')->withTimeStamps();
+        return $this->belongsToMany(ThreadReply::class, 'user_reply', 'user_id')->withTimeStamps();
     }
 
     public function solutionUpvotes()
     {
-        return $this->belongsToMany(ProblemQuestionSolution::class, 'pquestion_solution_upvotes');
+        return $this->belongsToMany(ProblemQuestionSolution::class, 'pquestion_solution_upvotes', 'user_id');
     }
 
     public function chapterSolutionUpvotes()
@@ -73,12 +73,12 @@ class User extends Authenticatable
 
     public function solvedProblemQuestions()
     {
-        return $this->belongsToMany(ProblemQuestion::class, 'user_problem_questions')->withTimeStamps()->withPivot(['answer', 'is_correct']);
+        return $this->belongsToMany(ProblemQuestion::class, 'user_problem_questions', 'user_id')->withTimeStamps()->withPivot(['answer', 'is_correct']);
     }
 
      public function solvedBookQuestions()
     {
-        return $this->belongsToMany(BookChapterQuestion::class, 'user_book_questions')->withTimeStamps()->withPivot(['answer', 'is_correct']);
+        return $this->belongsToMany(BookChapterQuestion::class, 'user_book_questions', 'user_id')->withTimeStamps()->withPivot(['answer', 'is_correct']);
     }
 
     public function hasRead(Wiki $wiki)

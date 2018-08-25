@@ -56,7 +56,7 @@
     <h2 class="text-grey-darkest text-2xl my-4">Recent Practice Problems</h2>
     <div class="container mx-auto mt-8 mb-8" style="flex-wrap: wrap;">
         @foreach($problems as $index => $problem)
-         <div href="" class="flex flex-col rounded bg-white shadow-md p-3 pt-4 border-4 border-brand border-l-0 border-b-0 border-r-0">
+         <div href="" class="flex flex-col rounded bg-white shadow-md p-3 pt-4 border-4 border-brand border-l-0 border-b-0 border-r-0 mb-2">
 
                             <div class="flex items-center justify-between">
                                 <div>
