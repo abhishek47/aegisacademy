@@ -12,11 +12,11 @@ class CourseChaptersController extends Controller
     public function show($courseSlug, $chapterSlug, $sectionSlug = null)
     {
         $course = Course::where('slug', $courseSlug)->first();
-        $chapter = CourseChapter::where('slug', $chapterSlug)->first();
+        $chapter = CourseChapter::where('slug', $chapterSlug)->where('course_id', $course->id)->first();
 
         if($sectionSlug)
         {
-            $section = CourseChapterSection::where('slug', $sectionSlug)->first();
+            $section = CourseChapterSection::where('slug', $sectionSlug)->where('course_id', $course->id)->first();
             if($section->content_type != 2)
             {
               $section->markComplete();
