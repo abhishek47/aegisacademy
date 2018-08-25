@@ -159,17 +159,17 @@ class CourseChapterSectionCrudController extends CrudController
 
         switch ($saveAction) {
             case 'save_and_new':
-                $redirectUrl = 'admin/course-chapter-questions/create?course-chapter=' . $this->crud->entry->chapter->id;
+                $redirectUrl = 'admin/course-chapter-sections/create?course-chapter=' . $this->crud->entry->chapter->id;
                 break;
             case 'save_and_edit':
-                $redirectUrl = 'admin/course-chapter-questions'.'/'.$itemId.'/edit?course-chapter='. $this->crud->entry->chapter->id;
+                $redirectUrl = 'admin/course-chapter-sections'.'/'.$itemId.'/edit?course-chapter='. $this->crud->entry->chapter->id;
                 if (\Request::has('locale')) {
                     $redirectUrl .= '&locale='.\Request::input('locale');
                 }
                 break;
             case 'save_and_back':
             default:
-                $redirectUrl = 'admin/course-chapter-questions?course-chapter=' . $this->crud->entry->chapter->id;
+                $redirectUrl = 'admin/course-chapter-sections?course-chapter=' . $this->crud->entry->chapter->id;
                 break;
         }
 
