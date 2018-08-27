@@ -196,7 +196,7 @@ class CourseChapterSectionCrudController extends CrudController
     public function store(StoreRequest $request)
     {
         $redirect_location = parent::storeCrud($request);
-         $this->crud->entry->slug = str_slug($this->crud->entry->title) . '-' . $this->crud->entry->id;
+         $this->crud->entry->slug = str_slug($this->crud->entry->title);
         $this->crud->entry->save();
         return $redirect_location;
     }
@@ -204,7 +204,7 @@ class CourseChapterSectionCrudController extends CrudController
     public function update(UpdateRequest $request)
     {
         $redirect_location = parent::updateCrud($request);
-        $this->crud->entry->slug = str_slug($this->crud->entry->title) . '-' . $this->crud->entry->id;
+        $this->crud->entry->slug = str_slug($this->crud->entry->title);
         $this->crud->entry->save();
         return $redirect_location;
     }
