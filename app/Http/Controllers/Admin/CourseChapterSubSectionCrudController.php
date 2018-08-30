@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Subsection;
 use App\Models\CourseChapter;
+use App\Models\CourseChapterSection;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use App\Http\Requests\CourseChapterSectionRequest as StoreRequest;
 use App\Http\Requests\CourseChapterSectionRequest as UpdateRequest;
@@ -12,9 +14,9 @@ use App\Http\Requests\CourseChapterSectionRequest as UpdateRequest;
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class CourseChapterSectionCrudController extends CrudController
+class CourseChapterSubSectionCrudController extends CrudController
 {
-    protected $chapter;
+    protected $section;
 
     public function setup()
     {
@@ -23,16 +25,16 @@ class CourseChapterSectionCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\CourseChapterSection');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/course-chapter-sections');
-        $this->crud->setEntityNameStrings('coursechaptersection', 'course_chapter_sections');
+        $this->crud->setModel('App\Models\Subsection');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/course-chapter-subsections');
+        $this->crud->setEntityNameStrings('Subsection', 'Subsections');
 
-        $this->crud->backlink = config('backpack.base.route_prefix') . '/course-chapter-sections?course-chapter=' . request('course-chapter');
+        $this->crud->backlink = config('backpack.base.route_prefix') . '/course-chapter-subsections?course-section=' . request('course-section');
 
         $this->crud->addColumns([
             [
                'name' => 'title', // The db column name
-               'label' => "Section Title", // Table column heading
+               'label' => "Subsection Title", // Table column heading
             ],
 
         ]);
@@ -40,14 +42,14 @@ class CourseChapterSectionCrudController extends CrudController
         $this->crud->addFields([
             [   // Upload
                 'name' => 'banner',
-                'label' => 'Section Icon',
+                'label' => 'Subsection Icon',
                 'type' => 'upload',
                 'upload' => true,// if you store files in the /public folder, please ommit this; if you store them in /storage or S3, please specify it;
             ],
 
-            ['lable' => 'Section No.', 'name' => 'sequence', 'type' => 'number'],
+            ['lable' => 'Subsection No.', 'name' => 'sequence', 'type' => 'number'],
 
-            ['lable' => 'Section Title', 'name' => 'title'],
+            ['lable' => 'Subsection Title', 'name' => 'title'],
 
              [ // select_from_array
                 'name' => 'content_type',
@@ -78,30 +80,30 @@ class CourseChapterSectionCrudController extends CrudController
 
 
 
-        if(request()->has('course-chapter'))
+        if(request()->has('course-section'))
         {
             $this->crud->addField([  // Select2
-               'label' => "Course Chapter",
+               'label' => "Course Section",
                'type' => 'hidden',
-               'name' => 'course_chapter_id',
-               'value' => request('course-chapter')
+               'name' => 'course_section_id',
+               'value' => request('course-section')
 
             ]);
 
-             $this->chapter = CourseChapter::findOrFail(request('course-chapter'));
+             $this->section = Subsection::findOrFail(request('course-section'));
 
-             $this->crud->addClause('where', 'course_chapter_id', '=', $this->chapter->id);
+             $this->crud->addClause('where', 'course_section_id', '=', $this->section->id);
 
              $this->crud->setEntityNameStrings($this->chapter->title . ' | Section', $this->chapter->title . ' | Sections');
 
-             $this->crud->headlink = config('backpack.base.route_prefix') . '/course-chapters?course=' . $this->chapter->course->id;
-             $this->crud->headname = $this->chapter->title;
+             $this->crud->headlink = config('backpack.base.route_prefix') . '/course-chapter-subsections?course-section=' . $this->section->id;
+             $this->crud->headname = $this->section->title;
 
                $this->crud->addField([  // Select2
-               'label' => "Course",
+               'label' => "Course Chapter",
                'type' => 'hidden',
-               'name' => 'course_id',
-               'value' => $this->chapter->course->id
+               'name' => 'course_chapter_id',
+               'value' => $this->section->chapter->id
 
             ]);
 
@@ -110,33 +112,13 @@ class CourseChapterSectionCrudController extends CrudController
             // $this->crud->setRoute(config('backpack.base.route_prefix') . '/problem-questions?problem=' . $this->problem->id);
 
         } else {
-            $this->crud->addFields([   [  // Select2
-               'label' => "Course",
-               'type' => 'select2',
-               'name' => 'course_id', // the db column for the foreign key
-               'entity' => 'course', // the method that defines the relationship in your Model
-               'attribute' => 'title', // foreign key attribute that is shown to user
-               'model' => "App\Models\Course", // foreign key model
-               'allows_null' => false
-            ],
 
-            [  // Select2
-               'label' => "Course Chapter",
-               'type' => 'select2',
-               'name' => 'course_chapter_id', // the db column for the foreign key
-               'entity' => 'chapter', // the method that defines the relationship in your Model
-               'attribute' => 'title', // foreign key attribute that is shown to user
-               'model' => "App\Models\CourseChapter", // foreign key model
-               'allows_null' => false
-            ]]
-            );
-             $this->crud->setEntityNameStrings('Course Section', 'Course Sections');
 
             // $this->crud->setRoute(config('backpack.base.route_prefix') . '/problem-questions');
         }
 
 
-        $this->crud->addButtonFromModelFunction('line', 'manageSections', 'manageSections', 'end');
+
 
         $this->crud->removeAllButtons();
         $this->crud->addButtonFromModelFunction('line', 'edit', 'edit', 'beginning');
@@ -159,17 +141,17 @@ class CourseChapterSectionCrudController extends CrudController
 
         switch ($saveAction) {
             case 'save_and_new':
-                $redirectUrl = 'admin/course-chapter-sections/create?course-chapter=' . $this->crud->entry->chapter->id;
+                $redirectUrl = 'admin/course-chapter-subsections/create?course-section=' . $this->crud->entry->section->id;
                 break;
             case 'save_and_edit':
-                $redirectUrl = 'admin/course-chapter-sections'.'/'.$itemId.'/edit?course-chapter='. $this->crud->entry->chapter->id;
+                $redirectUrl = 'admin/course-chapter-subsections'.'/'.$itemId.'/edit?course-section='. $this->crud->entry->section->id;
                 if (\Request::has('locale')) {
                     $redirectUrl .= '&locale='.\Request::input('locale');
                 }
                 break;
             case 'save_and_back':
             default:
-                $redirectUrl = 'admin/course-chapter-sections?course-chapter=' . $this->crud->entry->chapter->id;
+                $redirectUrl = 'admin/course-chapter-subsections?course-section=' . $this->crud->entry->section->id;
                 break;
         }
 
@@ -186,7 +168,7 @@ class CourseChapterSectionCrudController extends CrudController
         $this->crud->hasAccessOrFail('list');
 
         $this->data['crud'] = $this->crud;
-        $this->data['title'] = ucfirst(($this->chapter ? $this->chapter->title . ' --> ' : '') . $this->crud->entity_name_plural);
+        $this->data['title'] = ucfirst(($this->section ? $this->section->title . ' --> ' : '') . $this->crud->entity_name_plural);
 
         // load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
         return view($this->crud->getListView(), $this->data);

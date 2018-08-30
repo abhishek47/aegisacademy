@@ -32,6 +32,7 @@ Route::group([
     CRUD::resource('courses', 'CourseCrudController');
     CRUD::resource('course-chapters', 'CourseChapterCrudController');
     CRUD::resource('course-chapter-sections', 'CourseChapterSectionCrudController');
+    CRUD::resource('course-chapter-subsections', 'CourseChapterSubSectionCrudController');
 
 
 	CRUD::resource('quizzes', 'QuizCrudController');

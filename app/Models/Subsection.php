@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class CourseChapterSection extends Model
+class Subsection extends Model
 {
     use CrudTrait;
 
@@ -15,8 +15,8 @@ class CourseChapterSection extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'course_chapter_sections';
-    protected $fillable = ['title', 'banner', 'course_id', 'course_chapter_id', 'content_type',
+    protected $table = 'subsections';
+    protected $fillable = ['title', 'banner', 'course_id', 'course_chapter_id', 'course_section_id',  ,'content_type',
                             'slug', 'body', 'video', 'problem_id', 'sequence'];
 
     public function course()
@@ -27,6 +27,11 @@ class CourseChapterSection extends Model
     public function chapter()
     {
         return $this->belongsTo(CourseChapter::class, 'course_chapter_id');
+    }
+
+    public function section()
+    {
+        return $this->belongsTo(CourseChapterSection::class, 'course_section_id');
     }
 
     public function problem()
@@ -50,11 +55,6 @@ class CourseChapterSection extends Model
         return json_decode($this->attributes['video']);
     }
 
-    public function manageSections()
-    {
-        return '<a class="btn btn-xs btn-primary"   href="/admin/course-chapter-subsections?course-section=' . $this->id . '" data-toggle="tooltip" title="Manage Subsections">Manage Subsections</a>';
-    }
-
      public function setBannerAttribute($value)
     {
         $attribute_name = "banner";
@@ -66,19 +66,19 @@ class CourseChapterSection extends Model
 
     public function edit()
     {
-        return '<a class="btn btn-xs btn-default"   href="/admin/course-chapter-sections/' . $this->id . '/edit?course-chapter=' . $this->chapter->id . '" data-toggle="tooltip" title="Edit Section"><i class="fa fa-edit"></i> Edit</a>';
+        return '<a class="btn btn-xs btn-default"   href="/admin/course-chapter-subsections/' . $this->id . '/edit?course-section=' . $this->section->id . '" data-toggle="tooltip" title="Edit Section"><i class="fa fa-edit"></i> Edit</a>';
     }
 
      public function add()
     {
-        return '<a class="btn btn-md btn-primary"   href="/admin/course-chapter-sections/create?course-chapter=' . request('course-chapter') . '" data-toggle="tooltip" title="Add Section"><i class="fa fa-plus"></i> Add New Section</a>';
+        return '<a class="btn btn-md btn-primary"   href="/admin/course-chapter-subsections/create?course-section=' . request('course-section') . '" data-toggle="tooltip" title="Add Subsection"><i class="fa fa-plus"></i> Add New Subsection</a>';
     }
 
     public function delete()
     {
 
 
-        return '<a href="javascript:void(0)"  class="btn btn-xs btn-default" onclick="deleteEntry(this)" data-route="/admin/course-chapter-sections/' . $this->id  .'"class="btn btn-xs btn-default" data-button-type="delete"><i class="fa fa-trash"></i> Delete</a><script>
+        return '<a href="javascript:void(0)"  class="btn btn-xs btn-default" onclick="deleteEntry(this)" data-route="/admin/course-chapter-subsections/' . $this->id  .'"class="btn btn-xs btn-default" data-button-type="delete"><i class="fa fa-trash"></i> Delete</a><script>
     if (typeof deleteEntry != \'function\') {
       $("[data-button-type=delete]").unbind(\'click\');
 
