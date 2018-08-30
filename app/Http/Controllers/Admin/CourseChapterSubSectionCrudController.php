@@ -96,7 +96,7 @@ class CourseChapterSubSectionCrudController extends CrudController
 
              $this->crud->setEntityNameStrings($this->section->title . ' | Section', $this->section->title . ' | Sections');
 
-             $this->crud->headlink = config('backpack.base.route_prefix') . '/course-chapter-subsections?course-section=' . $this->section->id;
+             $this->crud->headlink = config('backpack.base.route_prefix') . '/course-chapter-sections?course-chapter=' . $this->section->chapter->id;
              $this->crud->headname = $this->section->title;
 
                $this->crud->addField([  // Select2
