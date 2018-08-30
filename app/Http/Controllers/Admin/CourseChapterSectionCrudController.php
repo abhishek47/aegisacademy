@@ -136,7 +136,6 @@ class CourseChapterSectionCrudController extends CrudController
         }
 
 
-        $this->crud->addButtonFromModelFunction('line', 'manageSections', 'manageSections', 'end');
 
         $this->crud->removeAllButtons();
         $this->crud->addButtonFromModelFunction('line', 'edit', 'edit', 'beginning');
@@ -144,6 +143,7 @@ class CourseChapterSectionCrudController extends CrudController
         $this->crud->addButtonFromModelFunction('top', 'add', 'add', 'beginning');
 
 
+        $this->crud->addButtonFromModelFunction('line', 'manageSections', 'manageSections', 'end');
 
     }
 

@@ -90,11 +90,11 @@ class CourseChapterSubSectionCrudController extends CrudController
 
             ]);
 
-             $this->section = Subsection::findOrFail(request('course-section'));
+             $this->section = CourseChapterSection::findOrFail(request('course-section'));
 
              $this->crud->addClause('where', 'course_section_id', '=', $this->section->id);
 
-             $this->crud->setEntityNameStrings($this->chapter->title . ' | Section', $this->chapter->title . ' | Sections');
+             $this->crud->setEntityNameStrings($this->section->title . ' | Section', $this->section->title . ' | Sections');
 
              $this->crud->headlink = config('backpack.base.route_prefix') . '/course-chapter-subsections?course-section=' . $this->section->id;
              $this->crud->headname = $this->section->title;
@@ -104,6 +104,14 @@ class CourseChapterSubSectionCrudController extends CrudController
                'type' => 'hidden',
                'name' => 'course_chapter_id',
                'value' => $this->section->chapter->id
+
+            ]);
+
+               $this->crud->addField([  // Select2
+               'label' => "Course",
+               'type' => 'hidden',
+               'name' => 'course_id',
+               'value' => $this->section->chapter->course->id
 
             ]);
 
