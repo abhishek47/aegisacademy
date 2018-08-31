@@ -19,6 +19,8 @@ class CourseChapterSection extends Model
     protected $fillable = ['title', 'banner', 'course_id', 'course_chapter_id', 'content_type',
                             'slug', 'body', 'video', 'problem_id', 'sequence'];
 
+    protected $with = ['problem', 'subsections'];
+
     public function course()
     {
         return $this->belongsTo(Course::class);
@@ -27,6 +29,11 @@ class CourseChapterSection extends Model
     public function chapter()
     {
         return $this->belongsTo(CourseChapter::class, 'course_chapter_id');
+    }
+
+    public function subsections()
+    {
+       return $this->hasMany(Subsection::class, 'course_section_id');
     }
 
     public function problem()

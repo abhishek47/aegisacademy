@@ -4,6 +4,7 @@
 
 
 		<!-- Article HTML Body after conversion -->
+		<div class="text-center text-xl text-red" v-show="this.mjRunning">Please wait. Loading ...</div>
 		<div class="markdown-body" ref="buffer" style="display:none;position:absolute;top:0; left: 0"></div>
 
 		<div ref="preview"></div>
@@ -90,6 +91,8 @@
 
 		        	});
         	},
+
+
 
         	// Initialise all elements to variables
             init() {

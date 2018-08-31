@@ -97,7 +97,8 @@ Route::get('/courses/{courseSlug}', 'CoursesController@show');
 Route::get('/courses/{courseSlug}/chapter:{chapterSlug}', 'CourseChaptersController@show');
 Route::get('/courses/{courseSlug}/chapter:{chapterSlug}/section:{sectionSlug}', 'CourseChaptersController@show');
 
-
+Route::get('/subsections/{subsection}/body', 'SubsectionsController@getArticleBody')->name('subsections.getBody');
+Route::get('/course-sections/{section}/body', 'CourseChaptersController@getArticleBody')->name('subsections.getBody');
 
 
 
