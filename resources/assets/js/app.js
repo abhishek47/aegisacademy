@@ -37,6 +37,8 @@ Vue.component('new-thread', require('./components/NewThread.vue'));
 Vue.component('edit-thread', require('./components/EditThread.vue'));
 Vue.component('thread-reply', require('./components/ThreadReply.vue'));
 Vue.component('book-chapter', require('./components/BookChapter.vue'));
+Vue.component('course-problem', require('./components/CourseProblem.vue'));
+Vue.component('course-section', require('./components/CourseSection.vue'));
 
 Vue.use(PortalVue)
 Vue.use(Toastr);

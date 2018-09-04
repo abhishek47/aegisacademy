@@ -19,6 +19,8 @@ class Subsection extends Model
     protected $fillable = ['title', 'banner', 'course_id', 'course_chapter_id', 'course_section_id'  ,'content_type',
                             'slug', 'body', 'video', 'problem_id', 'sequence'];
 
+    protected $with = ['problem'];
+
     public function course()
     {
         return $this->belongsTo(Course::class);

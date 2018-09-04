@@ -25,31 +25,14 @@
                 {{ $chapter->title }}</span>
               </span>
 
-                <div class="flex flex-col shadow-md rounded bg-white mt-8 p-4 border-4 border-brand border-l-0 border-b-0 border-r-0">
-                   <div class="flex border border-grey-dark border-l-0 border-t-0 border-r-0 mb-3 pb-3">
+                <div class="flex flex-col shadow-md rounded bg-white mt-8 p-4 pt-0 border-4 border-brand border-l-0 border-b-0 border-r-0">
+               {{--    <div class="flex border border-grey-dark border-l-0 border-t-0 border-r-0 mb-3 pb-3">
                     <h3 class="flex-1 text-2xl font-semibold tracking-wide mt-1">{{ $section->title }}</h3>
 
-                </div>
-                  @if($section->content_type == 0)
+                </div> --}}
 
-                    <platex body="{{$section->body}}"></platex>
 
-                  @elseif($section->content_type == 1)
-                    <video
-                      id="vid1"
-                      class="video-js vjs-default-skin mx-auto"
-
-                      controls
-                      width="640" height="364"
-                      data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "{{ $section->video->url }}"}] }'
-                    >
-                    </video>
-
-                  @elseif($section->content_type == 2)
-
-                     <book-chapter problem-set="{{ $section->problem }}"></book-chapter>
-
-                  @endif
+                 <course-section :section-set="{{ $section }}"></course-section>
 
 
 

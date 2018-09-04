@@ -37,6 +37,12 @@ class CourseChaptersController extends Controller
             return redirect('/courses/' . $course->slug . '/chapter:' . $chapter->slug . '/section:' . $section->slug);
         }
 
+
         return view('coursechapters.show', compact('chapter', 'course', 'section'));
+    }
+
+    public function getArticleBody(CourseChapterSection $section)
+    {
+         return response(['body' => $section->body], 200);
     }
 }
