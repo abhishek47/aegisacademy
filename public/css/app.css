@@ -5399,6 +5399,10 @@ button:focus {
   margin-top: .5rem;
 }
 
+.markdown-body p {
+  font-size: 1.125rem;
+}
+
 .theorem .panel.proof {
   -webkit-box-shadow: none;
           box-shadow: none;

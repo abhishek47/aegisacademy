@@ -106,6 +106,15 @@ button:focus { outline: none; }
   @apply mt-2;
 }
 
+.markdown-body p {
+    font-size: 1.125rem !important;
+}
+
+.markdown-body {
+  font-size: 1.125rem !important;
+}
+
+
 .theorem .panel.proof {
   @apply shadow-none bg-white mt-2;
 }

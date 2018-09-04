@@ -111521,7 +111521,7 @@ var render = function() {
             "span",
             {
               staticClass:
-                "problem-question block text-md tracking-wide font-normal leading-normal"
+                "block text-md tracking-wide font-normal leading-normal"
             },
             [
               _c("platex", {

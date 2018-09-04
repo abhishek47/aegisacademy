@@ -33,7 +33,7 @@
                     <div class="w-full">
 
 
-                    <span class="problem-question block text-md tracking-wide font-normal leading-normal" >
+                    <span class="block text-md tracking-wide font-normal leading-normal" >
                         <platex ref="questionBody" :sourceUrl="'/book-chapter-question/'+currentQuestion.id+'/question'"></platex>
                     </span>
 
