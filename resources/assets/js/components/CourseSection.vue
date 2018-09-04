@@ -7,7 +7,7 @@
                     <div class="w-full">
 
 
-                    <span v-if="currentSection.content_type == 0" class="problem-question block text-md tracking-wide font-normal leading-normal" >
+                    <span v-if="currentSection.content_type == 0" class="block text-md tracking-wide font-normal leading-normal" >
                         <platex ref="sectionBody" :body="currentSection.body"></platex>
                     </span>
 
