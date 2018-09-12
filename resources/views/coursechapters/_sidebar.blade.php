@@ -1,9 +1,9 @@
-<div class="bg-blue-lightest p-4 pr-60" style="min-height: 100vh;">
+<div  v-if="showSidebar" class="bg-blue-lightest p-4 pr-60" style="min-height: 100vh;">
     <div class="flex flex-col p-4 pl-0 pr-6 mx-3">
       {{--   <button class="shadow bg-transparent hover:bg-green border-2 border-green rounded text-green hover:text-white p-3 px-6 w-full font-semibold tracking-wide">
         <i class="fa fa-star mr-2"></i> Bookmark
         </button> --}}
-        <span class="mt-6 text-grey-darker uppercase text-lg font-bold tracking-wide"><a href="#" class="text-grey-darker"><i class="fa fa-arrow-left"></i></a> Sections</span>
+        <span class="mt-6 text-grey-darker uppercase text-lg font-bold tracking-wide">Sections</span>
         <ul class="mt-2 list-reset">
 
             @foreach($chapter->sections as $section)

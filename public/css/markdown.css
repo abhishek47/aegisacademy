@@ -9,3 +9,7 @@
 .markdown-body {
   font-size: 1.125rem !important;
 }
+
+.MathJax_Display {
+    margin: 20px auto !important;
+}

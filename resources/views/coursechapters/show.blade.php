@@ -7,7 +7,9 @@
                  <div class="flex bg-white shadow container md:mx-auto" style="min-height: 100vh;">
 
           @include('coursechapters._sidebar')
-          <div class="w-3/4 p-6 pl-8">
+          <div class="p-6 pl-8" :class="showSidebar ? 'w-3/4 ' : 'w-100'">
+
+              <a href="javascript:;" @click.prevent="showSidebar = !showSidebar" class="text-grey-dark no-underline mb-4 font-semibold block"><i class="fa fa-bars"></i> Toggle Sidebar</a>
 
                <span class="text-blue-dark text-sm font-semibold tracking-wide">
                 <a href="/courses" class="no-underline text-blue-dark hover:text-brand">

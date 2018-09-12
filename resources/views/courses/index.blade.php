@@ -9,6 +9,7 @@
           @include('courses._sidebar')
           <div class="w-3/4 p-6 pl-8">
 
+               <a href="javascript:;" @click.prevent="showSidebar = !showSidebar" class="text-grey-dark no-underline mb-4 font-semibold block"><i class="fa fa-bars"></i> Toggle Sidebar</a>
 
                 <form class="flex w-full mx-auto bg-white shadow-md rounded border-2 border-grey mb-6">
 

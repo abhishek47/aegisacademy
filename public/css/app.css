@@ -5400,7 +5400,11 @@ button:focus {
 }
 
 .markdown-body p {
-  font-size: 1.125rem;
+  font-size: 1.125rem !important;
+}
+
+.markdown-body {
+  font-size: 1.125rem !important;
 }
 
 .theorem .panel.proof {
