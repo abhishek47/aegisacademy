@@ -8,7 +8,7 @@
 
             @foreach($chapter->sections as $section)
                 <li class="chapter-item mt-3 text-md">
-                    <a href="/courses/{{$course->slug}}/chapter:{{$chapter->slug}}/section:{{$section->slug}}" class="no-underline font-semibold tracking-wide hover:text-grey-darker leading-normal {{ request()->is('*/section:' . $section->slug) || $section->completed ? 'text-grey-darker' : 'text-grey' }}">
+                    <a href="/courses/{{$course->slug}}/chapter:{{$chapter->slug}}/section:{{$section->slug}}" class="no-underline font-semibold tracking-wide hover:text-grey-darker leading-normal {{ request()->is('*/section:' . $section->slug) ? 'text-green-darker' : ($section->completed ? 'text-grey-darker' : 'text-grey') }}">
                       <i class="fa fa-circle text-xs mr-2"></i> {{ $section->title }}
                     </a>
                 </li>
