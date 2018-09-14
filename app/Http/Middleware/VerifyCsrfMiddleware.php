@@ -26,6 +26,8 @@ class VerifyCsrfMiddleware extends \Illuminate\Foundation\Http\Middleware\Verify
             }
         }
 
+
+
         return false;
     }
 }
