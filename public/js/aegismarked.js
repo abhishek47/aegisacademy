@@ -24,18 +24,8 @@ function aegismarked(text)
 
 
          // Question
-        text = text.replace(/&lt;startquestion-(\d+)&gt;/g,'<div class="slickQuiz" id="slickQuiz-$1" data-id="$1">\r\n \
-					    <h1 class="quizName"></h1>\r\n \
-					    <div class="quizArea">\r\n \
-					        <div class="quizHeader"> \
-					            <a class="startQuiz" href="">Get Started!</a> \
-					        </div> \
-					    </div> \
-					    <div class="quizResults"> \
-					        <h3 class="quizScore">You Scored: <span></span></h3> \
-					        <h3 class="quizLevel"><strong>Ranking:</strong> <span></span></h3> \
-					        <div class="quizResultsCopy"></div> \
-					    </div>').replace(/&lt;\/endquestion&gt;/g, '</div>');
+        text = text.replace(/&lt;startquestion-(\d+)&gt;/g,'<practice-problems>')
+              .replace(/&lt;\/endquestion&gt;/g, '</practice-problems>');
 
 
 

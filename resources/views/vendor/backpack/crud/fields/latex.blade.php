@@ -79,6 +79,33 @@
    </div>
 
 
+<?php $problems = \App\Models\Problem::latest()->get(); ?>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Choose Problem to Add</h4>
+      </div>
+      <div class="modal-body">
+        <div class="list-group" style="max-height: 350px;
+    overflow: auto;">
+         @foreach($problems as $problem)
+          <a href="#" onclick="insertAtCaret('<practice-problems problem-id=\'{{ $problem->id }}\'></practice-problems>');" data-dismiss="modal" class="list-group-item" style="padding: 15px;font-size: 17px;">{{ $problem->title }}</a>
+         @endforeach
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 
@@ -210,33 +237,6 @@
 
 
              this.SwapBuffers();
-
-
-
-             $('.slickQuiz').each(function(i, obj) {
-                var qid = $(this).data('id');
-
-                axios.get('/quiz/'+qid).then(function(response) {
-                  console.log(response.data);
-                  $('#slickQuiz-'+qid).slickQuiz({
-                    json: response.data
-                   });
-
-
-                    MathJax.Hub.Queue(
-                      ["Typeset",MathJax.Hub,document.getElementById('slickQuiz-'+qid)],
-                      function() {
-                         console.log('Done');
-
-                      }
-                    );
-
-
-                });
-            });
-
-
-
 
 
           },
