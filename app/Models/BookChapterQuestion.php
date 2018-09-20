@@ -11,7 +11,7 @@ class BookChapterQuestion extends Model
     use CrudTrait;
 
     protected $table = 'book_chapter_questions';
-    protected $fillable = ['question', 'options', 'solution', 'level', 'hint' ,'answer', 'chapter_id'];
+    protected $fillable = ['question', 'options', 'solution', 'level', 'hint', 'hint2', 'hint3', 'answer', 'chapter_id'];
 
       protected $appends = ['user_answer', 'is_solved_correct', 'solvings_count', 'solutions_count'];
 

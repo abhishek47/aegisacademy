@@ -53,9 +53,13 @@ class BookChapterQuestionCrudController extends CrudController
 
 
 
-            ['label' => 'Solution', 'name' => 'solution', 'type' => 'summernote'],
+            ['label' => 'Solution', 'name' => 'solution', 'type' => 'summernote', 'options' => ['height' => '200px']],
 
-            ['label' => 'Hint', 'name' => 'hint', 'type' => 'summernote'],
+            ['label' => 'Hint', 'name' => 'hint', 'type' => 'summernote', 'options' => ['height' => '200px']],
+
+            ['label' => 'Hint 2', 'name' => 'hint2', 'type' => 'summernote', 'options' => ['height' => '200px']],
+
+            ['label' => 'Hint 3', 'name' => 'hint3', 'type' => 'summernote', 'options' => ['height' => '200px']],
 
             [ // select_from_array
                 'name' => 'level',
