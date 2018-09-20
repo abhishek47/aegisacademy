@@ -44,6 +44,15 @@ class ProblemQuestionCrudController extends CrudController
 
              ['label' => 'Question', 'name' => 'question', 'type' => 'latex'],
 
+             [ // select_from_array
+                'name' => 'is_subjective',
+                'label' => "Subjective Question",
+                'type' => 'select_from_array',
+                'options' => [0 => 'No', 1 => 'Yes'],
+                'allows_null' => false,
+                // 'allows_multiple' => true, // OPTIONAL; needs you to cast this to array in your model;
+            ],
+
             [ // Table
                 'name' => 'options',
                 'label' => 'Options',
@@ -56,17 +65,17 @@ class ProblemQuestionCrudController extends CrudController
                 'min' => 0 // minimum rows allowed in the table
             ],
 
-            ['label' => 'Answer Index ( Give option number. For ex. if option 1 is answer then enter 1 )', 'name' => 'answer', 'type' => 'number'],
+            ['label' => 'Answer Index ( Give option number. For ex. if option 1 is answer then enter 1. Leave Blank for subjective question)', 'name' => 'answer', 'type' => 'number'],
 
+            ['label' => 'Answer for subjective question ( Leave blank for objective )', 'name' => 'subjective_answer'],
 
+            ['label' => 'Solution', 'name' => 'solution', 'type' => 'summernote'],
 
-            ['label' => 'Solution', 'name' => 'solution', 'type' => 'summernote', 'options' => ['height' => '200px']],
+            ['label' => 'Hint', 'name' => 'hint', 'type' => 'summernote'],
 
-            ['label' => 'Hint', 'name' => 'hint', 'type' => 'summernote', 'options' => ['height' => '200px']],
+            ['label' => 'Hint 2', 'name' => 'hint2', 'type' => 'summernote'],
 
-            ['label' => 'Hint 2', 'name' => 'hint2', 'type' => 'summernote', 'options' => ['height' => '200px']],
-
-            ['label' => 'Hint 3', 'name' => 'hint3', 'type' => 'summernote', 'options' => ['height' => '200px']],
+            ['label' => 'Hint 3', 'name' => 'hint3', 'type' => 'summernote'],
 
             [ // select_from_array
                 'name' => 'level',
