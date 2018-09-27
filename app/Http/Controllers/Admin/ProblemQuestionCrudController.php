@@ -69,7 +69,7 @@ class ProblemQuestionCrudController extends CrudController
 
             ['label' => 'Answer for subjective question ( Leave blank for objective )', 'name' => 'subjective_answer'],
 
-            ['label' => 'Solution', 'name' => 'solution', 'type' => 'summernote'],
+            ['label' => 'Solution', 'name' => 'solution', 'type' => 'latex'],
 
             ['label' => 'Hint', 'name' => 'hint', 'type' => 'summernote'],
 
