@@ -20,7 +20,7 @@ class ProblemQuestion extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['question', 'options', 'solution', 'level', 'hint' ,'answer', 'problem_id'];
+    protected $fillable = ['question', 'options', 'solution', 'level', 'hint', 'hint2', 'hint3', 'answer', 'problem_id', 'is_subjective', 'subjective_answer'];
     // protected $hidden = [];
     // protected $dates = [];
 
