@@ -60,7 +60,7 @@ class ProblemQuestionCrudController extends CrudController
 
 
 
-            ['label' => 'Solution', 'name' => 'solution', 'type' => 'summernote'],
+            ['label' => 'Solution', 'name' => 'solution', 'type' => 'latex'],
 
             ['label' => 'Hint', 'name' => 'hint', 'type' => 'summernote'],
 

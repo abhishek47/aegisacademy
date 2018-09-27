@@ -1,6 +1,6 @@
-toggleEditor = function() {
-  		$('#editor--container').toggleClass('hidden');
-  		$('#main--output').toggleClass('hidden');
+toggleEditor = function(name) {
+  		$('#editor--container-'+name).toggleClass('hidden');
+  		$('#main--output-'+name).toggleClass('hidden');
   	}
 
 
@@ -43,7 +43,7 @@ toggleEditor = function() {
                         // create a dynamic div
                         var viewableText = $("<div>");
                         viewableText.attr('id', "section-" + id + "-body");
-                        // set it's html 
+                        // set it's html
                         viewableText.html(divHtml);
                         // replace out the textarea
                         editor.replaceWith(viewableText);
@@ -58,125 +58,121 @@ toggleEditor = function() {
                     // create a dynamic div
                     var viewableText = $("<div>");
                     viewableText.attr('id', "section-" + id + "-body");
-                    // set it's html 
+                    // set it's html
                     viewableText.html(divHtml);
                     // replace out the textarea
                     editor.replaceWith(viewableText);
-            }         
+            }
 
-        }  
-
-
+        }
 
 
 
 
-function addHeader()
+
+
+function addHeader(name)
 {
-	insertAtCaret('# Your Header');
+	insertAtCaret(name, '# Your Header');
 }
 
 
-function addLink()
+function addLink(name)
 {
-	insertAtCaret("[Name your link](https://www.link.com)");
+	insertAtCaret(name, "[Name your link](https://www.link.com)");
 }
 
-function addImage()
+function addImage(name)
 {
-	insertAtCaret('![alt text](https://imagelink.com/icon48.png "Image Title")');
+	insertAtCaret(name, '![alt text](https://imagelink.com/icon48.png "Image Title")');
 }
 
-function addTable()
+function addTable(name)
 {
-	insertAtCaret("| First Header  | Second Header |\n| ------------- | ------------- |\n| Content Cell  | Content Cell  |\n| Content Cell  | Content Cell  |\n ");
+	insertAtCaret(name, "| First Header  | Second Header |\n| ------------- | ------------- |\n| Content Cell  | Content Cell  |\n| Content Cell  | Content Cell  |\n ");
 }
 
-function addExample()
+function addExample(name)
 {
-	insertAtCaret("<startexample>\r\n\r\n<endexample>");
-		
+	insertAtCaret(name, "<startexample>\r\n\r\n<endexample>");
+
 }
 
-function addBox()
+function addBox(name)
 {
-    insertAtCaret("<startbox>\r\n\r\n<endbox>");
-        
+    insertAtCaret(name, "<startbox>\r\n\r\n<endbox>");
+
 }
 
-function addSoln()
+function addSoln(name)
 {
-	insertAtCaret("<startsolution>\r\n\r\n<endsolution>");
-		
+	insertAtCaret(name, "<startsolution>\r\n\r\n<endsolution>");
+
 }
 
-function addDef()
+function addDef(name)
 {
-	insertAtCaret("<startdefinition>\r\n\r\n<enddefinition>");
-		
-}
+	insertAtCaret(name, "<startdefinition>\r\n\r\n<enddefinition>");
 
-
-function addTheorem()
-{
-	insertAtCaret("<starttheorem>\r\n\r\n<endtheorem>");
 }
 
 
-function addProof()
+function addTheorem(name)
 {
-	insertAtCaret("<startproof>\r\n\r\n<endproof>");	
+	insertAtCaret(name, "<starttheorem>\r\n\r\n<endtheorem>");
 }
 
 
-function addToc()
+function addProof(name)
 {
-	insertAtCaret("[[toc]]");
-		
+	insertAtCaret(name, "<startproof>\r\n\r\n<endproof>");
 }
 
-function addList()
-{
-	insertAtCaret("* Item 1\r\n* Item 2");
-}	
 
-function addNList()
+function addToc(name)
 {
-    insertAtCaret("1. Item 1\r\n2. Item 2");
-}   
+	insertAtCaret(name, "[[toc]]");
 
-function addCenterAlign()
-{
-	insertAtCaret("<startcenter>\r\n\r\n<endcenter>");
-}	
+}
 
-function addQuestion(id)
+function addList(name)
 {
-	insertAtCaret('<startquestion-'+id+'></endquestion>');
-}	
+	insertAtCaret(name, "* Item 1\r\n* Item 2");
+}
+
+function addNList(name)
+{
+    insertAtCaret(name, "1. Item 1\r\n2. Item 2");
+}
+
+function addCenterAlign(name)
+{
+	insertAtCaret(name, "<startcenter>\r\n\r\n<endcenter>");
+}
+
 
 
 function addLine(height)
 {
     insertAtCaret('<hr-'+height+'>')
-        
+
 }
 
-function toggleFullscreen()
+function toggleFullscreen(name)
 {
     $('body').css('padding-top', '0');
     $('.navbar').toggleClass('hidden');
-    $('#btn-fullscreen1').toggleClass('active');
-    $('#editor').toggleClass('fullscreen');
-    $('#main--output').toggleClass('fullscreen');
-    $('#editor--buttons').toggleClass('fullscreen');
+    $('#btn-fullscreen1-'+name).toggleClass('active');
+    $('#editor-'+name).toggleClass('fullscreen');
+    $('#main--output-'+name).toggleClass('fullscreen');
+    $('#editor--buttons-'+name).toggleClass('fullscreen');
 }
 
 
 
-function insertAtCaret(text) {
-	    
-	    var areaId = 'marked-mathjax-input';
+function insertAtCaret(name, text) {
+
+	    var areaId = 'marked-mathjax-input-'+name;
 		var txtarea = document.getElementById(areaId);
 		if (!txtarea) { return; }
 
@@ -211,7 +207,7 @@ function insertAtCaret(text) {
 		}
 
 		txtarea.scrollTop = scrollPos;
-} 	
+}
 
 
 
@@ -384,7 +380,7 @@ function insertAtCaret(text) {
         var quizValues = (plugin.config.json ? plugin.config.json : typeof quizJSON != 'undefined' ? quizJSON : null);
 
         // Get questions, possibly sorted randomly
-       
+
         var questions = plugin.config.randomSortQuestions ?
                         quizValues.questions.sort(function() { return (Math.round(Math.random())-0.5); }) :
                         quizValues.questions;
@@ -436,7 +432,7 @@ function insertAtCaret(text) {
                 if(options.qv != null)
                 {
                     quizValues = options.qv;
-                }    
+                }
 
                 var quizID = quizValues.info.id;
                 var key, keyNotch, kN;
@@ -449,11 +445,11 @@ function insertAtCaret(text) {
                     .replace('%name', quizValues.info.main) );
 
 
-                
+
                 if(levels > 1)
                 {
                     var levelsHtml = $('<ol class="quiz-levels"></ol>');
-            
+
 
                     for(i = 1; i<=levels; i++)
                     {
@@ -462,10 +458,10 @@ function insertAtCaret(text) {
 
                     $quizHeader.hide().append(levelsHtml).fadeIn(1000, kN(key,2));
                 }
-                
 
-               
-                  var skipToQ = $('<ol class="quiz-question-links"></ol>');    
+
+
+                  var skipToQ = $('<ol class="quiz-question-links"></ol>');
 
                 $quizResultsCopy.append(quizValues.info.results);
 
@@ -507,7 +503,7 @@ function insertAtCaret(text) {
                                     .replace('%total', '<span class="total">' +
                                         questionCount + '</span>').replace('%level','') + '</div>');
                            }
-                            
+
                         }
 
                         var formatQuestion = '';
@@ -537,14 +533,14 @@ function insertAtCaret(text) {
 
                         // Get the answers
                         var qanswers = JSON.parse(question.a);
-                      
+
                         var answers = plugin.config.randomSortAnswers ?
                             qanswers.sort(function() { return (Math.round(Math.random())-0.5); }) :
                             qanswers;
 
-                        if(answers.length == 1) 
+                        if(answers.length == 1)
                         {
-                          
+
 
                             inputName     = $element.attr('id') + '_question' + (count - 1),
 
@@ -557,8 +553,8 @@ function insertAtCaret(text) {
                                     .append(optionInput);
 
                                     answerHTML.append(answerContent);
-                        }  
-                        else { 
+                        }
+                        else {
 
                         // prepare a name for the answer inputs based on the question
                         var selectAny     = question.select_any ? question.select_any : false,
@@ -575,11 +571,11 @@ function insertAtCaret(text) {
                             if (answers.hasOwnProperty(i)) {
                                 answer   = answers[i],
                                 optionId = inputName + '_' + i.toString();
-                                
+
                                 // If question has >1 true answers and is not a select any, use checkboxes; otherwise, radios
                                 var input = '<input id="' + optionId + '" name="' + inputName +
                                             '" type="' + inputType + '" /> ';
-                                
+
                                 if(i == 0)
                                 {
                                     posLabel = 'A';
@@ -597,7 +593,7 @@ function insertAtCaret(text) {
                                     posLabel = 'E';
                                 }
 
-                                       
+
                                 var optionLabel = '<label for="' + optionId + '">' + posLabel + '. '+ answer.option + '</label>';
 
                                 var answerContent = $('<li></li>')
@@ -686,7 +682,7 @@ function insertAtCaret(text) {
                         firstQuestion.fadeIn(500, function () {
                             if (options && options.callback) options.callback ();
                         });
-                        
+
                     }
                 }
 
@@ -758,7 +754,7 @@ function insertAtCaret(text) {
                     answers       = JSON.parse(questions[questionIndex].a),
                     selectAny     = questions[questionIndex].select_any ? questions[questionIndex].select_any : false;
 
-                answerLIs.addClass(incorrectResponseClass); 
+                answerLIs.addClass(incorrectResponseClass);
 
                 if(answers.length == 1)
                 {
@@ -770,7 +766,7 @@ function insertAtCaret(text) {
                     } else {
                          answerLIs.append('<li class="sb-resp" style="margin-top: 8px;"><b>Answer : </b>' + answers[0].option).fadeIn(200);
                     }
-                   
+
 
                 } else {
                      // Collect the true answers needed for a correct response
@@ -780,7 +776,7 @@ function insertAtCaret(text) {
                                 var answer = answers[i],
                                     index  = parseInt(i, 10);
 
- 
+
                                 if (answer.correct) {
                                     trueAnswers.push(index);
                                     answerLIs.eq(index).removeClass(incorrectResponseClass).addClass(correctResponseClass);
@@ -809,7 +805,7 @@ function insertAtCaret(text) {
                         // Verify all/any true answers (and no false ones) were submitted
                         var correctResponse = plugin.method.compareAnswers(trueAnswers, selectedAnswers, selectAny);
 
-                        
+
                 }
 
                 if (correctResponse) {
@@ -818,7 +814,7 @@ function insertAtCaret(text) {
                             questionLI.addClass(incorrectClass);
                         }
 
-               
+
 
                 // Toggle appropriate response (either for display now and / or on completion)
                 questionLI.find(correctResponse ? _correctResponse : _incorrectResponse).show();
@@ -1048,23 +1044,23 @@ function insertAtCaret(text) {
             $('.change-level').on('click', function (e) {
                     e.preventDefault();
 
-                    
-                    
+
+
                     var qid = $(this).data('id');
                     var level = $(this).data('level')
 
                     axios.get('/quiz/'+qid+'/'+level).then(function(response) {
-                    
 
-                     
-                      
+
+
+
 
 
                     // Set via json option or quizJSON variable (see slickQuiz-config.js)
                     quizValues = response.data;
 
                     // Get questions, possibly sorted randomly
-                   
+
                      questions = plugin.config.randomSortQuestions ?
                                     quizValues.questions.sort(function() { return (Math.round(Math.random())-0.5); }) :
                                     quizValues.questions;
@@ -1085,7 +1081,7 @@ function insertAtCaret(text) {
                 $(_element + ' ' + '.quizDescription').remove();
                 $(_element + ' ' + '.quiz-levels').remove();
                 $(_element + ' ' + '.questions').remove();
-                $(_element + ' ' + '.tryAgain').remove();   
+                $(_element + ' ' + '.tryAgain').remove();
 
                       plugin.config.skipStartButton = true;
                       plugin.init();
@@ -1093,7 +1089,7 @@ function insertAtCaret(text) {
                         MathJax.Hub.Queue(
                           ["Typeset",MathJax.Hub,document.getElementById('slickQuiz-'+qid)],
                           function() {
-                            
+
                           }
                         );
 
@@ -1111,12 +1107,12 @@ function insertAtCaret(text) {
 
                     var qid = $(this).data('id');
 
-                
+
                     $(_element + ' .questions li[style*="display: list-item;"]').fadeOut(100, function(){
                          $(_element + ' #'+qid).fadeIn(300, kN(key,1));
                     });
 
-                   
+
 
            });
 
@@ -1180,7 +1176,7 @@ var quizJSON = {
         "name":    "Basic Mathematical Problems!!",
         "main":    "<p>Solve General Maths Questions</p>",
         "results": "<h5>Learn More</h5><p>Read our wiki pages daily to learn more Mathematical skills</p>",
-        
+
     },
     "questions": [
         { // Question 1 - Multiple Choice, Single True Answer

@@ -3,39 +3,39 @@
  <label>{!! $field['label'] !!}</label>
 
  <div style="height:0px;overflow:hidden">
-     <form id="file-upload" method="POST" action="/image/upload" enctype="multipart/form-data">
-       <input type="file" id="fileInput" name="files" />
+     <form id="file-upload-{{$field['name']}}" method="POST" action="/image/upload" enctype="multipart/form-data">
+       <input type="file" id="fileInput-{{$field['name']}}" name="files" />
      </form>
  </div>
 
 
-<div id="editor" class="editor--toolbar">
+<div id="editor-{{$field['name']}}" class="editor--toolbar">
       <div class="editor--buttons">
-            <a title="Add Heading" data-toggle="tooltip" data-placement="bottom"  onclick="addHeader();return false;"><i class="fa fa-header"></i></a>
-            <a title="Add Link" data-toggle="tooltip" data-placement="bottom"  onclick="addLink();return false;"><i class="fa fa-link"></i></a>
-            <a title="Add List" data-toggle="tooltip" data-placement="bottom"  onclick="addList();return false;"><i class="fa fa-list-ul"></i></a>
-            <a title="Add Numbered List" data-toggle="tooltip" data-placement="bottom"  onclick="addNList();return false;"><i class="fa fa-list-ol"></i></button>
-            <a title="Add Table" data-toggle="tooltip" data-placement="bottom"  onclick="addTable();return false;"><i class="fa fa-table"></i></a>
+            <a title="Add Heading" data-toggle="tooltip" data-placement="bottom"  onclick="addHeader('{{$field['name']}}');return false;"><i class="fa fa-header"></i></a>
+            <a title="Add Link" data-toggle="tooltip" data-placement="bottom"  onclick="addLink('{{$field['name']}}');return false;"><i class="fa fa-link"></i></a>
+            <a title="Add List" data-toggle="tooltip" data-placement="bottom"  onclick="addList('{{$field['name']}}');return false;"><i class="fa fa-list-ul"></i></a>
+            <a title="Add Numbered List" data-toggle="tooltip" data-placement="bottom"  onclick="addNList('{{$field['name']}}');return false;"><i class="fa fa-list-ol"></i></button>
+            <a title="Add Table" data-toggle="tooltip" data-placement="bottom"  onclick="addTable('{{$field['name']}}');return false;"><i class="fa fa-table"></i></a>
             <i class="separator">|</i>
-            <a title="Add Image from URL" data-toggle="tooltip" data-placement="bottom"  onclick="addImage();return false;"><i class="fa fa-photo"></i></a>
+            <a title="Add Image from URL" data-toggle="tooltip" data-placement="bottom"  onclick="addImage('{{$field['name']}}');return false;"><i class="fa fa-photo"></i></a>
 
-            <a title="Upload Image from Computer" data-toggle="tooltip" data-placement="bottom"  onclick="chooseFile();"><i class="fa fa-file"></i></a>
+            <a title="Upload Image from Computer" data-toggle="tooltip" data-placement="bottom"  onclick="chooseFile{{$field['name']}}();"><i class="fa fa-file"></i></a>
             <i class="separator">|</i>
-            <a title="Add Example" data-toggle="tooltip" data-placement="bottom"   onclick="addExample();return false;">E.g.</a>
-            <a title="Add Solution" data-toggle="tooltip" data-placement="bottom"  onclick="addSoln();return false;">Sn.</a>
+            <a title="Add Example" data-toggle="tooltip" data-placement="bottom"   onclick="addExample('{{$field['name']}}');return false;">E.g.</a>
+            <a title="Add Solution" data-toggle="tooltip" data-placement="bottom"  onclick="addSoln('{{$field['name']}}');return false;">Sn.</a>
             <i class="separator">|</i>
-            <a title="Add Theorem" data-toggle="tooltip" data-placement="bottom"   onclick="addTheorem();return false;">Th.</a>
-            <a title="Add Proof" data-toggle="tooltip" data-placement="bottom"  onclick="addProof();return false;">Pr.</a>
+            <a title="Add Theorem" data-toggle="tooltip" data-placement="bottom"   onclick="addTheorem('{{$field['name']}}');return false;">Th.</a>
+            <a title="Add Proof" data-toggle="tooltip" data-placement="bottom"  onclick="addProof('{{$field['name']}}');return false;">Pr.</a>
             <i class="separator">|</i>
-           <span title="Add Problems Section" data-toggle="tooltip" data-placement="bottom" > <a   data-toggle="modal" data-target="#myModal" ><i class="fa fa-question-circle"></i></a></span>
-            <a type="button" title="Add Definition" data-toggle="tooltip" data-placement="bottom"   onclick="addDef();return false;">Df.</a>
+           <span title="Add Problems Section" data-toggle="tooltip" data-placement="bottom" > <a   data-toggle="modal" data-target="#myModal-{{$field['name']}}" ><i class="fa fa-question-circle"></i></a></span>
+            <a type="button" title="Add Definition" data-toggle="tooltip" data-placement="bottom"   onclick="addDef('{{$field['name']}}');return false;">Df.</a>
 
              <i class="separator">|</i>
             <a title="Align to Center" data-toggle="tooltip" data-placement="bottom"  onclick="addCenterAlign();return false;"><i class="fa fa-align-center"></i></a>
             <a title="Add Box" data-toggle="tooltip" data-placement="bottom"  onclick="addBox();return false;">Box</a>
 <i class="separator">|</i>
-            <a title="Preview" data-toggle="tooltip" data-placement="bottom"  onclick="Preview.Update();" ><i class="fa fa-eye"></i></a>
-            <a title="Fullscreen" id="btn-fullscreen1" data-placement="bottom"  data-toggle="tooltip" onclick="toggleFullscreen();return false;" ><i class="fa fa-arrows-alt"></i></a>
+            <a title="Preview" data-toggle="tooltip" data-placement="bottom"  onclick="Preview{{$field['name']}}.Update();" ><i class="fa fa-eye"></i></a>
+            <a title="Fullscreen" id="btn-fullscreen1-{{$field['name']}}" data-placement="bottom"  data-toggle="tooltip" onclick="toggleFullscreen('{{$field['name']}}');return false;" ><i class="fa fa-arrows-alt"></i></a>
 
         <!--  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Line
@@ -64,15 +64,15 @@
           -->
 
       </div>
-      <div id="editor--area" class="hidden">
-      <textarea id="marked-mathjax-input" name="{{ $field['name'] }}" @include('crud::inc.field_attributes')  class="form-control hidden">{{ old($field['name']) ? old($field['name']) : (isset($field['value']) ? $field['value'] : (isset($field['default']) ? $field['default'] : '' )) }}</textarea>
+      <div id="editor--area-{{$field['name']}}" class="hidden">
+      <textarea id="marked-mathjax-input-{{$field['name']}}" name="{{ $field['name'] }}" @include('crud::inc.field_attributes')  class="form-control hidden">{{ old($field['name']) ? old($field['name']) : (isset($field['value']) ? $field['value'] : (isset($field['default']) ? $field['default'] : '' )) }}</textarea>
 
       </div>
        </div>
 
-       <div id="main--output" class="editor-preview markdown-body">
-  <div class="preview" id="marked-mathjax-preview"></div>
-  <div class="preview" id="marked-mathjax-preview-buffer"
+       <div id="main--output-{{$field['name']}}" class="editor-preview markdown-body">
+  <div class="preview" id="marked-mathjax-preview-{{$field['name']}}"></div>
+  <div class="preview" id="marked-mathjax-preview-buffer-{{$field['name']}}"
        style="display:none;
               position:absolute;
               top:0; left: 0"></div>
@@ -82,7 +82,7 @@
 <?php $problems = \App\Models\Problem::latest()->get(); ?>
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModal-{{$field['name']}}" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -95,7 +95,7 @@
         <div class="list-group" style="max-height: 350px;
     overflow: auto;">
          @foreach($problems as $problem)
-          <a href="#" onclick="insertAtCaret('<practice-problems problem-id=\'{{ $problem->id }}\'></practice-problems>');" data-dismiss="modal" class="list-group-item" style="padding: 15px;font-size: 17px;">{{ $problem->title }}</a>
+          <a href="#" onclick="insertAtCaret("{{$field['name']}}", '<practice-problems problem-id=\'{{ $problem->id }}\'></practice-problems>');" data-dismiss="modal" class="list-group-item" style="padding: 15px;font-size: 17px;">{{ $problem->title }}</a>
          @endforeach
         </div>
       </div>
@@ -148,9 +148,22 @@
           smartypants: false
         });
         </script>
+        @endpush
 
+         @push('crud_fields_scripts')
+              <script src="{{ asset('js/app.js') }}"></script>
+                 <script type="text/javascript" src="/js/functions.js"></script>
+
+                  <script>
+                $(document).ready(function(){
+                    $('[data-toggle="tooltip"]').tooltip();
+                });
+                </script>
+      @endpush
+@endif
+        @push('crud_fields_styles')
         <script>
-        var Preview = {
+        var Preview{{$field['name']}} = {
           delay: 50,        // delay after keystroke before updating
           preview: null,     // filled in by Init below
           buffer: null,      // filled in by Init below
@@ -161,11 +174,11 @@
           //  Get the preview and buffer DIV's
           //
           Init: function () {
-            this.preview = document.getElementById("marked-mathjax-preview");
-            this.buffer = document.getElementById("marked-mathjax-preview-buffer");
-            this.textarea = document.getElementById("marked-mathjax-input");
-            //this.editorContainer = document.getElementById("editor--container");
-            this.output = document.getElementById("main--output");
+            this.preview = document.getElementById("marked-mathjax-preview-{{$field['name']}}");
+            this.buffer = document.getElementById("marked-mathjax-preview-buffer-{{$field['name']}}");
+            this.textarea = document.getElementById("marked-mathjax-input-{{$field['name']}}");
+            //this.editorContainer = document.getElementById("editor--container-{{$field['name']}}");
+            this.output = document.getElementById("main--output-{{$field['name']}}");
           },
           //
           //  Switch the buffer and preview, and display the right one.
@@ -192,8 +205,8 @@
           //
           Update: function () {
 
-             $('#editor--area').toggleClass('hidden');
-             $('#main--output').toggleClass('hidden');
+             $('#editor--area-{{$field['name']}}').toggleClass('hidden');
+             $('#main--output-{{$field['name']}}').toggleClass('hidden');
             if (this.timeout) {clearTimeout(this.timeout)}
             this.timeout = setTimeout(this.callback,this.delay);
           },
@@ -205,7 +218,7 @@
           //    typesetting.  After it is done, call PreviewDone.
           //
           CreatePreview: function () {
-            Preview.timeout = null;
+            Preview{{$field['name']}}.timeout = null;
             if (this.mjRunning) return;
             var text = this.textarea.value;
             if (text === this.oldtext) return;
@@ -267,8 +280,8 @@
         //
         //  Cache a callback to the CreatePreview action
         //
-        Preview.callback = MathJax.Callback(["CreatePreview",Preview]);
-        Preview.callback.autoReset = true;  // make sure it can run more than once</script>
+        Preview{{$field['name']}}.callback = MathJax.Callback(["CreatePreview",Preview{{$field['name']}}]);
+        Preview{{$field['name']}}.callback.autoReset = true;  // make sure it can run more than once</script>
                   <!-- no styles -->
                   <style type="text/css">
 
@@ -294,7 +307,7 @@
                             border-top-right-radius: 4px;
                     }
 
-                    #editor.editor--toolbar.fullscreen {
+                    #editor-{{$field['name']}}.editor--toolbar.fullscreen {
                           background: #fff;
                       position: fixed!important;
                       top: 0px;
@@ -304,7 +317,7 @@
                       height: auto;
                       z-index: 9999;
                     }
-                     #editor.editor--buttons.fullscreen {
+                     #editor-{{$field['name']}}.editor--buttons.fullscreen {
 
                           width: 100%;
                           height: 50px;
@@ -375,7 +388,7 @@
                          min-height: 1000px;
                      }
 
-                    #btn-fullscreen1.active{
+                    #btn-fullscreen1-{{$field['name']}}.active{
                        color: #2c3e50!important;
                       border: 1px solid #ccc;
                     }
@@ -410,24 +423,23 @@
           {{-- push things in the after_scripts section --}}
 
               @push('crud_fields_scripts')
-              <script src="{{ asset('js/app.js') }}"></script>
-                 <script type="text/javascript" src="/js/functions.js"></script>
+
 
                  <script>
-                   function chooseFile() {
-                      $("#fileInput").click();
+                   function chooseFile{{$field['name']}}() {
+                      $("#fileInput-{{$field['name']}}").click();
                    }
                 </script>
 
                 <script type="text/javascript">
                   $(function() {
-                     $("#fileInput").change(function (){
+                     $("#fileInput-{{$field['name']}}").change(function (){
 
                           console.log("FORM IS SUBMITTING");
 
                             var formData = new FormData();
 
-                            formData.append('files', $('input[type=file]#fileInput')[0].files[0]);
+                            formData.append('files', $('input[type=file]#fileInput-{{$field['name']}}')[0].files[0]);
 
                              console.log(formData);
 
@@ -445,7 +457,7 @@
                                 processData: false,
                                 contentType: false,
                                 success:function(res){
-                                  insertAtCaret('![alt text]('+ res.src + ' "Image Title")');
+                                  insertAtCaret("{{$field['name']}}", '![alt text]('+ res.src + ' "Image Title")');
                                 },
                               });
                            });
@@ -456,18 +468,13 @@
 
                 </script>
 
-                <script>
-                $(document).ready(function(){
-                    $('[data-toggle="tooltip"]').tooltip();
-                });
-                </script>
+
 
                  <script>
-                  Preview.Init();
-                  Preview.Update();
+                  Preview{{$field['name']}}.Init();
+                  Preview{{$field['name']}}.Update();
                   </script>
 
 
 
       @endpush
-@endif
