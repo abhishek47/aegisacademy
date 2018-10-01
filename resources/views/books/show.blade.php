@@ -9,6 +9,8 @@
           @include('books._show-sidebar')
           <div class="w-3/4 p-6 pl-8">
 
+            <a href="javascript:;" @click.prevent="showSidebar = !showSidebar" class="text-grey-dark no-underline mb-4 font-semibold block"><i class="fa fa-bars"></i> Toggle Sidebar</a>
+
                <span class="text-blue-dark text-sm font-semibold tracking-wide">
                 <a href="/books" class="no-underline text-blue-dark hover:text-brand">
                  Books
