@@ -62,13 +62,13 @@ class BookChapterQuestionCrudController extends CrudController
 
             ['label' => 'Answer for subjective question ( Leave blank for objective )', 'name' => 'subjective_answer'],
 
-            ['label' => 'Solution', 'name' => 'solution', 'type' => 'summernote'],
+            ['label' => 'Solution', 'name' => 'solution', 'type' => 'latex'],
 
-            ['label' => 'Hint', 'name' => 'hint', 'type' => 'summernote'],
+            ['label' => 'Hint', 'name' => 'hint', 'type' => 'latex'],
 
-            ['label' => 'Hint 2', 'name' => 'hint2', 'type' => 'summernote'],
+            ['label' => 'Hint 2', 'name' => 'hint2', 'type' => 'latex'],
 
-            ['label' => 'Hint 3', 'name' => 'hint3', 'type' => 'summernote'],
+            ['label' => 'Hint 3', 'name' => 'hint3', 'type' => 'latex'],
 
             [ // select_from_array
                 'name' => 'level',
