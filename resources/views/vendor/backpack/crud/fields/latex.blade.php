@@ -95,7 +95,7 @@
         <div class="list-group" style="max-height: 350px;
     overflow: auto;">
          @foreach($problems as $problem)
-          <a href="#" onclick="insertAtCaret("{{$field['name']}}", '<practice-problems problem-id=\'{{ $problem->id }}\'></practice-problems>');" data-dismiss="modal" class="list-group-item" style="padding: 15px;font-size: 17px;">{{ $problem->title }}</a>
+          <a href="#" onclick="insertAtCaret('{{$field['name']}}', '<practice-problems problem-id=\'{{ $problem->id }}\'></practice-problems>');" data-dismiss="modal" class="list-group-item" style="padding: 15px;font-size: 17px;">{{ $problem->title }}</a>
          @endforeach
         </div>
       </div>
