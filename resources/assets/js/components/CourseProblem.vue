@@ -34,7 +34,7 @@
 
 
                     <span class="problem-question block text-md tracking-wide font-normal leading-normal" >
-                        <platex ref="questionBody" :sourceUrl="'/book-chapter-question/'+currentQuestion.id+'/question'"></platex>
+                        <platex ref="questionBody" :sourceUrl="'/problem-question/'+currentQuestion.id+'/question'"></platex>
                     </span>
 
 
@@ -106,13 +106,13 @@
 
                     </div>
 
-                <chapter-solutions v-if="showSolutions" :solution="currentQuestion.solution" :question-id="currentQuestion.id"></chapter-solutions>
+                 <problem-solutions v-if="showSolutions" :solution="currentQuestion.solution" :question-id="currentQuestion.id"></problem-solutions>
                 </div>
 </template>
 
 <script>
 
-    import BookChapterSolutions from './BookChapterSolutions.vue';
+    import ProblemSolutions from './ProblemSolutions.vue';
 
     export default {
         props: ['problemSet'],
@@ -130,7 +130,7 @@
         },
 
         components: {
-            'chapter-solutions': BookChapterSolutions
+            'problem-solutions': ProblemSolutions
         },
 
         created() {
@@ -151,7 +151,7 @@
                         var is_correct = 0;
 
                         var self = this;
-                        axios.post('/book-chapter-question/' + this.currentQuestion.id + '/answer', { answer: answer, is_correct: is_correct})
+                        axios.post('/problem-question/' + this.currentQuestion.id + '/answer', { answer: answer, is_correct: is_correct})
                             .then(function(){
                                 self.currentQuestion.user_answer = answer;
                                 self.showSolutions = !self.showSolutions;
@@ -164,7 +164,7 @@
                 {
                     this.selectedIndex = null;
                     this.currentQuestion = this.questions[index];
-                    this.$refs.questionBody.fetchBody('/book-chapter-question/'+this.currentQuestion.id+'/question');
+                    this.$refs.questionBody.fetchBody('/problem-question/'+this.currentQuestion.id+'/question');
                     this.questionIndex = index;
                     this.showSolutions = false;
                 }
@@ -193,7 +193,7 @@
                 var is_correct = answer == this.currentQuestion.answer ? 1 : 0;
 
                 var self = this;
-                axios.post('/book-chapter-question/' + this.currentQuestion.id + '/answer', { answer: answer, is_correct: is_correct})
+                axios.post('/problem-question/' + this.currentQuestion.id + '/answer', { answer: answer, is_correct: is_correct})
                     .then(function(){
                         self.currentQuestion.user_answer = answer;
                     });
