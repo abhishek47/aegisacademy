@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col mt-6 ml-2">
 
-                    <div class="flex items-center text-xl font-semibold mb-8">
+                    <div class="flex items-center text-xl font-semibold mb-8 problems-paginator">
                              <a
                                 class="shadow-md rounded-l rounded-sm bg-white border-t border-b border-l border-brand-light px-3 py-2 text-brand-dark hover:bg-brand-light hover:text-white no-underline"
                                 href="#"

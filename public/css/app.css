@@ -5474,6 +5474,10 @@ button:focus {
   }
 }
 
+.problems-paginator {
+  overflow-x: auto !important;
+}
+
 .chapter-item:before {
   position: absolute;
   border: 1px solid #999;
