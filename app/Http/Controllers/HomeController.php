@@ -30,7 +30,7 @@ class HomeController extends Controller
         //$problem = Problem::first();
         $wikis = Wiki::latest()->limit(8)->get();
 
-        $problems = Problem::all()->filter(function ($problem, $key) {
+        $problems = Problem::where('topic_id', '!=', null)->get()->filter(function ($problem, $key) {
             return $problem->is_ongoing;
         })->slice(0, 2);
 

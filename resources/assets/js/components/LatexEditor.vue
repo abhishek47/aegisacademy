@@ -64,7 +64,12 @@
 
 
 <script>
+
+
+    import PracticeProblems from './PracticeProblems.vue';
+
     export default {
+
 
     	props: ['sourceUrl'],
 
@@ -85,6 +90,10 @@
 
 	    	}
     	},
+
+    	components: {
+            'practice-problems': PracticeProblems
+        },
 
         mounted() {
            	var self = this;
@@ -193,6 +202,8 @@
 		        this.swapBuffers();
 
 		        $('.table-of-contents').prepend('<h3 class="heading">Contents</h3>');
+
+
 
 		    },
 

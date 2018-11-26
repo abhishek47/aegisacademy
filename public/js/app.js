@@ -107034,6 +107034,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__PracticeProblems_vue__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__PracticeProblems_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__PracticeProblems_vue__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
@@ -107102,6 +107104,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
 
 	props: ['sourceUrl'],
@@ -107121,6 +107126,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 			textarea: null
 		}, _defineProperty(_ref, 'buffer', null), _defineProperty(_ref, 'preview', null), _defineProperty(_ref, 'inEdit', false), _ref;
 	},
+
+
+	components: {
+		'practice-problems': __WEBPACK_IMPORTED_MODULE_0__PracticeProblems_vue___default.a
+	},
+
 	mounted: function mounted() {
 		var self = this;
 
