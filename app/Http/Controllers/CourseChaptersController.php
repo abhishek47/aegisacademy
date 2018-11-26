@@ -16,7 +16,7 @@ class CourseChaptersController extends Controller
 
         if($sectionSlug)
         {
-            $section = CourseChapterSection::where('slug', $sectionSlug)->where('course_id', $course->id)->where('chapter_id', $chapter->id)->first();
+            $section = CourseChapterSection::where('slug', $sectionSlug)->where('course_id', $course->id)->where('course_chapter_id', $chapter->id)->first();
             if($section->content_type != 2)
             {
               $section->markComplete();
