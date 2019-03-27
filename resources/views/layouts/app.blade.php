@@ -82,18 +82,18 @@
                     <span class="mt-1 ml-2">Courses</span>
                     </div>
                 </a>
-                <a href="/practice"
+                <a href="#"
                    class="{{ request()->is('practice*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
                     <div class="flex w-full justify-center">
                     <img class="" src="{{ asset('/img/calc.png') }}" style="width: 25px;height: 100%;">
-                    <span class="mt-1 ml-2">Practice</span>
+                    <span class="mt-1 ml-2">Practice <small>Coming soon</small></span>
                     </div>
                 </a>
                 <a href="{{ url('/books') }}"
                     class="{{ request()->is('books*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
                     <div class="flex w-full justify-center">
                     <img class="" src="{{ asset('/img/book.png') }}" style="width: 25px;height: 100%;">
-                    <span class="mt-1 ml-2">Books</span>
+                    <span class="mt-1 ml-2">Tomato Solutions</span>
                     </div>
                 </a>
                 <a href="{{ url('/discussions') }}"
