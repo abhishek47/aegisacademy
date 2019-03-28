@@ -155,7 +155,7 @@
                       @if(count($courses) > 0)
                       <h2 class="text-grey-darkest text-2xl my-4">Ongoing Courses</h2>
 
-                      <div class="flex mt-8 mb-8">
+                      <div class="flex flex-wrap mt-8 mb-8">
                              @foreach($courses as $course)
 
                                 <a href="/courses/{{$course->slug}}" class="bg-white shadow-md mr-1 rounded p-2 no-underline" style="background: {{$course->color->code}};height: 320px;width: 227px;">
