@@ -52,7 +52,7 @@
     </div>
 
 
-    @if(count($problems) > 0)
+    @if(false)
     <h2 class="text-grey-darkest text-2xl my-4">Recent Practice Problems</h2>
     <div class="container mx-auto mt-8 mb-8" style="flex-wrap: wrap;">
         @foreach($problems as $index => $problem)
