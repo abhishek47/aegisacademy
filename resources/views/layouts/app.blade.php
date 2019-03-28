@@ -86,14 +86,21 @@
                    class="{{ request()->is('practice*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
                     <div class="flex w-full justify-center">
                     <img class="" src="{{ asset('/img/calc.png') }}" style="width: 25px;height: 100%;">
-                    <span class="mt-1 ml-2">Practice <small>Coming soon</small></span>
+                    <span style="margin-top: -7px;" class="ml-2">Practice <small style="font-size: 11px;
+    position: relative;
+    background: green;
+    padding: 3px;
+    border-radius: 20px;
+    padding-left: 9px;
+    padding-right: 9px;
+    top: 0;">Coming soon</small></span>
                     </div>
                 </a>
                 <a href="{{ url('/books') }}"
                     class="{{ request()->is('books*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
                     <div class="flex w-full justify-center">
                     <img class="" src="{{ asset('/img/book.png') }}" style="width: 25px;height: 100%;">
-                    <span class="mt-1 ml-2">Tomato Solutions</span>
+                    <span style="margin-top: -7px;" >TOMATO Solutions</span>
                     </div>
                 </a>
                 <a href="{{ url('/discussions') }}"
