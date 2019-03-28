@@ -26,7 +26,7 @@
                          <div class="flex">
                              @foreach($courses as $course)
 
-                                <a href="/courses/{{$course->slug}}" class="bg-white shadow-md mr-1 relative rounded p-2 no-underline {{ $course->is_blocked ? 'border-2 border-red pointer-events-none' : ($course->completed ? 'border-2 border-green' : '') }}" style="background: {{$course->color->code}};height: 320px;">
+                                <a href="/courses/{{$course->slug}}" class="bg-white shadow-md mr-1 relative rounded p-2 no-underline {{ $course->is_blocked ? 'border-2 border-red pointer-events-none' : ($course->completed ? 'border-2 border-green' : '') }}" style="background: {{$course->color->code}};height: 320px;width: 33.3%;">
 
                                     @if($course->is_blocked)
                                      <span class="rounded rounded-full p-2 bg-red text-white absolute" style="right: -10px;top: -10px;"><i class="fa fa-lock"> </i></span>
