@@ -2510,44 +2510,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['problemSet'],
@@ -106263,39 +106225,7 @@ var render = function() {
                   )
                 ]
               )
-            : _vm._e(),
-          _vm._v(" "),
-          !_vm.showSolutions
-            ? _c(
-                "button",
-                {
-                  staticClass:
-                    "rounded border-2 border-brand hover:bg-brand font-semibold p-2 px-8 mt-6 text-md text-brand hover:text-white tracking-wide ml-4 mr-8",
-                  on: { click: _vm.showSolution }
-                },
-                [
-                  _vm._v(
-                    "\n                        View Solutions\n                    "
-                  )
-                ]
-              )
-            : _c(
-                "button",
-                {
-                  staticClass:
-                    "rounded bg-brand font-semibold p-2 px-8 mt-6 text-md text-white tracking-wide ml-4 mr-8",
-                  on: {
-                    click: function($event) {
-                      _vm.showSolutions = !_vm.showSolutions
-                    }
-                  }
-                },
-                [
-                  _vm._v(
-                    "\n                        Hide Solutions\n                    "
-                  )
-                ]
-              )
+            : _vm._e()
         ]
       ),
       _vm._v(" "),
