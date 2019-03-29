@@ -23,10 +23,10 @@
 
                     <div class="flex flex-col mb-4 mt-4">
 
-                         <div class="flex flex-wrap">
+                         <div class="">
                              @foreach($courses as $course)
 
-                                <a href="/courses/{{$course->slug}}" class="bg-white shadow-md mr-1 relative rounded p-2 no-underline {{ $course->is_blocked ? 'border-2 border-red pointer-events-none' : ($course->completed ? 'border-2 border-green' : '') }}" style="background: {{$course->color->code}};height: 320px;width: 30%;margin-bottom: 10px;">
+                                <a href="/courses/{{$course->slug}}" class="w-100 bg-white shadow-md mr-1 relative rounded p-2 no-underline {{ $course->is_blocked ? 'border-2 border-red pointer-events-none' : ($course->completed ? 'border-2 border-green' : '') }}" style="background: {{$course->color->code}};height: 320px;margin-bottom: 10px;">
 
                                     @if($course->is_blocked)
                                      <span class="rounded rounded-full p-2 bg-red text-white absolute" style="right: -10px;top: -10px;"><i class="fa fa-lock"> </i></span>
