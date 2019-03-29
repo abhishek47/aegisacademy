@@ -199,7 +199,7 @@
                 </div>
 
                 <div class="bg-white shadow-md rounded w-full md:w-1/2 z-10 border-t-4  border-brand">
-                    <div class="py-8 text-3xl text-center text-orange font-semibold uppercase"><span class="capitalize">Rs.</span> <s>3000</s> 1500 / year</div>
+                    <div class="py-8 text-3xl text-center text-orange font-semibold uppercase"><span class="capitalize"></span> <s style="color: grey;font-size: 22px;">₹ 3000</s> ₹ 1500 / year</div>
                     <hr class="py-0 my-0 border border-grey-lighter">
                     <div class="py-8">
 
