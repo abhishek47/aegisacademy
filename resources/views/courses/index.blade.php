@@ -26,7 +26,7 @@
                          <div class="">
                              @foreach($courses as $course)
 
-                                <a href="/courses/{{$course->slug}}" class="w-100 bg-white shadow-md mr-1 relative rounded p-2 no-underline {{ $course->is_blocked ? 'border-2 border-red pointer-events-none' : ($course->completed ? 'border-2 border-green' : '') }}" style="background: {{$course->color->code}};height: 320px;margin-bottom: 10px;">
+                                <a href="/courses/{{$course->slug}}" class="w-100 bg-white shadow-md mr-1 relative rounded p-2 no-underline {{ $course->is_blocked ? 'border-2 border-red pointer-events-none' : ($course->completed ? 'border-2 border-green' : '') }}" style="background: {{$course->color->code}};height: 173px;margin-bottom: 10px;display: block;width: 100%">
 
                                     @if($course->is_blocked)
                                      <span class="rounded rounded-full p-2 bg-red text-white absolute" style="right: -10px;top: -10px;"><i class="fa fa-lock"> </i></span>
@@ -35,13 +35,15 @@
                                       <span class="rounded rounded-full p-2 bg-green text-white absolute" style="right: -10px;top: -10px;"><i class="fa fa-check"> </i></span>
                                       @endif
                                     @endif
-                                    <h4 class="text-xl font-semibold text-white tracking-wide leading-normal pl-2">{{ str_limit($course->title, 20) }}</h4>
 
-                                    <div class="w-100">
-                                    <img src="{{ url($course->banner) }}" class="mx-auto block mt-4" style="width: 145px;height: 145px;">
+                                    <div class="flex">
+                                      <img src="{{ url($course->banner) }}" class="mx-auto block mt-4" style="width: 145px;height: 145px;">
+                                      <div class="ml-2">
+                                         <h4 class="text-xl font-semibold text-white tracking-wide leading-normal pl-2">{{ str_limit($course->title, 20) }}</h4>
+                                         <p class="text-white tracking-wide leading-normal p-2 text-sm mt-2">{{ str_limit($course->description, 50) }}</p>
+                                      </div>
                                     </div>
-
-                                    <p class="text-white tracking-wide leading-normal p-2 text-sm mt-2">{{ str_limit($course->description, 50) }}</p>
+                                   
                                 </a>
 
                              @endforeach
