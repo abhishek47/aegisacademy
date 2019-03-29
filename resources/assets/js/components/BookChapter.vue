@@ -37,10 +37,6 @@
                         <platex ref="questionBody" :sourceUrl="'/book-chapter-question/'+currentQuestion.id+'/question'"></platex>
                     </span>
 
-
-
-
-
                     </div>
 
                 </div>
@@ -78,7 +74,7 @@
 
 
 
-                        <button v-if="currentQuestion.user_answer != null && questionIndex + 1 != questions.length" @click="changeQuestion(questionIndex+1)"
+                        <button v-if="questionIndex + 1 != questions.length" @click="changeQuestion(questionIndex+1)"
                           class="rounded bg-teal hover:bg-teal-dark p-2 px-8 mt-6 text-md text-white font-semibold tracking-wide ml-4 mr-8">
                             Next Question
                         </button>
@@ -87,7 +83,7 @@
 
                     </div>
 
-                <chapter-solutions v-if="true" :solution="currentQuestion.solution" :question-id="currentQuestion.id"></chapter-solutions>
+                <chapter-solutions  :solution="currentQuestion.solution" :question-id="currentQuestion.id"></chapter-solutions>
                 </div>
 </template>
 

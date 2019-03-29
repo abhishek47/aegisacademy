@@ -27,22 +27,22 @@ require('vue-toastr/src/vue-toastr.scss');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('latex-editor', require('./components/LatexEditor.vue'));
-Vue.component('platex', require('./components/LatexParagraph.vue'));
-Vue.component('mark-as-read', require('./components/MarkAsRead.vue'));
-Vue.component('rate-wiki', require('./components/RateWiki.vue'));
-Vue.component('practice-problems', require('./components/PracticeProblems.vue'));
-Vue.component('new-thread', require('./components/NewThread.vue'));
-Vue.component('edit-thread', require('./components/EditThread.vue'));
-Vue.component('thread-reply', require('./components/ThreadReply.vue'));
-Vue.component('book-chapter', require('./components/BookChapter.vue'));
-Vue.component('course-problem', require('./components/CourseProblem.vue'));
-Vue.component('course-section', require('./components/CourseSection.vue'));
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('latex-editor', require('./components/LatexEditor.vue').default);
+Vue.component('platex', require('./components/LatexParagraph.vue').default);
+Vue.component('mark-as-read', require('./components/MarkAsRead.vue').default);
+Vue.component('rate-wiki', require('./components/RateWiki.vue').default);
+Vue.component('practice-problems', require('./components/PracticeProblems.vue').default);
+Vue.component('new-thread', require('./components/NewThread.vue').default);
+Vue.component('edit-thread', require('./components/EditThread.vue').default);
+Vue.component('thread-reply', require('./components/ThreadReply.vue').default);
+Vue.component('book-chapter', require('./components/BookChapter.vue').default);
+Vue.component('course-problem', require('./components/CourseProblem.vue').default);
+Vue.component('course-section', require('./components/CourseSection.vue').default);
 
 Vue.use(PortalVue)
 Vue.use(Toastr);
-Vue.use(require('vue-moment'));
+Vue.use(require('vue-moment').default);
 Vue.use(VModal);
 
 

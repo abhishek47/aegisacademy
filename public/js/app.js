@@ -2506,10 +2506,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['problemSet'],
@@ -106206,7 +106202,6 @@ var render = function() {
                 0
               ),
           _vm._v(" "),
-          _vm.currentQuestion.user_answer != null &&
           _vm.questionIndex + 1 != _vm.questions.length
             ? _c(
                 "button",
@@ -106229,14 +106224,12 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      true
-        ? _c("chapter-solutions", {
-            attrs: {
-              solution: _vm.currentQuestion.solution,
-              "question-id": _vm.currentQuestion.id
-            }
-          })
-        : undefined
+      _c("chapter-solutions", {
+        attrs: {
+          solution: _vm.currentQuestion.solution,
+          "question-id": _vm.currentQuestion.id
+        }
+      })
     ],
     1
   )
@@ -127752,21 +127745,21 @@ __webpack_require__(/*! vue-toastr/src/vue-toastr.scss */ "./node_modules/vue-to
  */
 
 
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/assets/js/components/ExampleComponent.vue"));
-Vue.component('latex-editor', __webpack_require__(/*! ./components/LatexEditor.vue */ "./resources/assets/js/components/LatexEditor.vue"));
-Vue.component('platex', __webpack_require__(/*! ./components/LatexParagraph.vue */ "./resources/assets/js/components/LatexParagraph.vue"));
-Vue.component('mark-as-read', __webpack_require__(/*! ./components/MarkAsRead.vue */ "./resources/assets/js/components/MarkAsRead.vue"));
-Vue.component('rate-wiki', __webpack_require__(/*! ./components/RateWiki.vue */ "./resources/assets/js/components/RateWiki.vue"));
-Vue.component('practice-problems', __webpack_require__(/*! ./components/PracticeProblems.vue */ "./resources/assets/js/components/PracticeProblems.vue"));
-Vue.component('new-thread', __webpack_require__(/*! ./components/NewThread.vue */ "./resources/assets/js/components/NewThread.vue"));
-Vue.component('edit-thread', __webpack_require__(/*! ./components/EditThread.vue */ "./resources/assets/js/components/EditThread.vue"));
-Vue.component('thread-reply', __webpack_require__(/*! ./components/ThreadReply.vue */ "./resources/assets/js/components/ThreadReply.vue"));
-Vue.component('book-chapter', __webpack_require__(/*! ./components/BookChapter.vue */ "./resources/assets/js/components/BookChapter.vue"));
-Vue.component('course-problem', __webpack_require__(/*! ./components/CourseProblem.vue */ "./resources/assets/js/components/CourseProblem.vue"));
-Vue.component('course-section', __webpack_require__(/*! ./components/CourseSection.vue */ "./resources/assets/js/components/CourseSection.vue"));
+Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/assets/js/components/ExampleComponent.vue").default);
+Vue.component('latex-editor', __webpack_require__(/*! ./components/LatexEditor.vue */ "./resources/assets/js/components/LatexEditor.vue").default);
+Vue.component('platex', __webpack_require__(/*! ./components/LatexParagraph.vue */ "./resources/assets/js/components/LatexParagraph.vue").default);
+Vue.component('mark-as-read', __webpack_require__(/*! ./components/MarkAsRead.vue */ "./resources/assets/js/components/MarkAsRead.vue").default);
+Vue.component('rate-wiki', __webpack_require__(/*! ./components/RateWiki.vue */ "./resources/assets/js/components/RateWiki.vue").default);
+Vue.component('practice-problems', __webpack_require__(/*! ./components/PracticeProblems.vue */ "./resources/assets/js/components/PracticeProblems.vue").default);
+Vue.component('new-thread', __webpack_require__(/*! ./components/NewThread.vue */ "./resources/assets/js/components/NewThread.vue").default);
+Vue.component('edit-thread', __webpack_require__(/*! ./components/EditThread.vue */ "./resources/assets/js/components/EditThread.vue").default);
+Vue.component('thread-reply', __webpack_require__(/*! ./components/ThreadReply.vue */ "./resources/assets/js/components/ThreadReply.vue").default);
+Vue.component('book-chapter', __webpack_require__(/*! ./components/BookChapter.vue */ "./resources/assets/js/components/BookChapter.vue").default);
+Vue.component('course-problem', __webpack_require__(/*! ./components/CourseProblem.vue */ "./resources/assets/js/components/CourseProblem.vue").default);
+Vue.component('course-section', __webpack_require__(/*! ./components/CourseSection.vue */ "./resources/assets/js/components/CourseSection.vue").default);
 Vue.use(portal_vue__WEBPACK_IMPORTED_MODULE_1___default.a);
 Vue.use(vue_toastr__WEBPACK_IMPORTED_MODULE_2___default.a);
-Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vue-moment.js"));
+Vue.use(__webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vue-moment.js").default);
 Vue.use(vue_js_modal__WEBPACK_IMPORTED_MODULE_3___default.a);
 var app = new Vue({
   el: '#app',
