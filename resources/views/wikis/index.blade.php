@@ -49,8 +49,8 @@
                                                 <span class="text-blue mt-1"> {{$article->readings}} people read this.</span>
                                             </div>
 
-                                             <span class="text-grey-darker mt-2"><i class="fa fa-clock"></i> {{ $article->created_at->format('jS M Y')}}</span>
-                                            </div>  --}}
+                                             <span class="text-grey-darker mt-2"><i class="fa fa-clock"></i> {{ $article->created_at->format('jS M Y')}}</span> --}}
+                                            </div>  
                                         </div>
                                     </a>
 
