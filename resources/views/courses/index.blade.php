@@ -7,7 +7,7 @@
       <div class="flex bg-white shadow container md:mx-auto" style="min-height: 100vh;">
 
           {{-- @include('courses._sidebar') --}}
-          <div class="w-3/4 p-6 pl-8">
+          <div class="w-100 p-6 pl-8">
 
                {{-- <a href="javascript:;" @click.prevent="showSidebar = !showSidebar" class="text-grey-dark no-underline mb-4 font-semibold block"><i class="fa fa-bars"></i> Toggle Sidebar</a> --}}
 
