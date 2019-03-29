@@ -184,9 +184,8 @@
 
                         <ul class="list-reset text-center">
                             <li class="my-3 text-xl">Read Unlimited Wiki Pages</li>
-                            <li class="my-3 text-xl">Solve 10 Questions Daily</li>
-                            <li class="my-3 text-xl">Engage into 2 Discussions Daily</li>
-                            <li class="my-3 text-xl">Access all our Free courses</li>
+                            <li class="my-3 text-xl">Access 12 problems' solution of TOMATO.</li>
+                            <li class="my-3 text-xl">Access first chapter of all courses.</li>
                         </ul>
 
 
@@ -200,15 +199,14 @@
                 </div>
 
                 <div class="bg-white shadow-md rounded w-full md:w-1/2 z-10 border-t-4  border-brand">
-                    <div class="py-8 text-3xl text-center text-orange font-semibold uppercase"><span class="capitalize">Rs.</span> 300 / month</div>
+                    <div class="py-8 text-3xl text-center text-orange font-semibold uppercase"><span class="capitalize">Rs.</span> <s>3000</s> 1500 / year</div>
                     <hr class="py-0 my-0 border border-grey-lighter">
                     <div class="py-8">
 
                          <ul class="list-reset text-center">
                             <li class="my-3 text-xl">Read Unlimited Wiki Pages</li>
-                            <li class="my-3 text-xl">Solve Unlimited Questions Daily</li>
-                            <li class="my-3 text-xl">Engage into 2+ Discussions Daily</li>
-                            <li class="my-3 text-xl">Access all our Free &amp; Premium courses</li>
+                            <li class="my-3 text-xl">Access complete solution of TOMATO.</li>
+                            <li class="my-3 text-xl">Access all courses fully.</li>
                         </ul>
 
 

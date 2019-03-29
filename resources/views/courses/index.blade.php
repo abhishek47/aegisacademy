@@ -6,10 +6,10 @@
     <div class="bg-grey-lightest" >
       <div class="flex bg-white shadow container md:mx-auto" style="min-height: 100vh;">
 
-          @include('courses._sidebar')
+          {{-- @include('courses._sidebar') --}}
           <div class="w-3/4 p-6 pl-8">
 
-               <a href="javascript:;" @click.prevent="showSidebar = !showSidebar" class="text-grey-dark no-underline mb-4 font-semibold block"><i class="fa fa-bars"></i> Toggle Sidebar</a>
+               {{-- <a href="javascript:;" @click.prevent="showSidebar = !showSidebar" class="text-grey-dark no-underline mb-4 font-semibold block"><i class="fa fa-bars"></i> Toggle Sidebar</a> --}}
 
                 <form class="flex w-full mx-auto bg-white shadow-md rounded border-2 border-grey mb-6">
 
@@ -39,8 +39,8 @@
                                     <div class="flex">
                                       <img src="{{ url($course->banner) }}" class="" style="width: 145px;height: 145px;">
                                       <div class="ml-4 mt-2">
-                                         <h4 class="text-2xl font-bold text-white tracking-wide leading-normal pl-2">{{ str_limit($course->title, 20) }}</h4>
-                                         <p class="text-white tracking-wide leading-normal p-2  mt-2">{{ str_limit($course->description, 50) }}</p>
+                                         <h4 class="text-2xl font-bold text-white tracking-wide leading-normal pl-2">{{ str_limit($course->title, 40) }}</h4>
+                                         <p class="text-white tracking-wide leading-normal p-2  mt-2">{{ str_limit($course->description, 160) }}</p>
                                       </div>
                                     </div>
                                    
