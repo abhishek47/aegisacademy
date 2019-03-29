@@ -39,7 +39,7 @@
 
                         @if(auth()->user()->is_premium)
                             <div>
-                                <h2 class="text-black font-semibold tracking-wide text-2xl">Premium Plan (Rs. 300 / month)</h2>
+                                <h2 class="text-black font-semibold tracking-wide text-2xl">Premium Plan (₹ 1500 / year)</h2>
                                 <p class="text-grey-dark tracking-wide leading-normal mt-3">You have access to all premium content.</p>
                             </div>
 
@@ -48,7 +48,7 @@
                                      </a>
                         @else
                             <div>
-                                <h2 class="text-black font-semibold tracking-wide text-2xl">Free Plan (Rs. 0 / month)</h2>
+                                <h2 class="text-black font-semibold tracking-wide text-2xl">Free Plan (Rs. 0 / year)</h2>
                                 <p class="text-grey-dark tracking-wide leading-normal mt-3">Upgrade to premium and learn with more content.</p>
                             </div>
 
