@@ -127,9 +127,10 @@
                 <div class="flex">
                     <span class="flex-1 text-semibold text-white">&copy; Copyright {{ date('Y')}}. Powered by <a href="#" class="text-white font-semibold no-underline hover:underline">Trumpets</a></span>
                     <span class="text-semibold white">
-                        <a href="#" class="text-white no-underline hover:underline mr-6">Invest</a>
-                        <a href="#" class="text-white no-underline hover:underline mr-6">Terms</a>
-                        <a href="#" class="text-white no-underline hover:underline mr-6">Contact</a></span>
+                        <a href="/about" class="text-white no-underline hover:underline mr-6">About</a>
+                        <a href="/invest" class="text-white no-underline hover:underline mr-6">Invest</a>
+                        <a href="/terms" class="text-white no-underline hover:underline mr-6">Terms</a>
+                        <a href="/contact" class="text-white no-underline hover:underline mr-6">Contact</a></span>
                 </div>
             </div>
         </footer>

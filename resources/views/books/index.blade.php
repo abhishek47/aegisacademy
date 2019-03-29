@@ -7,7 +7,7 @@
                  <div class="flex bg-white shadow container md:mx-auto" style="min-height: 100vh;">
 
         {{--   @include('books._sidebar') --}}
-          <div class="w-100 p-6 pl-8">
+          <div class="w-full p-6 pl-8">
 
 
                 <form class="flex w-full mx-auto bg-white shadow-md rounded border-2 border-grey mb-6">

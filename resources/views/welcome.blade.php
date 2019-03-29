@@ -184,7 +184,7 @@
 
                         <ul class="list-reset text-center">
                             <li class="my-3 text-xl">Read Unlimited Wiki Pages</li>
-                            <li class="my-3 text-xl">Access 12 problems' solution of TOMATO.</li>
+                            <li class="my-3 text-xl">Access 12 problem solutions of TOMATO.</li>
                             <li class="my-3 text-xl">Access first chapter of all courses.</li>
                         </ul>
 
