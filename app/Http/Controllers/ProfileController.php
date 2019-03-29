@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Appnings\Payment\Facades\Payment;
+ use Softon\Indipay\Facades\Indipay;  
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -32,36 +32,32 @@ class ProfileController extends Controller
 
     public function upgrade()
     {
-       /* $uid = uniqid();
+        $uid = uniqid();
          $parameters = [
-
             'tid' => '1001' . $uid,
-
             'order_id' => $uid,
-
-            'amount' => 300.0,
-            'billing_name' => \Auth::user()->name,
-            'billing_ email' => \Auth::user()->email,
-            'billing_ tel' => '9922367414',
-            'billing_ country' => 'India',
-
+            'purpose' => 'Premium Subscription',
+            'amount' => 1500.0,
+            'buyer_name' => \Auth::user()->name,
+            'email' => \Auth::user()->email,
+            'phone' => '9922367414',
           ];
 
 
-          $purchaseOrder = Payment::prepare($parameters);
+          $purchaseOrder = Indipay::prepare($parameters);
 
-          return Payment::process($purchaseOrder); */
+          return Indipay::process($purchaseOrder); 
 
-           auth()->user()->is_premium = 1;
-           auth()->user()->save();
+           // auth()->user()->is_premium = 1;
+           // auth()->user()->save();
 
-           return back();
+           // return back();
     }
 
     public function upgradeSuccess(Request $request)
     {
-       $response = Payment::response($request);
-
+       $response = Indipay::response($request);
+       dd($response);
        if($response['order_status'] == 'Aborted')
         {
           return back();

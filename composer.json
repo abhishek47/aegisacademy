@@ -9,12 +9,12 @@
         "backpack/crud": "^3.4",
         "backpack/permissionmanager": "^3.12",
         "fideloper/proxy": "^4.0",
-        "gopal-g/payment": "^1.1",
         "laracasts/flash": "^3.0",
         "laravel-frontend-presets/tailwindcss": "^0.6.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
         "league/flysystem-aws-s3-v3": "^1.0",
+        "softon/indipay": "^1.1",
         "willvincent/laravel-rateable": "^1.0"
     },
     "require-dev": {
