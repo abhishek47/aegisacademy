@@ -37,10 +37,10 @@
                                     @endif
 
                                     <div class="flex">
-                                      <img src="{{ url($course->banner) }}" class="mx-auto block mt-4" style="width: 145px;height: 145px;">
-                                      <div class="ml-2">
-                                         <h4 class="text-xl font-semibold text-white tracking-wide leading-normal pl-2">{{ str_limit($course->title, 20) }}</h4>
-                                         <p class="text-white tracking-wide leading-normal p-2 text-sm mt-2">{{ str_limit($course->description, 50) }}</p>
+                                      <img src="{{ url($course->banner) }}" class="" style="width: 145px;height: 145px;">
+                                      <div class="ml-4 mt-2">
+                                         <h4 class="text-2xl font-bold text-white tracking-wide leading-normal pl-2">{{ str_limit($course->title, 20) }}</h4>
+                                         <p class="text-white tracking-wide leading-normal p-2  mt-2">{{ str_limit($course->description, 50) }}</p>
                                       </div>
                                     </div>
                                    
