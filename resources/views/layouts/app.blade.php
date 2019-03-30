@@ -39,8 +39,8 @@
                             </a>
                         @else
                             @if(!auth()->user()->is_premium)
-                                <a class="no-underline border border-blue" href="{{ url('/profile') }}">
-                                    Upgrade
+                               <a href="{{ url('/profile') }}" class="no-underline border border-blue text-blue p-2 mr-3 text-center pl-2 hover:bg-blue hover:text-white">
+                                    Be Premium
                                 </a>
                             @endif
 
