@@ -38,6 +38,12 @@
                               Sign Up
                             </a>
                         @else
+                            @if(!auth()->user()->is_premium)
+                                <a class="no-underline border border-blue" href="{{ url('/profile') }}">
+                                    Upgrade
+                                </a>
+                            @endif
+
                             <a class="no-underline" href="{{ url('/profile') }}">
                                 <span class="text-black  hover:text-teal-darker font-semibold text-lg uppercase pr-4">
                                    <i class="fa fa-user mr-2"></i> {{ Auth::user()->name }}

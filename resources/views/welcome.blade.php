@@ -211,7 +211,7 @@
 
 
                     </div>
-                    <a href="#" class="no-underline">
+                    <a href="/register" class="no-underline">
                         <div class="py-8 bg-grey-lighter hover:bg-grey-light text-indigo-darker rounded rounded-t-none text-center uppercase font-bold flex items-center justify-center">
                             <span>Create account</span>
                             <i class="ml-2 fa fa-arrow-right"></i>
