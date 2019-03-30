@@ -57,8 +57,7 @@ class ProfileController extends Controller
     public function upgradeSuccess(Request $request)
     {
        $response = Indipay::response($request);
-       dd($response);
-       if($response['order_status'] == 'Aborted')
+       if($response['status'] != 'Credit')
         {
           return back();
         } else {

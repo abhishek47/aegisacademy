@@ -42,33 +42,8 @@
                 </div>
 
                 <div class="flex flex-col w-full p-3 pl-0 items-stretch justify-space-around">
-                        <div class="px-4 -mt-2 mb-3"  v-if="currentQuestion.is_subjective">
-                            <label class="text-md text-brand font-semibold tracking-wide mb-2 block">Your Answer :</label>
-                            <input type="text" v-if="currentQuestion.user_answer == null" v-model="subjective_answer" placeholder="Enter your answer" class="w-full block border rounded pl-2" style="height: 43px;font-size: 18px;">
-
-                            <input type="text" v-else v-model="currentQuestion.user_answer" readonly class="w-full block border rounded pl-2 bg-grey-lighter" style="height: 43px;font-size: 18px;">
-                        </div>
-                        <ul v-else class="block w-full list-reset flex justify-space-around mb-4 mt-4">
-                            <li v-for="(option,index) in currentQuestion.options"   class="block w-full pr-8 ">
-                                 <div v-if="currentQuestion.user_answer == null" @click="chooseOption(index)"  @mouseover="hoveredIndex = index" @mouseleave="hoveredIndex = null" class="flex w-full block text-lg no-underline hover:bg-grey-lightest hover:rounded-2 p-2 tracking-wide cursor-pointer" :class="selectedIndex == index ? 'bg-grey-lightest' : ''">
-                                    <span class="border-2 border-grey-darker p-2 mr-4 bg-grey-lighter" style="width: 35px;height: 35px;border-radius: 100%;">
-                                        <span v-if="hoveredIndex == index || selectedIndex == index" class="rounded-full h-6 w-6 bg-grey-darker absolute -mt-1 -ml-1"></span>
-                                    </span>
-                                    <span class="mt-2 text-black" v-text="option.text"></span>
-                                </div>
-                                <div v-else class="flex w-full block text-lg no-underline p-2 tracking-wide cursor-pointer"
-                                    :class="currentQuestion.answer == index+1 ? 'bg-white border border-grey shadow' : ''">
-
-                                    <span class="border-2 border-grey-darker p-2 mr-4 bg-grey-lighter" style="width: 35px;height: 35px;border-radius: 100%;">
-                                         <span v-if="currentQuestion.user_answer == index+1" class="rounded-full h-6 w-6 bg-grey-darker absolute -mt-1 -ml-1"></span>
-                                    </span>
-                                    <span class="mt-2 text-black" :class="currentQuestion.answer != index+1  ? 'text-grey-dark' : ''" v-text="option.text"></span>
-                                    <img v-if="currentQuestion.answer == index+1" src="/img/thisnoe.png" style="width: 40px;height: 100%;" class="mt-1 ml-3"/>
-                                </div>
-                            </li>
-
-
-                        </ul>
+                       
+                      
 
                       
 
