@@ -2523,6 +2523,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     changeQuestion: function changeQuestion(index) {
       if (index >= 0 && index < this.questions.length) {
+        if (index > 12) {
+          return;
+        }
+
         this.selectedIndex = null;
         this.currentQuestion = this.questions[index];
         this.$refs.questionBody.fetchBody('/book-chapter-question/' + this.currentQuestion.id + '/question');
@@ -105930,13 +105934,13 @@ var render = function() {
           _vm._l(_vm.questions, function(question, index) {
             return _c("a", {
               staticClass:
-                "shadow-md border-t border-b border-l border-brand-light px-4 py-2  hover:text-white no-underline",
+                "shadow-md border-t border-b border-l border-brand-light px-4 py-2  hover:text-white no-underline bg-white hover:bg-brand-dark text-brand",
               class:
                 question.id == _vm.currentQuestion.id
                   ? "bg-brand hover:bg-brand-light text-white"
-                  : question.user_answer == null
-                  ? "bg-white hover:bg-brand-dark text-brand"
-                  : "bg-grey-darkest text-white",
+                  : index > 12
+                  ? "bg-red-light text-white"
+                  : "",
               attrs: { href: "#" },
               domProps: { textContent: _vm._s(index + 1) },
               on: {

@@ -12,9 +12,9 @@
                                 <i class="fa fa-arrow-left text-lg"></i>
                             </a>
 
-                              <a  v-for="(question,index) in questions" class="shadow-md border-t border-b border-l border-brand-light px-4 py-2  hover:text-white no-underline"
-                                  :class="question.id == currentQuestion.id ? 'bg-brand hover:bg-brand-light text-white' : question.user_answer == null ? 'bg-white hover:bg-brand-dark text-brand' :
-                                    'bg-grey-darkest text-white'"
+                              <a  v-for="(question,index) in questions" class="shadow-md border-t border-b border-l border-brand-light px-4 py-2  hover:text-white no-underline bg-white hover:bg-brand-dark text-brand"
+                                  :class="question.id == currentQuestion.id ? 'bg-brand hover:bg-brand-light text-white' : index > 12 ? 'bg-red-light text-white' :
+                                    ''"
                                   href="#" @click.prevent="changeQuestion(index)" v-text="index+1"></a>
 
 
@@ -115,6 +115,10 @@
             changeQuestion(index){
                 if(index >= 0 && index < this.questions.length)
                 {
+                    if(index > 12)
+                    {
+                        return;
+                    }
                     this.selectedIndex = null;
                     this.currentQuestion = this.questions[index];
                     this.$refs.questionBody.fetchBody('/book-chapter-question/'+this.currentQuestion.id+'/question');
