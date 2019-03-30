@@ -12,6 +12,8 @@
     <link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
+
 
 </head>
 <body class="bg-white h-screen">
