@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/about', 'pages.about');
 Route::view('/invest', 'pages.invest');
 Route::view('/terms', 'pages.terms');
+Route::view('/contact', 'pages.contact');
 
 
 
