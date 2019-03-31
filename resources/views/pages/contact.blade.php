@@ -6,9 +6,10 @@
 
 		<h2 class="text-3xl font-weight-bold my-6">Contact Us</h2>
 
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59990.65887208493!2d73.76846144556879!3d19.991040271901912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddd290b09914b3%3A0xcb07845d9d28215c!2sNashik%2C+Maharashtra!5e0!3m2!1sen!2sin!4v1508123275428" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227821.9337621567!2d80.80242503190256!3d26.848929330925085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd991f32b16b%3A0x93ccba8909978be7!2sLucknow%2C+Uttar+Pradesh!5e0!3m2!1sen!2sin!4v1554054822395!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
-		<div class="flex justify-between text-center my-6">
+
+		<div class="flex justify-between text-center pt-6 my-6">
 			<div>
 				<i class="fas fa-phone text-3xl text-grey-darkest"></i>
 				<h4 class="font-bold">Phone</h4>
