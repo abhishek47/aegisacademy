@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         //$problem = Problem::first();
-        $wikis = Wiki::latest()->limit(8)->get();
+        $wikis = Wiki::latest()->where('published', 1)->limit(8)->get();
 
         $problems = Problem::where('topic_id', '!=', null)->get()->filter(function ($problem, $key) {
             return $problem->is_ongoing;

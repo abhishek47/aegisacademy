@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 
+    
+
     @include('includes._mathjax-markdown')
     <!-- Styles -->
     <link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
@@ -39,7 +41,7 @@
                             </a>
                         @else
                             @if(!auth()->user()->is_premium)
-                               <a href="/profile/upgrade" class="no-underline border border-blue text-blue p-2 mr-3 text-center pl-2 hover:bg-blue hover:text-white">
+                               <a href="/profile/upgrade" class="no-underline rounded shadow font-bold bg-blue text-white p-2 mr-6 text-center pl-3 hover:bg-blue-dark hover:text-white">
                                     Be Premium
                                 </a>
                             @endif

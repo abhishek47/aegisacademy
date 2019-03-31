@@ -54,11 +54,19 @@
                             Next Question
                         </button>
 
+                          <button v-if="!showSolutions" @click="showSolution" class="rounded border-2 border-brand hover:bg-brand font-semibold p-2 px-8 mt-6 text-md text-brand hover:text-white tracking-wide ml-4 mr-8">
+                            View Solutions
+                        </button>
+
+                        <button v-else="!showSolutions" @click="showSolutions = !showSolutions" class="rounded bg-brand font-semibold p-2 px-8 mt-6 text-md text-white tracking-wide ml-4 mr-8">
+                            Hide Solutions
+                        </button>
+
                       
 
                     </div>
 
-                <chapter-solutions  :solution="currentQuestion.solution" :question-id="currentQuestion.id"></chapter-solutions>
+                <chapter-solutions  v-if="showSolutions"  :solution="currentQuestion.solution" :question-id="currentQuestion.id"></chapter-solutions>
                 </div>
 </template>
 

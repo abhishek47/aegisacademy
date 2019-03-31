@@ -19,11 +19,11 @@ class WikisController extends Controller
         $wikigroup = "All Wiki Pages";
         if(isset($categoryId))
         {
-           $articles = Wiki::where('wiki_category_id', $categoryId)->orderBy('created_at', "DESC");
+           $articles = Wiki::where('wiki_category_id', $categoryId)->where('published', 1)->orderBy('created_at', "DESC");
            $category = WikiCategory::find($categoryId);
            $wikigroup = $category->name  . ' Wiki Pages';
         } else {
-           $articles = Wiki::orderBy('created_at', "DESC");
+           $articles = Wiki::where('published', 1)->orderBy('created_at', "DESC");
         }
 
         if(request()->has('query') && request('query') != '')

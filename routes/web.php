@@ -20,6 +20,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::view('/about', 'pages.about');
+Route::view('/invest', 'pages.invest');
+Route::view('/terms', 'pages.terms');
+
+
 
 Route::get('/wiki', 'WikisController@index')->name('wikis');
 Route::get('/wiki/category:{categoryId}', 'WikisController@index')->name('wikis.show');
