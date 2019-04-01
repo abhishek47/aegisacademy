@@ -33,6 +33,10 @@
                             @if($book->is_blocked)
                                <span class="rounded rounded-full p-2 bg-red text-white absolute" style="left: -10px;top: -10px;"><i class="fa fa-lock"> </i></span>
                              @endif
+
+                     <div class="flex">      
+                      <img src="{{ url($book->image) }}" style="width: 160px;">
+                     <div class="ml-2">  
                     <h2 class="text-lg">{{ str_limit($book->title, 33) }}</h2>
 
                     <div class="flex mt-3">
@@ -49,7 +53,8 @@
                       <img src="/img/questions.png" class="mr-3 ml-8 mt-1" style="width: 25px;height: 100%;">
                       <p class="mt-2 font-semibold tracking-wide text-brand">{{ $book->questions->count() }} Questions</p>
                     </div>
-
+                  </div>
+                    </div>
 
                     <div>
 
