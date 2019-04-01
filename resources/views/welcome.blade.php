@@ -55,7 +55,7 @@
                                             <div class="flex items-center justify-between">
                                                 <span class="rounded p-1 px-4 text-white tracking-wide text-xs" style="background-color: {{ $article->category->color->code }}">{{ $article->category->name }}</span>
 
-                                                <rate-wiki id="{{$article->id}}" :edit="false" user-rating="{{$article->rating}}" size="20"></rate-wiki>
+                                                    <rate-wiki id="{{$article->id}}" :edit="false" user-rating="{{$article->rating}}" size="20"></rate-wiki>
 
                                             </div>
 
@@ -64,12 +64,12 @@
                                             </h3>
                                             <div class="flex justify-between">
 
-                                            <div class="flex mt-1">
+                                            {{-- <div class="flex mt-1">
                                                 <img class="mr-2" src="/img/studentsicon.png" style="width: 25px;height:100%;">
                                                 <span class="text-blue mt-1"> {{$article->readings}} people read this.</span>
                                             </div>
 
-                                             <span class="text-grey-darker mt-2"><i class="fa fa-clock"></i> {{ $article->created_at->format('jS M Y')}}</span>
+                                             <span class="text-grey-darker mt-2"><i class="fa fa-clock"></i> {{ $article->created_at->format('jS M Y')}}</span> --}}
                                             </div>
                                         </div>
                                     </a>
@@ -90,23 +90,21 @@
         <div class="container mx-auto flex mt-8 mb-8">
             <div class="w-3/5">
                  <h2 class="text-4xl text-left text-brand mb-8 tracking-wide leading-normal capitalize font-normal">
-                    Teach yourelf with <b class="font-semibold">Self-paced</b> courses
+                    Teach yourself with <b class="font-semibold">Self-paced</b> courses
                 </h2>
 
                 <p class="text-black text-xl tracking-wide leading-normal mb-3">
-                    Best way to learn is self education. In self-paced courses we provide step wise curated content to learn
-                    a specific topic with thorough understanding. This content can contain small wiki articles, videos as well as practice problems
-                    to perfect yourself as you learn.
+                   Self education is undoubtedly the most flexible way to learn. One goes through the concepts with visualization and clarity. Our self paced courses assist the pupils with step wise curated content so that a topic can be learnt with thorough understanding.We have relevant wiki articles as well as problems to practice and gain perfection.
                 </p>
 
                 <div class="flex items-center mt-8 pt-8 justify-start">
-                 <a href="{{ url('/login') }}" class="no-underline  bg-orange hover:bg-orange-dark text-white font-semibold hover:text-white py-3 px-6 border hover:border-transparent rounded mr-4">
-                              Sign Up Now
-                </a>
-                 <a href="{{ url('/register') }}" class="no-underline bg-transparent hover:bg-brand text-brand-dark font-semibold hover:text-white py-3 px-6 border border-brand hover:border-transparent rounded">
-                  Explore Courses
-                </a>
-            </div>
+                     <a href="{{ url('/login') }}" class="no-underline  bg-orange hover:bg-orange-dark text-white font-semibold hover:text-white py-3 px-6 border hover:border-transparent rounded mr-4">
+                                  Sign Up Now
+                    </a>
+                     <a href="{{ url('/register') }}" class="no-underline bg-transparent hover:bg-brand text-brand-dark font-semibold hover:text-white py-3 px-6 border border-brand hover:border-transparent rounded">
+                      Explore Courses
+                    </a>
+                </div>
 
 
             </div>
