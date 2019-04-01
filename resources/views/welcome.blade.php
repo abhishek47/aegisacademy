@@ -6,7 +6,7 @@
     <div class="container mx-auto mt-8 mb-8">
         <div class="w-3/4 mx-auto flex flex-col items-stretch">
             <h2 class="text-4xl text-center text-brand mt-6 mb-8 tracking-wide leading-normal capitalize font-normal">
-                If you love <b class="font-bold">challenging</b> problems then you are at the right place!
+                Prepare and Excel in <b class="font-bold">ISI</b> and <b class="font-bold">CME</b> exams with our modern approach!
             </h2>
             <div class="flex-1 mt-6">
                 <form method="GET" action="/wiki">
@@ -128,7 +128,7 @@
                 </h2>
 
                 <p class="text-black text-xl tracking-wide leading-normal mb-3">
-                    Practice makes man perfect. Hence, we provide a huge range of practice problems categorised under different
+                    Practice makes a man perfect. Hence, we provide a huge range of practice problems categorised under different
                     subjects and topics for you to practice the right thing. Keep a track of what you solve, discuss solutions with experts and other
                     students.
                 </p>
