@@ -106633,36 +106633,6 @@ var render = function() {
             0
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "flex mt-6" }, [
-            _c("img", {
-              staticClass: "mr-4",
-              staticStyle: { width: "70px", height: "100%" },
-              attrs: { src: "/img/studentsicon.png" }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "mt-3" }, [
-              _c("p", { staticClass: "text-lg text-blue font-normal mb-2" }, [
-                _c("b", {
-                  staticClass: "font-semibold",
-                  domProps: {
-                    textContent: _vm._s(_vm.currentQuestion.solvings_count)
-                  }
-                }),
-                _vm._v(" people solved this.")
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "text-lg text-blue mt-1 font-normal" }, [
-                _c("b", {
-                  staticClass: "font-semibold",
-                  domProps: {
-                    textContent: _vm._s(_vm.currentQuestion.solutions_count)
-                  }
-                }),
-                _vm._v(" comments in discussion.")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
           _c(
             "div",
             {
