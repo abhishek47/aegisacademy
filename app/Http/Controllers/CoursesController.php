@@ -22,10 +22,10 @@ class CoursesController extends Controller
        if(isset($subjectSlug))
         {
             $cursubject = Subject::where('slug', $subjectSlug)->first();
-           $courses = Course::where('subject_id', $cursubject->id)->orderBy('created_at', "DESC");
+           $courses = Course::where('subject_id', $cursubject->id)->orderBy('created_at', "ASC");
            $coursegroup = $cursubject->name  . ' Courses';
         } else {
-           $courses = Course::orderBy('created_at', "DESC");
+           $courses = Course::orderBy('created_at', "ASC");
         }
 
         if(request()->has('query') && request('query') != '')
