@@ -36,13 +36,13 @@
                                       @endif
                                     @endif
 
-                                     <h4 class="text-xl font-semibold text-white tracking-wide leading-normal pl-2">{{ str_limit($course->title, 30) }}</h4>
+                                    {{--  <h4 class="text-xl font-semibold text-white tracking-wide leading-normal pl-2">{{ str_limit($course->title, 30) }}</h4> --}}
 
                                     <div class="w-100">
-                                    <img src="{{ url($course->banner) }}" class="mx-auto block mt-4" style="width: 145px;height: 145px;">
+                                    <img src="{{ url($course->banner) }}" class="mx-auto block mt-4" style="width: 320px;height: 320px;">
                                     </div>
 
-                                    <p class="text-white tracking-wide leading-normal p-2 text-xl mt-2">{{ str_limit($course->description, 140) }}</p>
+                                   {{--  <p class="text-white tracking-wide leading-normal p-2 text-xl mt-2">{{ str_limit($course->description, 140) }}</p> --}}
                                    
                                 </a>
 

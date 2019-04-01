@@ -6,7 +6,7 @@
     <div class="container mx-auto mt-8 mb-8">
         <div class="w-3/4 mx-auto flex flex-col items-stretch">
             <h2 class="text-4xl text-center text-brand mt-6 mb-8 tracking-wide leading-normal capitalize font-normal">
-                Prepare and Excel in <b class="font-bold">ISI</b> and <b class="font-bold">CME</b> exams with our modern approach!
+                Prepare and Excel in <b class="font-bold">ISI</b> and <b class="font-bold">CMI</b> entrance exams with our rigorous approach!
             </h2>
             <div class="flex-1 mt-6">
                 <form method="GET" action="/wiki">
