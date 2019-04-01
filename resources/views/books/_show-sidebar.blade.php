@@ -12,11 +12,24 @@
                   </a>
               </li>
 
-            @foreach($book->chapters as $chapter)
+            @foreach($book->chapters as $index => $chapter)
                 <li class="chapter-item mt-3 text-md">
+                  @if($index == 0)
                     <a href="/books/{{$book->subject->slug}}/{{$book->slug}}/chapter:{{$chapter->id}}" class="no-underline font-semibold tracking-wide hover:text-grey-darker leading-normal {{ request()->is('*/chapter:' . $chapter->id) ? 'text-grey-darker' : 'text-grey' }}">
                       <i class="fa fa-circle text-xs mr-2"></i> {{ $chapter->name }}
                     </a>
+                  @else
+                    @if(auth()->user()->is_premium)
+                     <a href="/books/{{$book->subject->slug}}/{{$book->slug}}/chapter:{{$chapter->id}}" class="no-underline font-semibold tracking-wide hover:text-grey-darker leading-normal {{ request()->is('*/chapter:' . $chapter->id) ? 'text-grey-darker' : 'text-grey' }}">
+                      <i class="fa fa-circle text-xs mr-2"></i> {{ $chapter->name }}
+                    </a>
+                    @else
+                      <a href="#" class="no-underline font-semibold tracking-wide hover:text-grey-darker leading-normal text-grey">
+                      <i class="fa fa-lock text-xs mr-2"></i> {{ $chapter->name }}
+                      </a>
+
+                    @endif
+                  @endif  
                 </li>
             @endforeach
 

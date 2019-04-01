@@ -72,7 +72,7 @@
 
 
 
-                                      <img src="{{ url($chapter->banner) }}" style="width: 80px;height: 80px;">
+                                     {{--  <img src="{{ url($chapter->banner) }}" style="width: 80px;height: 80px;"> --}}
 
                                       <div class="flex flex-col ml-4 w-100 my-auto align-center flex-1">
                                         <h3 class="font-semibold tracking-wide text-xl mb-2 {{ $index > 0 && !$chapter->isPreviousFinished($course->chapters->get($index-1)) ? 'text-grey' : '' }}">{{ $chapter->title }}</h3>
