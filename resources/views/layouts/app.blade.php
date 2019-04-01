@@ -138,8 +138,8 @@
                     <span class="flex-1 text-semibold text-white">&copy; Copyright {{ date('Y')}}. Powered by <a href="#" class="text-white font-semibold no-underline hover:underline">Trumpets</a></span>
                     <span class="text-semibold white">
                         <a href="/about" class="text-white no-underline hover:underline mr-6">About</a>
-                         <a href="/careers" class="text-white no-underline hover:underline mr-6">Careers</a>
-                        <a href="/invest" class="text-white no-underline hover:underline mr-6">Invest</a>
+                       {{--   <a href="/careers" class="text-white no-underline hover:underline mr-6">Careers</a>
+                        <a href="/invest" class="text-white no-underline hover:underline mr-6">Invest</a> --}}
                         <a href="/terms" class="text-white no-underline hover:underline mr-6">Terms</a>
                         <a href="mailto:info@aegisacademy.co.in" class="text-white no-underline hover:underline mr-6">info@aegisacademy.co.in</a></span>
                 </div>
