@@ -82,7 +82,7 @@ class CourseChapter extends Model
         return '<a class="btn btn-md btn-primary"   href="/admin/course-chapters/create?course=' . request('course') . '" data-toggle="tooltip" title="Add Chapter"><i class="fa fa-plus"></i> Add New Chapter</a>';
     }
 
-    public function delete()
+    public function deleteButton()
     {
 
 

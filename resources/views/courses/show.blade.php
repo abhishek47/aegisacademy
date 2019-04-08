@@ -6,7 +6,7 @@
     <div class="bg-grey-lightest" >
       <div class="flex bg-white shadow container md:mx-auto" style="min-height: 100vh;">
 
-          <div class="bg-blue-lightest p-4 " style="min-height: 100vh;background: {{ $course->color->code }};max-width: 400px;">
+          <div class="bg-blue-lightest p-4 " style="min-height: 100vh;background: {{ $course->color->code }};max-width: 400px;width: 400px;">
               <div class="flex flex-col p-4">
 
                  <div class="w-100">

@@ -103,7 +103,7 @@ class CourseChapterCrudController extends CrudController
         }
         $this->crud->removeAllButtons();
         $this->crud->addButtonFromModelFunction('line', 'edit', 'edit', 'beginning');
-        $this->crud->addButtonFromModelFunction('line', 'delete', 'delete', 'end');
+        $this->crud->addButtonFromModelFunction('line', 'deleteButton', 'deleteButton', 'end');
         $this->crud->addButtonFromModelFunction('top', 'add', 'add', 'beginning');
 
          $this->crud->addButtonFromModelFunction('line', 'manageSections', 'manageSections', 'end');
