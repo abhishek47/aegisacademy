@@ -81,7 +81,7 @@ class CourseChapterSection extends Model
         return '<a class="btn btn-md btn-primary"   href="/admin/course-chapter-sections/create?course-chapter=' . request('course-chapter') . '" data-toggle="tooltip" title="Add Section"><i class="fa fa-plus"></i> Add New Section</a>';
     }
 
-    public function delete()
+    public function deleteButton()
     {
 
 

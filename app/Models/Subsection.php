@@ -76,7 +76,7 @@ class Subsection extends Model
         return '<a class="btn btn-md btn-primary"   href="/admin/course-chapter-subsections/create?course-section=' . request('course-section') . '" data-toggle="tooltip" title="Add Subsection"><i class="fa fa-plus"></i> Add New Subsection</a>';
     }
 
-    public function delete()
+    public function deleteButton()
     {
 
 

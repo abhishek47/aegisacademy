@@ -66,7 +66,7 @@ class BookChapterQuestion extends Model
         return '<a class="btn btn-md btn-primary"   href="/admin/book-chapter-questions/create?book-chapter=' . request('book-chapter') . '" data-toggle="tooltip" title="Add Question"><i class="fa fa-plus"></i> Add New Question</a>';
     }
 
-    public function delete()
+    public function deleteButton()
     {
 
 
