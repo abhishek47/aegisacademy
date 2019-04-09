@@ -106703,6 +106703,7 @@ var render = function() {
           _vm._v(" "),
           _vm.currentQuestion.user_answer == null &&
           !_vm.currentQuestion.is_subjective &&
+          _vm.currentQuestion.options != null &&
           _vm.currentQuestion.options.length > 0
             ? _c(
                 "button",
@@ -108291,6 +108292,7 @@ var render = function() {
             _vm._v(" "),
             _vm.currentQuestion.user_answer == null &&
             !_vm.currentQuestion.is_subjective &&
+            _vm.currentQuestion.options != null &&
             _vm.currentQuestion.options.length > 0
               ? _c(
                   "button",

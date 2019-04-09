@@ -84,7 +84,7 @@
                             <h4 v-if="currentQuestion.user_answer == 0" class="font-normal tracking-wide text-xl ml-4 mt-2">You viewed the solution <img class="ml-2 -mb-1" src="/img/view.png" style="width: 30px;"></h4>
                         </div>
 
-                        <button v-if="currentQuestion.user_answer == null && !currentQuestion.is_subjective && currentQuestion.options.length > 0" @click="submitAnswer()" class="rounded bg-orange hover:bg-orange-dark p-2 px-8 mt-6 text-md text-white font-semibold tracking-wide ml-4 mr-8"
+                        <button v-if="currentQuestion.user_answer == null && !currentQuestion.is_subjective && currentQuestion.options != null && currentQuestion.options.length > 0" @click="submitAnswer()" class="rounded bg-orange hover:bg-orange-dark p-2 px-8 mt-6 text-md text-white font-semibold tracking-wide ml-4 mr-8"
                             :class="selectedIndex == null || currentQuestion.is_blocked  ? 'pointer-events-none cursor-not-allowed bg-orange-lightest' : 'pointer-events-auto cursor-pointer'">
                             Submit
                         </button>
