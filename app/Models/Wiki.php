@@ -54,4 +54,8 @@ class Wiki extends Model
     {
         return 'wiki/' . $this->slug;
     }
+    public function manageQuestions()
+    {
+        return '<a class="btn btn-xs btn-primary"   href="/admin/wiki-problem-questions?wiki=' . $this->id . '" data-toggle="tooltip" title="Manage Problem Questions">Manage Questions</a>';
+    }
 }

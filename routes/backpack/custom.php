@@ -21,6 +21,7 @@ Route::group([
 
 	CRUD::resource('wikis', 'WikiCrudController');
 	CRUD::resource('wiki_categories', 'WikicategoryCrudController');
+    CRUD::resource('wiki-problem-questions', 'WikiProblemCrudController');
 
     CRUD::resource('subjects', 'SubjectCrudController');
     CRUD::resource('topics', 'TopicCrudController');

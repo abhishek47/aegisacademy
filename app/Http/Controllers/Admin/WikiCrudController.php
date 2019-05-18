@@ -66,6 +66,7 @@ class WikiCrudController extends CrudController
         // add asterisk for fields that are required in WikiRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
+        $this->crud->addButtonFromModelFunction('line', 'manageQuestions', 'manageQuestions', 'end');
 
         // ------ CRUD BUTTONS
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
