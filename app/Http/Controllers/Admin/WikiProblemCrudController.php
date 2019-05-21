@@ -120,9 +120,9 @@ class WikiProblemCrudController extends CrudController
                'label' => "Problem Set",
                'type' => 'select2',
                'name' => 'wiki_id', // the db column for the foreign key
-               'entity' => 'problem', // the method that defines the relationship in your Model
+               'entity' => 'wiki', // the method that defines the relationship in your Model
                'attribute' => 'title', // foreign key attribute that is shown to user
-               'model' => "App\Models\Problem", // foreign key model
+               'model' => "App\Models\Wiki", // foreign key model
                'allows_null' => false
             ]
             );
