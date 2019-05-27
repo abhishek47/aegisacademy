@@ -39,6 +39,7 @@ Vue.component('thread-reply', require('./components/ThreadReply.vue').default);
 Vue.component('book-chapter', require('./components/BookChapter.vue').default);
 Vue.component('course-problem', require('./components/CourseProblem.vue').default);
 Vue.component('course-section', require('./components/CourseSection.vue').default);
+Vue.component('wiki-problems', require('./components/WikiProblems.vue').default);
 
 Vue.use(PortalVue)
 Vue.use(Toastr);
@@ -66,7 +67,7 @@ const app = new Vue({
 	methods: {
 
 	    imageuploaded(res) {
-	    	console.log(res);
+	    	// console.log(res);
 	        insertAtCaret('![alt text]('+ res.src + ' "Image Title")');
 
 	    },

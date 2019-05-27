@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Wiki;
 use App\Models\WikiCategory;
+use App\Models\ProblemQuestion;
 use Illuminate\Http\Request;
+use StdClass;
 
 class WikisController extends Controller
 {
@@ -48,8 +50,39 @@ class WikisController extends Controller
     public function show($slug)
     {
         $wiki = Wiki::where('slug', $slug)->first();
+        $questioncount = ProblemQuestion::where('wiki_id', $wiki->id)->count();
+        $problems = ProblemQuestion::where('wiki_id', $wiki->id)->get();
+        // $
 
-        return view('wikis.show', compact('wiki'));
+        $problem = new StdClass;
+        $problem->questions = $problems;
+        $problem = json_encode($problem);
+
+
+    //     "id" => 25
+    // "title" => "Practice Problems"
+    // "slug" => "practice-problems"
+    // "banner" => "storage/uploads/courses/banners/bc2d59208539e589a499466a76075a29.png"
+    // "content_type" => 2
+    // "body" => null
+    // "video" => null
+    // "problem_id" => 4
+    // "completed" => 0
+    // "created_at" => "2018-11-04 03:06:42"
+    // "updated_at" => "2018-11-04 03:06:42"
+    // "sequence" => 11
+    // "course_id" => 2
+    // "course_chapter_id" => 3
+        
+
+        // if($chapter->sections()->count() == $chapter->sections()->completed()->count())
+        // {
+        //     $section->chapter->finish();
+        // }
+
+
+
+        return view('wikis.show', compact('wiki', 'problem', 'questioncount'));
     }
 
     /**

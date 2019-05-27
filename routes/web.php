@@ -42,6 +42,7 @@ Route::post('/image/upload', 'ImageController@upload');
 
 Route::get('/wiki/{wiki}/read', 'ReadWikiController@store');
 Route::get('/wiki/{wiki}/unread', 'ReadWikiController@destroy');
+// Route::get('/wiki/{wiki}/problem', 'ReadWikiController@show');
 
 Route::post('/wiki/{wiki}/rate', 'RateWikiController@store');
 

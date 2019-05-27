@@ -26,8 +26,9 @@
                              <mark-as-read is-read="{{ auth()->user()->hasRead($wiki) }}"  id="{{ $wiki->id }}"></mark-as-read>
                         </div>
 
-
             </div>
+                        <wiki-problems :section-set="{{ $problem }}"></wiki-problems>
+
 		</div>
 
 

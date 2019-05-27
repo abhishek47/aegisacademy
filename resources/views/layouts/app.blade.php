@@ -135,7 +135,7 @@
         <footer class="h-12 bg-black p-2 py-4 relative w-full pin-b">
             <div class="container mx-auto">
                 <div class="flex">
-                    <span class="flex-1 text-semibold text-white">&copy; Copyright {{ date('Y')}}. Powered by <a href="#" class="text-white font-semibold no-underline hover:underline">Trumpets</a></span>
+                    <span class="flex-1 text-semibold text-white">&copy; Copyright {{ date('Y')}}. Powered by <a href="#" class="text-white font-semibold no-underline hover:underline">Backstage</a></span>
                     <span class="text-semibold white">
                         <a href="/about" class="text-white no-underline hover:underline mr-6">About</a>
                        {{--   <a href="/careers" class="text-white no-underline hover:underline mr-6">Careers</a>
