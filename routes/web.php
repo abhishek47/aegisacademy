@@ -118,6 +118,6 @@ Route::post('/profile/security', 'ProfileController@updatePassword');
 Route::get('/profile/upgrade', 'ProfileController@upgrade');
 Route::get('/profile/downgrade', 'ProfileController@downgrade');
 
-Route::post('/payment/success', 'ProfileController@upgradeSuccess');
+Route::get('/payment/success', 'ProfileController@upgradeSuccess');
 
 
