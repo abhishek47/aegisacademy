@@ -108,7 +108,7 @@ class WikiProblemCrudController extends CrudController
 
              $this->crud->setEntityNameStrings($this->wiki->title . ' | Question', $this->wiki->title . ' | Questions');
 
-             $this->crud->headlink = config('backpack.base.route_prefix') . '/wiki';
+             $this->crud->headlink = config('backpack.base.route_prefix') . '/wikis';
              $this->crud->headname = $this->wiki->title;
 
 
@@ -187,7 +187,7 @@ class WikiProblemCrudController extends CrudController
         $this->crud->hasAccessOrFail('list');
 
         $this->data['crud'] = $this->crud;
-        $this->data['title'] = ucfirst(($this->wiki ? $this->wiki->title . ' --> ' : '') . $this->crud->entity_name_plural);
+        $this->data['title'] = ucfirst((request('wiki') ? $this->wiki->id . ' --> ' : '') . $this->crud->entity_name_plural);
 
         // load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
         return view($this->crud->getListView(), $this->data);
