@@ -37,10 +37,10 @@ class ProfileController extends Controller
             'tid' => '1001' . $uid,
             'order_id' => $uid,
             'purpose' => 'Premium Subscription',
-            'amount' => 1500.0,
+            'amount' => 10.0,
             'buyer_name' => \Auth::user()->name,
             'email' => \Auth::user()->email,
-            'phone' => '9922367414',
+            'phone' => '9560755823',
           ];
 
 
