@@ -65,6 +65,14 @@ class ProfileController extends Controller
             auth()->user()->save();
             return back();
         }
+        if ($request->payment_status == 'Failed'){
+          return back();
+
+        } else {
+            auth()->user()->is_premium = 1;
+            auth()->user()->save();
+            return back();
+        }
 
     }
 
