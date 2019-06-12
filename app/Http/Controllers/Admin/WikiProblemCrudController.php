@@ -67,7 +67,7 @@ class WikiProblemCrudController extends CrudController
                 'min' => 0 // minimum rows allowed in the table
             ],
 
-            ['label' => 'Answer Index ( Give option number. For ex. if option 1 is answer then enter 1. Leave Blank for subjective question)', 'name' => 'answer', 'type' => 'number'],
+            ['label' => 'Answer Index ( Give option number. For ex. if option 1 is answer then enter 1. Leave Blank for subjective question)', 'name' => 'answer', 'type' => 'text'],
 
             ['label' => 'Answer for subjective question ( Leave blank for objective )', 'name' => 'subjective_answer'],
 
