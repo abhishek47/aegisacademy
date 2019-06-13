@@ -106994,10 +106994,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        {
-          staticClass:
-            "flex flex-col w-2/5 p-3 pl-8 items-stretch justify-center"
-        },
+        { staticClass: "flex flex-col p-3 pl-8 items-stretch justify-center" },
         [
           _vm.currentQuestion.is_subjective
             ? _c("div", { staticClass: "px-4 -mt-2 mb-3" }, [
@@ -107063,9 +107060,12 @@ var render = function() {
               ])
             : _c(
                 "ul",
-                { staticClass: "block w-4/5 list-reset" },
+                {
+                  staticClass:
+                    "block w-full list-reset flex  justify-space-around mb-4 mt-4"
+                },
                 _vm._l(_vm.currentQuestion.options, function(option, index) {
-                  return _c("li", { staticClass: "block w-full" }, [
+                  return _c("li", { staticClass: "block w-full pr-8" }, [
                     _vm.currentQuestion.user_answer == null
                       ? _c(
                           "div",
