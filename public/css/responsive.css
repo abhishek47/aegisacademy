@@ -1,0 +1,223 @@
+@media (max-width:991px){
+	.mobile-search-box{display:block}
+	.main-header .logo a img{width:70%;display:block;margin:0 auto}
+	.cookcodesmenu_menu{display:block!important}
+	.main-header{display:none!important}
+	.cookcodesmenu_brand img{width:70%}.video,.widget{margin:30px 0}.slider-area .slider-content-area .form .row .col-lg-6 input{height:40px;width:100%}.slider-area .slider-content-area .form .row .col-lg-12 textarea{width:100%;height:70px}.slider-area .slider-content-area .form .row .col-lg-12,.slider-area .slider-content-area .form .row .col-lg-6{padding:0 15px}.slider-area{height:600px!important;min-height:600px!important}.main-header .header-right ul li .search-box span{right:-10px}.slider-area .slider-inner-content .image-slider .single-slide img{height:600px}}@media (max-width:767px){.cookcodesmenu_menu{display:block!important}.main-header{display:none!important}.cookcodesmenu_brand img{width:70%}.slider-area .slider-content-area h2{font-size:30px}.slider-area .slider-content-area h2{font-size:30px}.slider-area .slider-content-area{top:40px}.slider-area{height:600px!important;min-height:600px!important}.main-header .header-right ul li .search-box span{right:-10px}.slider-area .slider-inner-content .image-slider .single-slide img{height:600px}.customer-review-area .reviw-slider .single-review .content{padding:16px 0}.call-to-action-area{background:#00163e;padding:50px 0;text-align:center}}@media (max-width:480px){.customer-review-area .reviw-slider .single-review .image{width:100%;background:#124bbc;border-radius:5px;float:inherit;text-align:center;padding:50px 0;margin:0 0 20px 0;display:block}.customer-review-area .reviw-slider .single-review .content{padding:0 15px;text-align:center}.slider-area .slider-content-area h2{font-size:30px}.slider-area .slider-content-area{top:40px}.slider-area{height:700px!important;min-height:700px!important}.main-header .header-right ul li .search-box span{right:0}.slider-area .slider-inner-content .image-slider .single-slide img{height:700px}.customer-review-area .reviw-slider .single-review .content{padding:16px 0}.call-to-action-area{background:#00163e;padding:50px 0;text-align:center}.slider-area .slider-content-area h2{font-size:24px}.mobile-search-box ul li{padding:0 5px}}
+
+
+@media (max-width: 991px){
+	.fullwidth {
+		width: 100%;
+		text-align: center;
+		font-size: large;
+	}
+	.text-xl{
+		font-size: 4.25rem;
+	}
+	.text-xs {
+	    font-size: 3.75rem;
+	}
+}
+@media (max-width: 720px){
+	body{ min-width: 100%; }
+/*.serachbar{ margin: 0 10px!important; }*/
+
+.rescrd{ padding: 0px!important; 
+  text-align: center!important;
+align-items: center;
+margin: 0px!important;
+   }
+
+.w-1\/3 {width: 100%!important;}
+
+.booksimg{ margin: 0px!important; margin-bottom: 2px; }
+
+	.text-xl {
+    font-size: 1rem!important;
+}
+.formres { display: flex!important; height: 45px!important;
+ /*margin-left: 10px; margin-right: 10px;*/
+  }
+.fa-search{ padding: 0 10px!important; }
+.py-60 {
+    text-align: center!important;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+.p-4 {
+     padding: 0rem!important; 
+}
+.pl-60{ padding: 10px 40px!important; }
+.w-3\/5 h2{ font-weight: bold; }
+.w-3\/5{ width: 100%!important; }
+.items-left h2 { text-align: center; font-weight: bold;font-size: 20px!important;  }
+
+.text-xl {
+    font-size: 1rem!important;
+   padding: 0 10px!important;
+}
+.lastsec{ padding: 20px!important; }
+.w-full{ 
+	margin: auto;
+}
+.container{ max-width:100%!important; padding: 0!important; margin: 0px!important; }
+.tracking-wide {
+	text-align: center;
+    font-size: 14px!important;;
+     letter-spacing: 0em!important; 
+
+}
+
+.search-input{ margin: 0px!important; }
+.mt-1 {
+    /*margin-top: auto!important;*/
+    vertical-align: middle;
+}
+.mt-45 {
+    text-align: center;
+    margin-top: 25px!important;
+}
+
+
+
+.px-6 {
+    padding-left: 0.7rem!important;
+    padding-right: 0.7rem!important;
+}
+.py-3 {
+    padding-top: 0.45rem!important;
+    padding-bottom: .45rem!important;
+}
+.font-semibold {
+    font-size: 14px!important;
+    font-weight: 500!important;
+}
+
+.w-2\/5 img{ padding: 0px; text-align: center;margin: auto; width: 150px!important;
+margin-bottom: 20px;
+ }
+.w-2\/5 {
+    width: auto!important;
+}
+
+.mr-6 {
+    margin-bottom: 20px;
+	text-align: center;
+	align-items: center;
+	width: auto;
+    margin-right: 15px!important;
+    margin-left: 15px!important;
+}
+.flex {
+    display: block!important;
+  }
+.vue-star-rating[data-v-34cbeed1] {
+    display: block!important;
+    padding: 10px 0px;
+}
+
+/*------------------------------------------------*/
+                  /*home page*/
+/*-----------------------------------------------------*/
+
+.topnav {
+  overflow: hidden;
+  background-color: #173753;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 30px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+
+
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+
+.course-card{ text-align:center !important;
+
+margin: 15px 10px;
+ }
+
+ .justify-center {
+    text-align: center!important;
+    justify-content: center;
+}
+/*--------------about-----------------*/
+.aboutsec{ padding: 0 10px!important; }
+
+
+/*.responsive a{ text-align: left!important; }*/
+/*.justify-center{ text-align: left!important;
+        align-items: left!important;
+
+ }*/
+
+ .textleftm  { text-align: left!important;
+        align-items: left!important;  }
+/*---------------------------*/
+/*wiki*/
+/*-------------------------------*/
+.w-3\/4 {
+    width: 100%!important;
+    text-align: center;
+}
+element.style {
+    min-height: 50vh!important;
+}
+
+/*span { font-size: 10px; }*/
+/*button { margin-bottom: 15px!important; }*/
+
+.bg-blue-lightest {
+    min-height: 50vh!important;
+    padding-top: 20px!important;
+
+}
+
+/*course*/
+.coursimg a{ width: 100%!important; }
+
+.w-1\/2 {
+    width: 100%;
+    text-align: center;
+    padding: 0px;
+}
+
+.bookinline{display: block!important;}
+
+
+}

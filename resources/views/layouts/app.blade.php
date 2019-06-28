@@ -13,16 +13,66 @@
     <!-- Styles -->
     <link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
 
     <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
+<style>
 
+
+
+
+.topnav {
+  overflow: hidden;
+  background-color: #173753;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 30px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+
+
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+</style>
 
 </head>
 <body class="bg-white h-screen">
     <div id="app">
         <nav class="bg-white h-14 shadow p-4 md:px-0" >
             <div class="container mx-auto h-full">
-                <div class="flex items-center justify-between h-12">
+                <div class=" items-center justify-between h-12" style="display: flex;">
                     <div class="flex-1">
                         <a href="{{ url('/') }}" class="no-underline">
                             <img class="mt-1" src="{{ asset('/img/logo.png') }}" style="width: 300px;">
@@ -67,7 +117,82 @@
         </nav>
 
         @auth
-        <div class="bg-brand shadow h-16">
+<div class="bg-brand shadow h-16">
+        <div class="container mx-auto">
+            <div class="flex bg-brand">
+<div class="topnav" id="myTopnav">
+  <a href="{{ url('/home') }}"
+                   class="{{ request()->is('home*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1  px-4 py-3 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold">
+                   <div class="textleftm flex w-full justify-center">
+                    <img class="" src="{{ asset('/img/home.png') }}" style="width: 25px;height: 100%;">
+                    <span class="mt-1 ml-2">Home</span>
+                    </div>
+                </a>
+
+  <a href="{{ url('/wiki') }}"
+                   class="{{ request()->is('wiki*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
+                    <div class=" textleftm flex w-full justify-center">
+                    <img class="" src="{{ asset('/img/article.png') }}" style="width: 25px;height: 100%;">
+                    <span class="mt-1 ml-2">Wiki</span>
+                    </div>
+                </a>
+                <a href="/courses"
+                   class="{{ request()->is('courses*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
+                   <div class=" textleftm flex w-full justify-center">
+                    <img class="" src="{{ asset('/img/courses-icon.png') }}" style="width: 25px;height: 100%;">
+                    <span class="mt-1 ml-2">Courses</span>
+                    </div>
+                </a>
+                <a href="#"
+                   class="{{ request()->is('practice*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
+                    <div class=" textleftm flex w-full justify-center">
+                    <img class="" src="{{ asset('/img/calc.png') }}" style="width: 25px;height: 100%;">
+                    <span  class="mt-1 ml-2">Practice <small style="font-size: 11px;
+    position: relative;
+    background: green;
+    padding: 3px;
+    border-radius: 20px;
+    padding-left: 9px;
+    padding-right: 9px;
+    top: 0;">Coming soon</small></span>
+                    </div>
+                </a>
+                <a href="{{ url('/books') }}"
+                    class="{{ request()->is('books*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
+                    <div class=" textleftm flex w-full justify-center">
+                    <img class="" src="{{ asset('/img/book.png') }}" style="width: 25px;height: 100%;">
+                    <span class="mt-1 ml-2" >TOMATO Solutions</span>
+                    </div>
+                </a>
+                <a href="{{ url('/discussions') }}"
+                   class="{{ request()->is('discussions*') ? 'bg-brand-darkest' : '' }} no-underline hover:bg-brand-darkest flex-1 pt-20 h-16 text-white text-center text-lg tracking-wide font-semibold px-4 py-4">
+                    <div class=" textleftm flex w-full justify-center">
+                    <img class="" src="{{ asset('/img/discuss.png') }}" style="width: 25px;height: 100%;">
+                    <span class="mt-1 ml-2">Discussions</span>
+                    </div>
+                </a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+</div>
+</div>
+</div>
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+
+
+ <!--        <div class="bg-brand shadow h-16">
         <div class="container mx-auto">
             <div class="flex bg-brand">
                 <a href="{{ url('/home') }}"
@@ -122,7 +247,7 @@
                 </a>
             </div>
         </div>
-    </div>
+    </div> -->
     @endauth
 
        @include('flash::message')

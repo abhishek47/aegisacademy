@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+
+
 <div class="bg-grey-lighter flex" style="min-height: 100vh;">
     <div class="container md:mx-auto mt-8">
         {{--   <div class="flex flex-col shadow-md rounded bg-white p-4 border-4 border-brand border-l-0 border-b-0 border-r-0">
@@ -19,7 +21,7 @@
     <div class="container mx-auto flex mt-8" style="flex-wrap: wrap;">
         @foreach($wikis as $index => $article)
          <a href="{{ url($article->url)}}" class="no-underline text-black w-1/2 pr-6 mb-8">
-                                        <div class="rounded shadow-md bg-white p-6 pt-4 border-t-4 border-b-0 border-r-0 border-l-0 border-brand">
+                                        <div class="rounded shadow-md bg-white p-6 pt-4 border-t-4 border-b-0 border-r-0 border-l-0 border-brand  course-card">
 
                                             <div class="flex items-center justify-between">
                                                 <span class="rounded p-1 px-4 text-white tracking-wide text-xs" style="background-color: {{ $article->category->color->code }}">{{ $article->category->name }}</span>
@@ -44,7 +46,7 @@
                                     </a>
         @endforeach
 
-          <div class="flex justify-center mb-8 mx-w-md">
+          <div class="flex justify-center mb-8 mx-w-md" style="margin: auto;">
             <a href="{{ url('/wiki') }}" class="no-underline self-center  bg-transparent hover:bg-brand text-brand-dark font-semibold hover:text-white py-3 px-45 border border-brand hover:border-transparent rounded mr-6">
                   View More
                 </a>
@@ -105,23 +107,23 @@
     <h2 class="text-grey-darkest text-2xl my-8">Currently Solving Books</h2>
     <div class="container mx-auto mt-8 mb-8" style="flex-wrap: wrap;">
     @foreach($books as $book)
-                         <div class="w-1/3 pr-3">
+                         <div class="w-1/3 pr-3  rescrd">
                            <div class="flex items-start flex-col shadow-md rounded bg-white mt-8 p-4 border-4 border-brand border-l-0 border-b-0 border-r-0">
 
                     <h2 class="text-lg">{{ str_limit($book->title, 33) }}</h2>
 
                     <div class="flex mt-3">
-                    <img src="/img/author.png" class="mr-3" style="width: 22px;height: 100%;">
+                    <img src="/img/author.png" class="mr-3 booksimg" style="width: 22px;height: 100%;">
                       <p class="mt-1 font-semibold tracking-wide text-sm text-brand">{{ $book->author }}</p>
                      </div>
 
 
 
                     <div class="flex mt-4">
-                      <img src="/img/chapters.png" class="mr-3 mt-1" style="width: 22px;height: 100%;">
+                      <img src="/img/chapters.png" class="mr-3 booksimg mt-1" style="width: 22px;height: 100%;">
                       <p class="mt-2 font-semibold tracking-wide text-brand">{{ $book->chapters->count() }} Chapters</p>
 
-                      <img src="/img/questions.png" class="mr-3 ml-8 mt-1" style="width: 25px;height: 100%;">
+                      <img src="/img/questions.png" class="mr-3 booksimg ml-8 mt-1" style="width: 25px;height: 100%;">
                       <p class="mt-2 font-semibold tracking-wide text-brand">{{ $book->questions->count() }} Questions</p>
                     </div>
 

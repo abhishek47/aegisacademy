@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mx-auto text-xl tracking-wide leading-normal mb-6">
+<div class="container aboutsec mx-auto text-xl tracking-wide leading-normal mb-6">
 
 	<h2 class="text-3xl font-weight-bold my-6">Terms & Conditions</h2>
 

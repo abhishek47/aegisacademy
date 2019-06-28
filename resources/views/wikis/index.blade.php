@@ -8,7 +8,7 @@
           <div class="w-3/4 p-6 pl-8">
 
 
-                <form class="flex w-full mx-auto bg-white shadow-md rounded border-2 border-grey mb-6">
+                <form class=" w-full mx-auto bg-white shadow-md rounded border-2 border-grey mb-6" style="display: flex;">
 
                       <i class="fa fa-search text-xl ml-3" style="color: #8795a185;margin-top: 10px;"></i>
                       <input type="text" class="w-full  p-2 pt-1 mt-1 text-grey-dark" value="{{ request('query') }}" autocomplete="off" placeholder="Type something..." name="query" style="font-size: 20px;">
@@ -30,7 +30,7 @@
                                 @foreach($articlesList as $article)
 
                                      <a href="{{ url($article->url)}}" class="no-underline text-black w-1/2 pr-6 mb-8">
-                                        <div class="rounded shadow-md bg-white p-6 pt-4 border-t-4 border-b-0 border-r-0 border-l-0 border-brand">
+                                        <div class="rounded shadow-md bg-white p-6 pt-4 border-t-4 border-b-0 border-r-0 border-l-0 border-brand course-card">
 
                                             <div class="flex items-center justify-between">
                                                 <span class="rounded p-1 px-4 text-white tracking-wide text-xs" style="background-color: {{ $article->category->color->code }}">{{ $article->category->name }}</span>

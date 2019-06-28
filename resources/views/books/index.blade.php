@@ -10,10 +10,10 @@
           <div class="w-full p-6 pl-8">
 
 
-                <form class="flex w-full mx-auto bg-white shadow-md rounded border-2 border-grey mb-6">
+                <form class=" w-full mx-auto bg-white shadow-md rounded border-2 border-grey mb-6" style="display: flex;margin: 0px!important;">
 
                       <i class="fa fa-search text-xl ml-3" style="color: #8795a185;margin-top: 10px;"></i>
-                      <input type="text" class="w-full  p-2 pt-1 mt-1 text-grey-dark" value="{{ request('query') }}" autocomplete="off" placeholder="Type something..." name="query" style="font-size: 20px;">
+                      <input type="text" class="w-full  p-2 pt-1 mt-1 text-grey-dark" value="{{ request('query') }}" autocomplete="off" placeholder="Type something..." name="query" style="font-size: 14px;">
                       <button class="btn bg-blue-dark hover:bg-blue-darker text-white font-semibold uppercase p-2 rounded rounded-l-none tracking-wide text-sm px-4">Search</button>
 
                 </form>
@@ -27,8 +27,9 @@
                      <div class="flex">
                          @foreach($books as $book)
                          <div class="w-1/2 pr-3">
-                           <div class="flex items-start flex-col shadow-md rounded bg-white mt-8 p-4 relative
-                           {{ $book->is_blocked ? 'border-2 border-red pointer-events-none' : 'border-t-4 border-brand'}} ">
+                           <div class="flex items-start flex-col shadow-md rounded bg-white mt-8 p-4 
+                           
+                         {{ $book->is_blocked ? 'border-2 border-red pointer-events-none' : 'border-t-4 border-brand'}} ">
 
                             @if($book->is_blocked)
                                <span class="rounded rounded-full p-2 bg-red text-white absolute" style="left: -10px;top: -10px;"><i class="fa fa-lock"> </i></span>
@@ -40,21 +41,21 @@
                     <h2 class="text-lg">{{ str_limit($book->title, 33) }}</h2>
 
                     <div class="flex mt-3">
-                    <img src="/img/author.png" class="mr-3" style="width: 22px;height: 100%;">
+                    <img src="/img/author.png" class="mr-3 booksimg" style="width: 22px;height: 100%;">
                       <p class="mt-1 font-semibold tracking-wide text-sm text-brand">{{ $book->author }}</p>
                      </div>
 
 
 
                     <div class="flex mt-4">
-                      <img src="/img/chapters.png" class="mr-3 mt-1" style="width: 22px;height: 100%;">
+                      <img src="/img/chapters.png" class="mr-3 booksimg mt-1" style="width: 22px;height: 100%;">
                       <p class="mt-2 font-semibold tracking-wide text-brand">{{ $book->chapters->count() }} Chapters</p>
 
-                      <img src="/img/questions.png" class="mr-3 ml-8 mt-1" style="width: 25px;height: 100%;">
+                      <img src="/img/questions.png" class="mr-3 booksimg ml-8 mt-1" style="width: 25px;height: 100%;">
                       <p class="mt-2 font-semibold tracking-wide text-brand">{{ $book->questions->count() }} Questions</p>
                     </div>
 
-                     <div style="display: inline-block;">
+                     <div class="bookinline" style="display: inline-block;">
 
                        @if($book->is_complete)
                      <a href="/books/{{$book->subject->slug}}/{{$book->slug}}/" class="no-underline btn flex bg-orange hover:bg-orande-dark mt-6 text-white font-semibold  p-2 rounded  tracking-wide text-sm px-4">

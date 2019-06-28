@@ -11,10 +11,10 @@
 
                {{-- <a href="javascript:;" @click.prevent="showSidebar = !showSidebar" class="text-grey-dark no-underline mb-4 font-semibold block"><i class="fa fa-bars"></i> Toggle Sidebar</a> --}}
 
-                <form class="flex w-full mx-auto bg-white shadow-md rounded border-2 border-grey mb-6">
+                <form class=" w-full mx-auto bg-white shadow-md rounded border-2 border-grey mb-6" style="display: flex;">
 
                       <i class="fa fa-search text-xl ml-3" style="color: #8795a185;margin-top: 10px;"></i>
-                      <input type="text" class="w-full  p-2 pt-1 mt-1 text-grey-dark" value="{{ request('query') }}" autocomplete="off" placeholder="Type something..." name="query" style="font-size: 20px;">
+                      <input type="text" class="w-full  p-2 pt-1 mt-1 text-grey-dark" value="{{ request('query') }}" autocomplete="off" placeholder="Type something..." name="query" style="font-size: 15px;">
                       <button class="btn bg-blue-dark hover:bg-blue-darker text-white font-semibold uppercase p-2 rounded rounded-l-none tracking-wide text-sm px-4">Search</button>
 
                 </form>
@@ -23,10 +23,10 @@
 
                     <div class="flex flex-col mb-4 mt-4">
 
-                         <div class="flex flex-wrap">
+                         <div class="flex flex-wrap coursimg">
                              @foreach($courses as $course)
 
-                                <a href="/courses/{{$course->slug}}" class="w-100 bg-white shadow-md mr-1 relative rounded p-2 no-underline {{ $course->is_blocked ? 'border-2 border-red pointer-events-none' : ($course->completed ? 'border-2 border-green' : '') }}" style="background: {{$course->color->code}};height: 363px;margin-bottom: 10px;display: block;width: 49.5%">
+                                <a href="/courses/{{$course->slug}}" class="w-100 bg-white shadow-md mr-1  rounded p-2 no-underline {{ $course->is_blocked ? 'border-2 border-red pointer-events-none' : ($course->completed ? 'border-2 border-green' : '') }}" style="background: {{$course->color->code}};height: 363px;margin-bottom: 10px;display: block;width: 49.5%">
 
                                     @if($course->is_blocked)
                                      <span class="rounded rounded-full p-2 bg-red text-white absolute" style="right: -10px;top: -10px;"><i class="fa fa-lock"> </i></span>

@@ -23,12 +23,13 @@
                 {{ $book->title }}</span>
               </span>
 
-                <div class="flex items-start flex-col shadow-md rounded bg-white mt-8 p-4 border-4 border-brand border-l-0 border-b-0 border-r-0">
+                <div class="flex items-start flex-col shadow-md rounded bg-white mt-8 p-4 border-4 border-brand border-l-0 border-b-0 border-r-0"
+                 style="padding: 0px 10px!important;">
 
                     <h2>{{ $book->title }}</h2>
 
                     <div class="flex mt-3">
-                    <img src="/img/author.png" class="mr-3" style="width: 22px;height: 100%;">
+                    <img src="/img/author.png" class="mr-3 booksimg " style="width: 22px;height: 100%;">
                       <p class="mt-1 font-semibold tracking-wide text-sm text-brand">{{ $book->author }}</p>
                      </div>
 
@@ -37,10 +38,10 @@
                     </p>
 
                     <div class="flex mt-6">
-                      <img src="/img/chapters.png" class="mr-3 mt-1" style="width: 22px;height: 100%;">
+                      <img src="/img/chapters.png" class="mr-3 booksimg mt-1" style="width: 22px;height: 100%;">
                       <p class="mt-2 font-semibold tracking-wide text-brand">{{ $book->chapters->count() }} Chapters</p>
 
-                      <img src="/img/questions.png" class="mr-3 ml-8 mt-1" style="width: 25px;height: 100%;">
+                      <img src="/img/questions.png" class="mr-3 booksimg ml-8 mt-1" style="width: 25px;height: 100%;">
                       <p class="mt-2 font-semibold tracking-wide text-brand">{{ $book->questions->count() }} Questions</p>
                     </div>
 
