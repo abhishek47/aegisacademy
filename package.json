@@ -23,7 +23,7 @@
   "dependencies": {
     "jquery": "^3.4.1",
     "laravel-mix": "^4.0.15",
-    "markdown-it": "^8.4.2",
+    "markdown-it": "^12.3.2",
     "markdown-it-anchor": "^5.0.2",
     "markdown-it-container": "^2.0.0",
     "markdown-it-contents": "0.0.1",
